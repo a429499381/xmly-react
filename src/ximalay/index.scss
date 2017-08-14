@@ -1,0 +1,563 @@
+a {
+  color: #999999;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.content {
+  display: inline-block;
+  width: 100%;
+  height: 0;
+}
+
+.font {
+  font-size: 14px;
+}
+.mt86 {
+  width: 100%;
+  height: 86px;
+}
+.no_more {
+  width: 100%;
+  height: 100px;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  background: #f9f9f9;;
+  color: #222222;
+}
+.pos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: #ffffff;
+}
+
+.top {
+  width: 100%;
+  padding: 10px 20px;
+  text-align: justify;
+  font-size: 0;
+  background: #ffffff;
+
+  .xinxi {
+    display: inline-block;
+    width: 10%;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    @extend .font;
+
+  }
+
+  .input {
+    vertical-align: middle;
+    width: 60%;
+    input {
+      font-size: 12px;
+      line-height: 30px;
+      min-width: 160px;
+      width: 100%;
+      padding: 0 10px;
+      border-radius: 40px;
+      background: #dedede;
+      color: #999999;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      outline: 0;
+      border: 0;
+
+    }
+  }
+
+  .top_r {
+    width: 22%;
+    max-width: 80px;
+    height: 30px;
+    text-align: justify;
+    vertical-align: middle;
+    display: inline-block;
+
+
+    a {
+      width: 50%;
+      display: inline-block;
+      @extend .font;
+      line-height: 30px;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.nav {
+  font-size: 0;
+  text-align: justify;
+  padding: 0 10px;
+
+  .active {
+    color: #ff8484 !important;
+    border-bottom: 2px solid #ff8484;
+  }
+
+  .nav_item {
+    display: inline-block;
+    text-align: center;
+    width: 10%;
+    font-size: 14px;
+    line-height: 34px;
+    color: #666666;
+  }
+}
+
+.banner_ad {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+
+  .ad_img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 132, 132, 0.66);
+  }
+}
+
+.link_icon {
+  white-space: nowrap;
+  overflow: auto;
+  padding: 10px 0;
+
+  .link_item {
+    display: inline-block;
+    width: 50px;
+    overflow: hidden;
+    text-align: center;
+
+    .icon {
+      display: block;
+      margin: 0 auto;
+      width: 30px;
+      height: 30px;
+      background: #ff8383;
+      border-radius: 50%;
+    }
+    .txt {
+      line-height: 20px;
+    }
+  }
+}
+
+.love  {
+  padding: 10px 10px;
+}
+.love_title {
+  text-align: justify;
+  padding: 10px 0;
+  font-size: 0;
+
+  .love_t{
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+    display: inline-block;
+  }
+  .more {
+    display: inline-block;
+    font-size: 12px;
+    color: #999999;
+  }
+}
+.love_con {
+  text-align: justify;
+  font-size: 0;
+
+  .con_item {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    padding-bottom: 10px;
+
+    .img {
+      width: 100%;
+      position: relative;
+      height: 100px;
+      background: #ff8484;
+
+      & .img_number {
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+
+        font-size: 12px;
+        color: #ffffff;
+      }
+    }
+
+    .item_txt {
+      font-size: 12px;
+      color: #222222;
+      line-height: 18px;
+    }
+  }
+}
+
+.n_content {
+  padding: 10px;
+}
+.list {
+  padding: 10px 0;
+}
+.list_img {
+  position: relative;
+
+  .img {
+    width: 80px;
+    height: 60px;
+    background: #ff8484;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .list_txt {
+    display: inline-block;
+    margin-left: 90px;
+    height: 60px;
+    overflow: hidden;
+
+    .txt_num {
+      font-size: 12px;
+      line-height: 24px;
+
+      .num {
+        color: #ff8484;
+        margin-right: 5px;
+      }
+      .txt_pl {
+        color: #999999;
+        margin-right: 5px;
+      }
+    }
+    .price {
+      .num1 {
+        font-size: 14px;
+        color: #ff8484;
+      }
+      .num2 {
+        font-size: 14px;
+        color: #999999;
+      }
+      .num3 {
+        font-size: 12px;
+        color: #999999;
+      }
+      .num4 {
+        display: inline-block;
+        font-size: 12px;
+        line-height: 16px;
+        padding: 0 3px;
+        background: #ff8484;
+        color: #ffffff;
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+
+.footer_fixe {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(248, 248, 248, 0.83);
+}
+
+.footer {
+  text-align: justify;
+  font-size: 0;
+
+  .fixe_item {
+    display: inline-block;
+    font-size: 12px;
+    color: #999999;
+    width: 20%;
+    line-height: 60px;
+    text-align: center;
+  }
+}
+
+.bofang {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  margin-left: -20px;
+
+  a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #ff8484;
+    border-radius: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+
+    //transform: rotate(0deg);
+    transition: transform 10s;
+  }
+  a:hover {
+    transform: rotate(1360deg);
+  }
+}
+
+// fenlei
+.link_lists {
+  font-size: 0;
+  background: #f9f9f9;
+
+  .lin_com {
+    margin: 10px 0;
+    background: #ffffff;
+  }
+  .link_item {
+    width: 50%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 2px 0;
+    border-bottom: 1px solid rgba(249, 249, 249, 0.56);
+
+    .link_icon {
+      width: 16px;
+      height: 16px;
+      background: #ff8484;
+      vertical-align: middle;
+      display: inline-block;
+      margin-right: 10px;
+
+      position: absolute;
+      margin-top: 10px;
+      margin-left: 30px;
+    }
+    .link_txt {
+      width: 100%;
+      padding-left: 60px;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 40px;
+      color: #222222;
+    }
+    .line {
+      border-right: 1px solid rgba(249, 249, 249, 0.56);
+    }
+  }
+}
+// fenlei
+
+// zhubo
+.zhub_b {
+  margin: 10px;
+  padding: 0 10px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 0;
+  text-align: justify;
+
+  .zhubo_title {
+    font-size: 16px;
+    line-height: 40px;
+    display: inline-block;
+    color: #ff8484;
+    vertical-align: middle;
+  }
+  .zhubo_icon {
+    display: inline-block;
+
+    .zhubo_item {
+      font-size: 12px;
+      vertical-align: middle;
+      width: 30px;
+      height: 30px;
+      border-radius: 40px;
+      margin-right: 5px;
+      background: #ff8484;
+      display: inline-block;
+    }
+    .zhubo_txt {
+      font-size: 12px;
+      vertical-align: middle;
+    }
+  }
+}
+// zhubo
+
+// zhibo lists
+.zhibo_lists {
+  padding: 0 10px;
+  width: 100%;
+
+  .list {
+    padding: 10px 0;
+    text-align: justify;
+    font-size: 0;
+
+    .list_item {
+      margin: 10px 0;
+      width: 50%;
+      display: inline-block;
+      overflow: hidden;
+
+      .img {
+        position: relative;
+        width: 97%;
+        height: 140px;
+        background: #ff8484;
+
+        .icon_txt1 {
+          position: relative;
+          top: 5px;
+          right: 5px;
+
+          width: 100%;
+          font-size: 0;
+          text-align: right;
+
+          span {
+            color: #ffffff;
+            display: inline-block;
+            padding: 2px 5px;
+            font-size: 12px;
+          }
+          .txt_1 {
+            background: #ef7878;
+            border-radius: 4px 0 0 4px;
+          }
+          .txt_2 {
+            background: rgba(0,0,0, .2);
+            border-radius: 0 4px 4px 0;
+          }
+        }
+        .icon_txt2 {
+          position: absolute;
+          bottom: 5px;
+          left: 5px;
+          right: 5px;
+
+          text-align: justify;
+          font-size: 0;
+
+          .txt2_img {
+            display: inline-block;
+
+            .txt2_icon {
+              width: 30px;
+              height: 30px;
+              display: inline-block;
+              border-radius: 20px;
+              background: #dedede;
+              vertical-align: bottom;
+              margin-right: 5px;
+            }
+            .txt2_uer {
+              font-size: 12px;
+              line-height: 30px;
+              color: #ffffff;
+            }
+          }
+          .qita {
+            display: inline-block;
+
+            .qita_txt {
+              font-size: 12px;
+              color: #ffffff;
+            }
+          }
+        }
+
+      }
+
+      .list_item_txt {
+        font-size: 12px;
+        line-height: 24px;
+      }
+    }
+
+  }
+}
+// zhibo lists
+
+// user
+.user_top {
+  background: #ff8484;
+  height: 220px;
+
+  .user_con {
+    padding:10px 20px;
+
+    .icon {
+      text-align: justify;
+
+      a {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 40px;
+        background: #ccc;
+      }
+    }
+  }
+}
+
+.user_img  {
+  position: relative;
+  background: #dedede;
+
+
+
+  .img {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin-left: -80px;
+    border-radius: 100%;
+    background: #ad5757;
+    border: 1px solid #b3cca7;
+
+
+
+    //position: absolute;
+    //top: 0;
+    //left: 0;
+
+    vertical-align: middle;
+    //content: '';
+  }
+
+  .user_txt {
+    width: 99.2%;
+    display: inline-block;
+    vertical-align: middle;
+    background: #b3cca7;
+    .user_num {
+
+    }
+
+    .user_more {
+      font-size: 20px;
+      position: absolute;
+      top: 25px;
+      right: 10px;
+    }
+
+  }
+}
+// user
