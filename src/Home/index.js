@@ -14,31 +14,24 @@ class Top extends Component {
       <div>
         {/* top */}
           <Hearder/>
-        {/* top */}
 
         {/* banner 图 */}
           <Banner/>
-        {/* banner 图 */}
 
         {/* 推荐 横行滚动*/}
          <TjScroll/>
-        {/* 推荐 横行滚动*/}
 
         {/* 猜你喜欢 */}
            <Love/>
-        {/* 猜你喜欢 */}
 
         {/* 滚动列表页 */}
          <ListSrcoll/>
-        {/* 滚动列表页 */}
 
         {/* 底部导航 */}
           <FooterNavgtion/>
-        {/* 底部导航 */}
 
         {/* 没有更多 */}
           <NoMore/>
-        {/* 没有更多 */}
     </div>
     )
   }

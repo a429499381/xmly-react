@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Home from './Home/index.js'
+import Home from './Home'
 
 import './css/reset.css'
 import './css/zxx.css'
