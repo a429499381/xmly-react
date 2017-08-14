@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Hearder from '../PageCom/Header'
+import Header from '../PageCom/Header'
 import Banner from '../PageCom/Banner'
 import TjScroll from '../PageCom/TjScroll'
 import Love from '../PageCom/Love_love'
@@ -13,7 +13,7 @@ class Top extends Component {
     return (
       <div>
         {/* top */}
-          <Hearder/>
+          <Header/>
 
         {/* banner 图 */}
           <Banner/>
