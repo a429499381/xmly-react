@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Link, hashHistory} from 'react-router'
+
 import './index.css'
 
 class Top extends Component {
@@ -8,10 +10,12 @@ class Top extends Component {
         {/* top */}
           <div className="pos">
           <div className="top ">
-            <a href="javascript:;" className="xinxi">
-              信息
-              <i></i>
-            </a>&nbsp;
+            <Link to="/List">
+              <span className="xinxi">
+                信息
+                <i></i>
+              </span>&nbsp;
+            </Link>
             <div className="input dib">
               <input type="text" placeholder="散文 鲁智深乡村灵异时间让你.."/>
             </div>&nbsp;
@@ -35,6 +39,7 @@ class Top extends Component {
     </div>
     )
   }
+
 }
 
 export default Top;
