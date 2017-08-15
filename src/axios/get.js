@@ -7,3 +7,10 @@ export  const get = () => {
 
      return axios.get('http://bird.ioliu.cn/v1/?url=' + url)
 }
+
+
+export  const getHome = () => {
+  const url = 'http://m.ximalaya.com'
+
+  return axios.get('http://bird.ioliu.cn/v1/?url=' + url)
+}

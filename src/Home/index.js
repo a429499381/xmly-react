@@ -8,7 +8,7 @@ import ListSrcoll from '../PageCom/ListSrcoll'
 import NoMore from '../PageCom/NoMore'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 
-import {get} from '../axios/get.js'
+import {get, getHome} from '../axios/get.js'
 
 
 class Top extends Component {
@@ -24,7 +24,7 @@ class Top extends Component {
         <div>
             <div>
                 <audio controls>
-                    <source src="http://audio.xmcdn.com/group31/M08/5E/4D/wKgJSVmQzqaxRkU7ADgCGAG-E10527.m4a"></source>
+                    <source src={data.play_path64}></source>
                 </audio>
                 <audio controls>
                     <source src="http://audio.xmcdn.com/group30/M07/E9/20/wKgJXlmQcTPQ5W1dAHqvPmz6iBI916.m4a"></source>
@@ -32,9 +32,7 @@ class Top extends Component {
                 <div>1</div>
                 <div>2</div>
                 <div>3</div>
-                </a>
             </div>
-
         </div>
     )
   }
@@ -45,6 +43,10 @@ class Top extends Component {
          })
          console.log(res.data)
      })
+
+    getHome().then(res => {
+      window.data = res.data
+    })
   }
 }
 
