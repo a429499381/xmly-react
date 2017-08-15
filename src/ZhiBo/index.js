@@ -10,8 +10,8 @@ class ZhiBo extends Component {
       <div>
         {/* top */}
           <Header/>
-
-
+          <div className="mt86"></div>
+          直播页面
         {/* 底部导航 */}
           <FooterNavgtion/>
 

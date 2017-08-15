@@ -21,6 +21,7 @@ class RouterMap extends React.Component {
       <Router history={this.props.history}>
         <Route path='/' component={App}>
           <IndexRoute component={Home}/>
+          <Route path='/Home' component={Home}/>
           <Route path='/FenLei' component={FenLei}/>
           <Route path='/Fm' component={Fm}/>
           <Route path='/JingPin' component={JingPin}/>

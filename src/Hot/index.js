@@ -11,8 +11,6 @@ class FenLei extends Component {
       <div>
         {/* top */}
           <Header/>
-        <div className="mt86"></div>
-          分类页面
         {/* 底部导航 */}
           <FooterNavgtion/>
         {/* 没有更多 */}
