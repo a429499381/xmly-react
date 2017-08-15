@@ -1,13 +1,9 @@
 import axios from 'axios'
 
-export  const get = () => {
-   let url = 'http://m.ximalaya.com/tracks/47259950.json'
-   let config = {
-       GET:"/tracks/47259950.json HTTP/1.1",
-    Host: "m.ximalaya.com",
-    Connection: "keep-alive",
-    Accept: "application/json, text/javascript, */*; q=0.01",
-   }
+// https://bird.ioliu.cn/ 跨域代理网站
 
-   return axios.get(url, config)
+export  const get = () => {
+   const url = 'http://m.ximalaya.com/tracks/47259950.json'
+
+     return axios.get('http://bird.ioliu.cn/v1/?url=' + url)
 }

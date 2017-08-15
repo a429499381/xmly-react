@@ -12,34 +12,39 @@ import {get} from '../axios/get.js'
 
 
 class Top extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            data: ''
+        }
+    }
   render() {
+        const data = this.state.data
     return (
-      <div>
-        {/* top */}
-          <Header/>
+        <div>
+            <div>
+                <audio controls>
+                    <source src="http://audio.xmcdn.com/group31/M08/5E/4D/wKgJSVmQzqaxRkU7ADgCGAG-E10527.m4a"></source>
+                </audio>
+                <audio controls>
+                    <source src="http://audio.xmcdn.com/group30/M07/E9/20/wKgJXlmQcTPQ5W1dAHqvPmz6iBI916.m4a"></source>
+                </audio>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                </a>
+            </div>
 
-        {/*/!* banner 图 *!/*/}
-          {/*<Banner/>*/}
-
-        {/*/!* 推荐 横行滚动*!/*/}
-         {/*<TjScroll/>*/}
-
-        {/*/!* 猜你喜欢 *!/*/}
-           {/*<Love/>*/}
-
-        {/*/!* 滚动列表页 *!/*/}
-         {/*<ListSrcoll/>*/}
-
-        {/*/!* 底部导航 *!/*/}
-          {/*<FooterNavgtion/>*/}
-
-        {/*/!* 没有更多 *!/*/}
-          {/*<NoMore/>*/}
-    </div>
+        </div>
     )
   }
   componentDidMount() {
-      console.log(get())
+     get().then((res) => {
+         this.setState({
+             data: res.data
+         })
+         console.log(res.data)
+     })
   }
 }
 
