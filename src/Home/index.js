@@ -45,12 +45,23 @@ class Top extends Component {
 
     getHome().then(res => {
       window.data = res.data
-      const reg = /<li\b([\d\D])+?<\/li>(?!<\/li\b>)/g
-      const regA_Src = /class="item\s+j-candies\b".+?href="([^}]+?)>.+?<img.+?src="([^"]+)(?=")/g
-      const regA_Src1 = /(\bclass\b="item\s+j-candies\b").+?\r\nhref="(.+?)>.+?\r\n<img.+?src="([^"]+)/g
-      const regA_Src2 = /(?:\bclass\b="item\s+j-candies\b").+?\r\n.+href="([^}].+)"/g
-      res.data.replace(regA_Src2, function (match, groun1, groun2, index, origin) {
-           console.log(groun1)
+      // 获取 clas=item j-candies 标签所有内容
+      const Lireg = /(?!<\/?li>)<li\b\s?class="item\s+j-candies"[\d\D]+?(<\/li\b>)/g
+      // 获取 a 标签的跳转路由
+      const Hrefreg = /href="([^"';]+)(?=")/g
+      const Srcreg = /src="([^"';]+)(?=")/g
+      // const reg = /<li\b([\d\D])+?<\/li>(?!<\/li\b>)/g
+      // const regA_Src = /class="item\s+j-candies\b".+?href="([^}]+?)>.+?<img.+?src="([^"]+)(?=")/g
+      // const regA_Src1 = /(\bclass\b="item\s+j-candies\b").+?\r\nhref="(.+?)>.+?\r\n<img.+?src="([^"]+)/g
+      // const regA_Src2 = /(?:\bclass\b="item\s+j-candies\b").+?\r\n.+href="([^}].+)"/g
+      res.data.replace(Lireg, function (match, groun1, groun2, index, origin) {
+           let data = match
+           data.replace(Hrefreg, function (match, href) {
+             console.log(href)
+           })
+           data.replace(Srcreg, function (match, Src) {
+             console.log(Src)
+           })
       })
     })
   }
