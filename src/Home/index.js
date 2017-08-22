@@ -47,6 +47,8 @@ class Top extends Component {
       window.data = res.data
       // 获取 clas=item j-candies 标签所有内容
       const Lireg = /(?!<\/?li>)<li\b\s?class="item\s+j-candies"[\d\D]+?(<\/li\b>)/g
+      // 获取 href 标签名字
+      const name =   /\/(\w+)"/
       // 获取 a 标签的跳转路由
       const Hrefreg = /href="([^"';]+)(?=")/g
       const Srcreg = /src="([^"';]+)(?=")/g
@@ -56,6 +58,9 @@ class Top extends Component {
       // const regA_Src2 = /(?:\bclass\b="item\s+j-candies\b").+?\r\n.+href="([^}].+)"/g
       res.data.replace(Lireg, function (match, groun1, groun2, index, origin) {
            let data = match
+            data.replace(name, function (match, name) {
+              console.log(name)
+            })
            data.replace(Hrefreg, function (match, href) {
              console.log(href)
            })
