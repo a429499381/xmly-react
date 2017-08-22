@@ -47,13 +47,11 @@ class Top extends Component {
       window.data = res.data
       const reg = /<li\b([\d\D])+?<\/li>(?!<\/li\b>)/g
       const regA_Src = /class="item\s+j-candies\b".+?href="([^}]+?)>.+?<img.+?src="([^"]+)(?=")/g
-      const regA_Src1 = /(class="item j-candies\b").+?href="(.+?)>.+?<img.+?src="([^"]+)/g
-      const regA_Src2 = /\bclass\b="item\s+j-candies\b".+?href="([^}]+?)>$/g
-      res.data.replace(reg, function (match, groun1, groun2, index, origin) {
-           console.log('0')
+      const regA_Src1 = /(\bclass\b="item\s+j-candies\b").+?\r\nhref="(.+?)>.+?\r\n<img.+?src="([^"]+)/g
+      const regA_Src2 = /(?:\bclass\b="item\s+j-candies\b").+?\r\n.+href="([^}].+)"/g
+      res.data.replace(regA_Src2, function (match, groun1, groun2, index, origin) {
+           console.log(groun1)
       })
-      const data = res.data.match(regA_Src2)
-      console.log(data)
     })
   }
 }
