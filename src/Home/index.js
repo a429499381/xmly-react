@@ -41,11 +41,19 @@ class Top extends Component {
          this.setState({
              data: res.data
          })
-         console.log(res.data)
      })
 
     getHome().then(res => {
       window.data = res.data
+      const reg = /<li\b([\d\D])+?<\/li>(?!<\/li\b>)/g
+      const regA_Src = /class="item\s+j-candies\b".+?href="([^}]+?)>.+?<img.+?src="([^"]+)(?=")/g
+      const regA_Src1 = /(class="item j-candies\b").+?href="(.+?)>.+?<img.+?src="([^"]+)/g
+      const regA_Src2 = /\bclass\b="item\s+j-candies\b".+?href="([^}]+?)>$/g
+      res.data.replace(reg, function (match, groun1, groun2, index, origin) {
+           console.log('0')
+      })
+      const data = res.data.match(regA_Src2)
+      console.log(data)
     })
   }
 }
