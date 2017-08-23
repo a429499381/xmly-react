@@ -8,7 +8,7 @@ import ListSrcoll from '../PageCom/ListSrcoll'
 import NoMore from '../PageCom/NoMore'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 
-import {get, getHome} from '../axios/get.js'
+import {getJson, getHome} from '../axios/get.js'
 
 
 class Top extends Component {
@@ -37,7 +37,7 @@ class Top extends Component {
     )
   }
   componentDidMount() {
-     get().then((res) => {
+     getJson().then((res) => {
          this.setState({
              data: res.data
          })
@@ -45,6 +45,7 @@ class Top extends Component {
 
     getHome().then(res => {
       window.data = res.data
+      const HomeData = {}
       // 获取 clas=item j-candies 标签所有内容
       const Lireg = /(?!<\/?li>)<li\b\s?class="item\s+j-candies"[\d\D]+?(<\/li\b>)/g
       // 获取 href 标签名字
@@ -58,14 +59,20 @@ class Top extends Component {
       // const regA_Src2 = /(?:\bclass\b="item\s+j-candies\b").+?\r\n.+href="([^}].+)"/g
       res.data.replace(Lireg, function (match, groun1, groun2, index, origin) {
            let data = match
+
             data.replace(name, function (match, name) {
               console.log(name)
+              HomeData.name = name
+              console.log(HomeData)
             })
-           data.replace(Hrefreg, function (match, href) {
+               data.replace(Hrefreg, function (match, href) {
              console.log(href)
+             // HomeData.name.push(href)
            })
            data.replace(Srcreg, function (match, Src) {
              console.log(Src)
+             // HomeData.name.push(Src)
+
            })
       })
     })
