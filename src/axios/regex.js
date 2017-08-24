@@ -8,6 +8,7 @@ export  const Data = () => {
         window.data = res.data
         // 分类 列表内容
         HomeData.Fl = {}
+        // 焦点 标签 列表
         HomeData.Jd = {}
         // 专辑 列表内容
         HomeData.JzData = {}
