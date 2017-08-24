@@ -49,8 +49,9 @@ class Top extends Component {
       window.data = res.data
       // 分类 列表内容
       const HomeData = {}
+      HomeData.Fl = {}
       // 专辑 列表内容
-      HomeData.JzData = []
+      HomeData.JzData = {}
 
       // 获取 clas=item j-candies  分类  标签所有内容
       const Lireg = /(?!<\/?li>)<li\b\s?class="item\s+j-candies"[\d\D]+?(<\/li\b>)/g
@@ -74,49 +75,50 @@ class Top extends Component {
            // 定义 局部 临时变量  作为 回掉 内容变量传递。
            let  Lname = 'No'
 
+
            //  正则 匹配 li 标签里面到 名字 rank book ...
             data.replace(name, function (match, name) {
               Lname = name
               // 建立每个 名字的数字  rank[] book[]
-              HomeData[name] =  []
+              HomeData.Fl[name] =  []
               // 添加数组内容
-              HomeData[name].push(name)
+              HomeData.Fl[name].push(name)
             })
            data.replace(Hrefreg, function (match, href) {
                // 添加数组内容 href 标签
-               HomeData[Lname].push(href)
+               HomeData.Fl[Lname].push(href)
 
                })
            data.replace(Srcreg, function (match, Src) {
                // 添加数组内容 Src 标签
-               HomeData[Lname].push(Src)
+               HomeData.Fl[Lname].push(Src)
 
            })
       })
 
      // 正则匹配  循环 添加 数据 与  HomeData 专辑 对象中
-        res.data.replace(Lireg_2, function (match, groun1, groun2, index, origin) {
-            // 缓存 每次匹配到的 LI  标签内容
-            let data = match
-            // 定义 局部 临时变量  作为 回掉 内容变量传递。
-            let  Lname = 'No'
+     var  Num = 0
+     res.data.replace(Lireg_2, function (match, groun1, groun2, index, origin) {
+        // 缓存 每次匹配到的 LI  标签内容
+        let data = match
+        // 定义 局部 临时变量  作为 回掉 内容变量传递。
+        let  Lname = 'No'
+        HomeData.JzData[Num] = []
 
-            data.replace(Hrefreg, function (match, href) {
-                HomeData.JzData.push(href)
-            })
-
-            data.replace(Data_original, function (match, data) {
-                HomeData.JzData.push(data)
-            })
-
-            //  正则 匹配 li 标签里面到 名字 rank book ...
-            data.replace(Lireg_p, function (match, name) {
-                HomeData.JzData.push(name)
-            })
-
+        data.replace(Hrefreg, function (match, href) {
+            HomeData.JzData[Num].push(href)
         })
 
+        data.replace(Data_original, function (match, data) {
+            HomeData.JzData[Num].push(data)
+        })
 
+        //  正则 匹配 li 标签里面到 名字 rank book ...
+        data.replace(Lireg_p, function (match, name) {
+            HomeData.JzData[Num].push(name)
+        })
+        Num = Num + 1
+    })
          // 打印 数据  验证
         console.log(HomeData)
 
