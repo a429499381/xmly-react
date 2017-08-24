@@ -44,6 +44,7 @@ class Top extends Component {
      })
 
     getHome().then(res => {
+      // 测试用 添加未经过处理数据与 window 全局变量中
       window.data = res.data
       const HomeData = {}
       // 获取 clas=item j-candies 标签所有内容
@@ -53,28 +54,37 @@ class Top extends Component {
       // 获取 a 标签的跳转路由
       const Hrefreg = /href="([^"';]+)(?=")/g
       const Srcreg = /src="([^"';]+)(?=")/g
-      // const reg = /<li\b([\d\D])+?<\/li>(?!<\/li\b>)/g
-      // const regA_Src = /class="item\s+j-candies\b".+?href="([^}]+?)>.+?<img.+?src="([^"]+)(?=")/g
-      // const regA_Src1 = /(\bclass\b="item\s+j-candies\b").+?\r\nhref="(.+?)>.+?\r\n<img.+?src="([^"]+)/g
-      // const regA_Src2 = /(?:\bclass\b="item\s+j-candies\b").+?\r\n.+href="([^}].+)"/g
-      res.data.replace(Lireg, function (match, groun1, groun2, index, origin) {
-           let data = match
 
+      //  正则匹配  循环 添加 数据 与  HomeData 对象中
+      res.data.replace(Lireg, function (match, groun1, groun2, index, origin) {
+           // 缓存 每次匹配到的 LI  标签内容
+           let data = match
+           // 定义 局部 临时变量  作为 回掉 内容变量传递。
+           let  Lname = 'No'
+
+           //  正则 匹配 li 标签里面到 名字 rank book ...
             data.replace(name, function (match, name) {
-              console.log(name)
-              HomeData.name = name
-              console.log(HomeData)
+              Lname = name
+              // 建立每个 名字的数字  rank[] book[]
+              HomeData[name] =  []
+              // 添加数组内容
+              HomeData[name].push(name)
             })
-               data.replace(Hrefreg, function (match, href) {
-             console.log(href)
-             // HomeData.name.push(href)
-           })
+           data.replace(Hrefreg, function (match, href) {
+               // 添加数组内容 href 标签
+               HomeData[Lname].push(href)
+
+               })
            data.replace(Srcreg, function (match, Src) {
-             console.log(Src)
-             // HomeData.name.push(Src)
+               // 添加数组内容 Src 标签
+               HomeData[Lname].push(Src)
 
            })
       })
+
+         // 打印 数据  验证
+        // console.log(HomeData)
+
     })
   }
 }
