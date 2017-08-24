@@ -50,7 +50,7 @@ class Top extends Component {
       // 分类 列表内容
       const HomeData = {}
       // 专辑 列表内容
-      const JzData = {}
+      HomeData.JzData = []
 
       // 获取 clas=item j-candies  分类  标签所有内容
       const Lireg = /(?!<\/?li>)<li\b\s?class="item\s+j-candies"[\d\D]+?(<\/li\b>)/g
@@ -65,7 +65,7 @@ class Top extends Component {
       const Hrefreg = /href="([^"';]+)(?=")/g
       const Srcreg = /src="([^"';]+)(?=")/g
       const Data_original = /data-original="([^"';]+)(?=")/g
-      const SrcImg = /src="([^"';]+)"/
+      const SrcImg = /src/g
 
       //  正则匹配  循环 添加 数据 与  HomeData 分类对象中
       res.data.replace(Lireg, function (match, groun1, groun2, index, origin) {
@@ -101,33 +101,24 @@ class Top extends Component {
             // 定义 局部 临时变量  作为 回掉 内容变量传递。
             let  Lname = 'No'
 
-            data.replace(SrcImg, function (match, SrcImg) {
-                console.log('SrcImg',SrcImg)
-
-            })
-
             data.replace(Hrefreg, function (match, href) {
-                console.log('href',href)
-
+                HomeData.JzData.push(href)
             })
 
             data.replace(Data_original, function (match, data) {
-                console.log('data',data)
-
+                HomeData.JzData.push(data)
             })
 
             //  正则 匹配 li 标签里面到 名字 rank book ...
             data.replace(Lireg_p, function (match, name) {
-                Lname = name
-                console.log(name)
+                HomeData.JzData.push(name)
             })
-
 
         })
 
 
          // 打印 数据  验证
-        // console.log(HomeData)
+        console.log(HomeData)
 
     })
   }
