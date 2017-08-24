@@ -22,7 +22,10 @@ export  const Data = () => {
         const Lireg_p = /<p\sclass="name">(.+)<\/p>/g
 
         // 获取 焦点 标签 所有内容 wrapper
-
+        const wrapper = /(?!<\/?div>)<div\b\s?class="wrapper"[\d\D]+?(<\/div\b>)/g
+        const hearder = /(?!<\/?header>)<header\b\s?class="header1"[\d\D]+?(<\/header\b>)/g
+        const banner = /(?!<\/?div>)<div\b\s?class="single-banner"[\d\D]+?(<\/div\b>)/g
+        const list = /(?!<\/?li>)<li\b\s?class="single-banner"[\d\D]+?(<\/li\b>)/g
 
         // 获取 href 标签名字
         const name =   /\/(\w+)"/
