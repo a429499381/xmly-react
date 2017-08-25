@@ -14,7 +14,6 @@ export  const Data = () => {
         HomeData.JzData = {}
         // 列表 头部 内容
         HomeData.Lists = {}
-        HomeData.Header = {}
 
         // 所有列表匹配简单模式
         const lists = /(?!<\/?li>)<li\b[\d\D]+?(<\/li\b>)/g
@@ -81,20 +80,20 @@ export  const Data = () => {
             let data = match
             // 定义 局部 临时变量  作为 回掉 内容变量传递。
             let  Lname = 'No'
-            HomeData.JzData[Num] = []
+            HomeData.JzData[Num] = {}
 
             data.replace(Hrefreg, function (match, href) {
-                HomeData.JzData[Num].push(href)
+                HomeData.JzData = {"href": href,}
             })
 
             data.replace(Data_original, function (match, data) {
-                HomeData.JzData[Num].push(data)
+                HomeData.JzData = {"data": data}
             })
 
-            //  正则 匹配 li 标签里面到 名字 rank book ...
-            data.replace(Lireg_p, function (match, name) {
-                HomeData.JzData[Num].push(name)
-            })
+            // //  正则 匹配 li 标签里面到 名字 rank book ...
+            // data.replace(Lireg_p, function (match, name) {
+            //     HomeData.JzData[Num].push(name)
+            // })
             Num = Num + 1
         })
 
@@ -109,16 +108,26 @@ export  const Data = () => {
               data2.replace(header_href, function (match, href, name, more, title) {
                 let Num2 = 0
                 HomeData.Lists[name] = {}
-                HomeData.Lists[name].Header = []
+                HomeData.Lists[name].Header = {}
                 HomeData.Lists[name].List = {}
 
-                HomeData.Lists[name].Header.push(name,title,href,more)
+                let names = {"name": name}
+                let titles = {"title": title}
+                let hrefs = {"href": href}
+                let mores = {"more": more}
+
+                let  headers = Object.assign(names, titles, hrefs, mores)
+                HomeData.Lists[name].Header = headers
+
+                // HomeData.Lists[name].Header.push(name,title,href,more)
 
                   data.replace(Section_href, function (match, href, img, title, num) {
-                      HomeData.Lists[name].List[Num2] = []
-                      const List2 = HomeData.Lists[name].List[Num2]
-                      List2.push( title, href, img, num)
-                      Num2 = Num2 + 1
+                      let hrefs = {"href": href}
+                      let imgs = {"img": img}
+                      let titles = {"title": title}
+                      let nums = {"num": num}
+                      let Section_List = Object.assign(titles, hrefs, imgs, nums)
+                      HomeData.Lists[name].List = Section_List
                   })
               })
             })
