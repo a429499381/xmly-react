@@ -99,24 +99,29 @@ export  const Data = () => {
         })
 
         // 获取 header 标签内容 提取数据
+        // var Num2 = 0
         res.data.replace(Section, function (match, groun1, groun2, index, origin) {
             // 缓存 每次匹配到的 LI  标签内容
             let data = match
+            const Lists = HomeData.Lists
 
-            data.replace(header, function (data) {
-              data.replace(header_href, function (match, href, name, more, title) {
+            data.replace(header, function (data2) {
+              data2.replace(header_href, function (match, href, name, more, title) {
+                let Num2 = 0
                 HomeData.Lists[name] = {}
                 HomeData.Lists[name].Header = []
+                HomeData.Lists[name].List = {}
 
                 HomeData.Lists[name].Header.push(name,title,href,more)
+
+                  data.replace(Section_href, function (match, href, img, title, num) {
+                      HomeData.Lists[name].List[Num2] = []
+                      const List2 = HomeData.Lists[name].List[Num2]
+                      List2.push( title, href, img, num)
+                      Num2 = Num2 + 1
+                  })
               })
             })
-
-            data.replace(Section_href, function (match, href, img, title, num) {
-              // console.log(href, img, title, num)
-
-            })
-
         })
         // 打印 数据  验证
         window.HomeData = HomeData
