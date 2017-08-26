@@ -24,13 +24,13 @@ export  const Data = () => {
         const name =   /\/(\w+)"/
         const text_span = /<span\b.+?>(.+)<\/span>/g
 
-      // 测试 标签
-        const Section = /(?!<\/?section>)<section\b\s?class=".+?"[\d\D]+?<\/section\b>/g
+        // 测试 标签
+        const Section = /<section\b\sclass="module.?>[\d\D]+?<li\b\s.+>[\d\D]+?<\/section\b>/g
         const Section_href = /<li\b[\d\D]+?href="(.+)"[\d\D]+?\bdata-original\b="([^"']+)"[\d\D]+?<p class="name">(.+)<\/p>[^}]+?<p class="count-cont">.+<span>(.+)<\/span>/g
         const header = /<\bheader\b.+class="header1">[\d\D]+?<\/header\b>/g
-        const header_href = /\bhref\b="(\/.+?\/(.+?)\/.+?)">(.+?)\s+<[\d\D]+?<\/i>(.+?)<\/h2>(?!<\/?header\b)/g
+        const header_href = /<a\b\sclass="btn\b\s\bbtn-more\b\sc02\sfr"\shref="(\/.+)(\/.+\/.+)?".+[\d\D]+?<\/i>(.+)<\/h2>/g
 
-      // 获取 clas=item j-candies  分类  标签所有内容
+        // 获取 clas=item j-candies  分类  标签所有内容
         const category = /<div\s+class="list-category">[\d\D]+<\/div>[\r\n\s]+(?=<\/section>)/g
         const Lireg = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?(<\/li\b>)/g
         const data = /href\b="(\/.+\/(.+)(?:\/.+)?)"[\d\D]+?src="([^';"]+)(?=")/g
@@ -88,19 +88,21 @@ export  const Data = () => {
             const Lists = HomeData.Lists
 
             data.replace(header, function (data2) {
-              data2.replace(header_href, function (match, href, name, more, title) {
+              data2.replace(header_href, function (match, href, name, name1, more, title) {
                 let Num2 = 0
-                HomeData.Lists[name] = {}
-                HomeData.Lists[name].Header = {}
-                HomeData.Lists[name].List = {}
+                let Namess = name1 || name
+                console.log(name, name1)
+                HomeData.Lists[Namess] = {}
+                HomeData.Lists[Namess].Header = {}
+                HomeData.Lists[Namess].List = {}
 
-                let names = {"name": name}
+                let names = {"name": Namess}
                 let titles = {"title": title}
                 let hrefs = {"href": href}
                 let mores = {"more": more}
 
                 let  headers = Object.assign(names, titles, hrefs, mores)
-                HomeData.Lists[name].Header = headers
+                HomeData.Lists[Namess].Header = headers
 
                 // HomeData.Lists[name].Header.push(name,title,href,more)
 
@@ -110,7 +112,7 @@ export  const Data = () => {
                       let titles = {"title": title}
                       let nums = {"num": num}
                       let Section_List = Object.assign(titles, hrefs, imgs, nums)
-                      HomeData.Lists[name].List = Section_List
+                      HomeData.Lists[Namess].List = Section_List
                   })
               })
             })
