@@ -1,7 +1,7 @@
 import {getHome} from './get.js'
 
 export  const Data = () => {
-    const HomeData = {}
+    let HomeData = {}
     //  分类 数据提取
     getHome().then(res => {
         // 测试用 添加未经过处理数据与 window 全局变量中

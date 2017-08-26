@@ -32,14 +32,10 @@ class Top extends Component {
     )
   }
   componentDidMount() {
-     // getJson().then((res) => {
-     //     this.setState({
-     //         data: res.data
-     //     })
-     // })
      this.setState({
-         data: Data()
+         data: '11'
      })
+    console.log(Data())
   }
 }
 
