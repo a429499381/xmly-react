@@ -7,13 +7,13 @@ export  const Data = () => {
         // 测试用 添加未经过处理数据与 window 全局变量中
         window.data = res.data
         // 分类 列表内容
-        HomeData.Fl = {}
+        HomeData.Fl = []
         // banner 图数据
         HomeData.banner = {}
         // 列表  内容
         HomeData.Lists = {}
         // 个人电台 内容
-        HomeData.zhibo = {}
+        HomeData.zhibo = []
 
 
         // 列表 标签
@@ -39,23 +39,14 @@ export  const Data = () => {
         res.data.replace(category, function (match) {
           match.replace(data, function (match, href, name, src) {
             // 合并 数据  与 rank  book .... 中
-            HomeData.Fl[name] = {
-              'href': href,
-              'src': src,
-              'name': name
-            }
+            HomeData.Fl.push ({'href': href, 'src': src, 'name': name})
           })
         })
 
         // 个人电台 正则 提取 数据
         res.data.replace(zhibo, function (match) {
-          let zhiboNum = 0
           match.replace(zhibo_data, function (data, href, txt) {
-            HomeData.zhibo[zhiboNum] = {
-              'href': href,
-              'txt': txt
-            }
-            zhiboNum = zhiboNum + 1
+            HomeData.zhibo.push({'href': href, 'txt': txt})
           })
         })
 
@@ -72,7 +63,6 @@ export  const Data = () => {
         res.data.replace(Section, function (match) {
             let Data = match
             let Name = 'No'
-            let Num = -1
 
             // 列表 header 数据提取
             Data.replace(header_href, function (data1, href, name1, name, more, title) {
@@ -80,7 +70,7 @@ export  const Data = () => {
                 Name = name
                 HomeData.Lists[name] = {}
                 HomeData.Lists[name].header = {}
-                HomeData.Lists[name].list = {}
+                HomeData.Lists[name].list = []
                 HomeData.Lists[name].header = {
                     'name': name,
                     'href': href,
@@ -93,14 +83,13 @@ export  const Data = () => {
 
             // 列表正文 内容 数据提取
             Data.replace(Section_href, function (data, href, src, txt, num ) {
-              Num = Num + 1
               // HomeData.Lists[Name].list[Num] = {}
-              HomeData.Lists[Name].list[Num] = {
+              HomeData.Lists[Name].list.push({
                 'href': href,
                 'src': src,
                 'txt': txt,
                 'num': num
-              }
+              })
           })
         })
 
