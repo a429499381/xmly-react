@@ -27,7 +27,7 @@ export  const Data = () => {
 
         // 测试 标签
         const Section = /<section\b\sclass="module.?>[\d\D]+?<li\b\s.+>[\d\D]+?<\/section\b>/g
-        const Section_href = /<li\b[\d\D]+?href="(.+)"[\d\D]+?\bdata-original\b="([^"']+)"[\d\D]+?<p class="name">(.+)<\/p>[^}]+?<p class="count-cont">.+<span>(.+)<\/span>/g
+        const Section_href = /<li\b[\d\D]+?href="(.+)"[\d\D]+?\bdata-original\b="([^"']+)"[\d\D]+?<p class="name">(.+)<\/p>(?:[\r\n\s]+<p.+<span>(\d+)<\/span\b>)?/g
         const header = /<\bheader\b.+class="header1">[\d\D]+?<\/header\b>/g
         const header_href = /<a\b\sclass="btn\b\s\bbtn-more\b\sc02\sfr"\shref="(\/.+)(\/.+\/.+)?".+[\d\D]+?<\/i>(.+)<\/h2>/g
         const header_href1 = /<a\b\sclass="btn\b\s\bbtn-more\b\sc02\sfr"\shref="(\/([\w-]+)(?:\/([\w-]+))?(?:\/[\w-]+)?)">\s?([^';"<>]+)\s?<[\d\D]+?<\/i>(.+)<\/h2>/g
@@ -83,11 +83,15 @@ export  const Data = () => {
         })
 
         res.data.replace(Section, function (match) {
+            let Data = match
 
-            match.replace(header_href1, function (data, href, name1, name, more, title) {
+            // 列表 header 数据提取
+            match.replace(header_href1, function (data1, href, name1, name, more, title) {
                 name ? name : name = name1
+                let Name = name
                 HomeData.Lists[name] = {}
                 HomeData.Lists[name].header = {}
+                HomeData.Lists[name].list = {}
                 HomeData.Lists[name].header = {
                     'name': name,
                     'href': href,
@@ -95,7 +99,19 @@ export  const Data = () => {
                     'title': title
                 }
 
+                // 列表正文 内容 数据提取
+                Data.replace(Section_href, function (data, href, src, txt, num ) {
+                    HomeData.Lists[Name].list =   {
+                        'href': href,
+                        'src': src,
+                        'txt': txt,
+                        'num': num
+                    }
+                    console.log(HomeData.Lists[Name].list)
+                })
             })
+
+
         })
 
         // res.data.replace(Section_href, function (match, href, img, title, num) {
