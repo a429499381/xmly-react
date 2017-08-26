@@ -29,6 +29,7 @@ export  const Data = () => {
         const Section_href = /<li\b[\d\D]+?href="(.+)"[\d\D]+?\bdata-original\b="([^"']+)"[\d\D]+?<p class="name">(.+)<\/p>[^}]+?<p class="count-cont">.+<span>(.+)<\/span>/g
         const header = /<\bheader\b.+class="header1">[\d\D]+?<\/header\b>/g
         const header_href = /<a\b\sclass="btn\b\s\bbtn-more\b\sc02\sfr"\shref="(\/.+)(\/.+\/.+)?".+[\d\D]+?<\/i>(.+)<\/h2>/g
+        const header_href1 = /<a\b\sclass="btn\b\s\bbtn-more\b\sc02\sfr"\shref="\/([\w-]+)(?:\/([\w-]+))?(?:\/[\w-]+)?".+[\d\D]+?<\/i>(.+)<\/h2>/g
 
         // 获取 clas=item j-candies  分类  标签所有内容
         const category = /<div\s+class="list-category">[\d\D]+<\/div>[\r\n\s]+(?=<\/section>)/g
@@ -82,41 +83,40 @@ export  const Data = () => {
 
         // 获取 header 标签内容 提取数据
         // var Num2 = 0
-        res.data.replace(Section, function (match, groun1, groun2, index, origin) {
-            // 缓存 每次匹配到的 LI  标签内容
-            let data = match
+        // res.data.replace(Section, function (match, groun1, groun2, index, origin) {
+        //     // 缓存 每次匹配到的 LI  标签内容
+        //     let data = match
+        //
+        // })
+        res.data.replace(header_href1, function (match, href, name, name1, more, title) {
+            let Num2 = 0
             const Lists = HomeData.Lists
+            let Namess = name1 === undefined ? name1 : name
+            console.log(name, name1)
+            HomeData.Lists[Namess] = {}
+            HomeData.Lists[Namess].Header = {}
+            HomeData.Lists[Namess].List = {}
 
-            data.replace(header, function (data2) {
-              data2.replace(header_href, function (match, href, name, name1, more, title) {
-                let Num2 = 0
-                let Namess = name1 || name
-                console.log(name, name1)
-                HomeData.Lists[Namess] = {}
-                HomeData.Lists[Namess].Header = {}
-                HomeData.Lists[Namess].List = {}
+            let names = {"name": Namess}
+            let titles = {"title": title}
+            let hrefs = {"href": href}
+            let mores = {"more": more}
 
-                let names = {"name": Namess}
-                let titles = {"title": title}
-                let hrefs = {"href": href}
-                let mores = {"more": more}
+            let  headers = Object.assign(names, titles, hrefs, mores)
+            HomeData.Lists[Namess].Header = headers
 
-                let  headers = Object.assign(names, titles, hrefs, mores)
-                HomeData.Lists[Namess].Header = headers
+            // HomeData.Lists[name].Header.push(name,title,href,more)
 
-                // HomeData.Lists[name].Header.push(name,title,href,more)
-
-                  data.replace(Section_href, function (match, href, img, title, num) {
-                      let hrefs = {"href": href}
-                      let imgs = {"img": img}
-                      let titles = {"title": title}
-                      let nums = {"num": num}
-                      let Section_List = Object.assign(titles, hrefs, imgs, nums)
-                      HomeData.Lists[Namess].List = Section_List
-                  })
-              })
-            })
         })
+        res.data.replace(Section_href, function (match, href, img, title, num) {
+            let hrefs = {"href": href}
+            let imgs = {"img": img}
+            let titles = {"title": title}
+            let nums = {"num": num}
+            let Section_List = Object.assign(titles, hrefs, imgs, nums)
+            HomeData.Lists[Namess].List = Section_List
+        })
+
         // 打印 数据  验证
         window.HomeData = HomeData
         console.log(HomeData)
