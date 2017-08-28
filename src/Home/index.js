@@ -33,9 +33,12 @@ class Top extends Component {
   }
   componentDidMount() {
      this.setState({
-         data: '11'
+         data: [1,2,3]
      })
-    console.log(Data())
+     var D = Data()
+
+    console.log('Home',D)
+    console.log('Home',D.Lists)
   }
 }
 
