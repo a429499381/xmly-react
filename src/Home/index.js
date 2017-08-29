@@ -16,7 +16,7 @@ class Top extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: ''
+            data: []
         }
     }
   render() {
@@ -32,13 +32,14 @@ class Top extends Component {
     )
   }
   componentDidMount() {
-     this.setState({
-         data: [1,2,3]
-     })
-     var D = Data()
+   var Lin = []
+   function callback(HomeData) {
+     Lin = HomeData.Fl
+   }
 
-    console.log('Home',D)
-    console.log('Home',D.Lists)
+   Data(callback)
+
+    console.log('Home', Lin)
   }
 }
 

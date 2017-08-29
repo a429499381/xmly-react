@@ -1,9 +1,9 @@
 import {getHome} from './get.js'
 
-export  const Data = () => {
+export  const Data = (callback) => {
     let HomeData = {}
     //  分类 数据提取
-    getHome().then(res => {
+    getHome().then((res) => {
         // 测试用 添加未经过处理数据与 window 全局变量中
         window.data = res.data
         // 分类 列表内容
@@ -93,10 +93,13 @@ export  const Data = () => {
           })
         })
 
+
+
         // 打印 数据  验证
         window.HomeData = HomeData
-        console.log(HomeData)
+        console.log('reg',HomeData)
+    }).then(() => {
+      callback(HomeData)
     })
-    return HomeData
 }
 
