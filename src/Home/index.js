@@ -49,7 +49,7 @@ class Top extends Component {
      Data().then(reslove => {
        console.log('reslove', reslove)
        Home.data = reslove
-       console.log('Home ',Home.data.Lists[0][0].name)
+       console.log('Home ',Home.data.Lists)
        this.setState({
          Fl: Home.data.Fl,
          List: Home.data.Lists
