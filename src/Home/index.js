@@ -24,19 +24,27 @@ class Top extends Component {
     return (
         <div>
             <div>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
+              {
+                data.map((item, index) => {
+                  return <a key={index} href={item.href}>{item.name} </a>
+                })
+              }
             </div>
         </div>
     )
   }
   componentDidMount() {
-    var D = Data().then((resolve) => {
-      console.log('resolve',resolve.Fl)
-    })
+     var Home = {}
+     Data().then(reslove => {
+       console.log('reslove', reslove)
+       Home.data = reslove
+       console.log('Home ',Home.data.Fl)
 
-    console.log('Hi!',D, 'hi');
+       this.setState({
+         data: Home.data.Fl
+       })
+     })
+
   }
 }
 
