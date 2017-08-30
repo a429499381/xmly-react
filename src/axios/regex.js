@@ -4,7 +4,7 @@ export  const Data = () => {
     var HomeData = {}
     //  分类 数据提取
 
-    var p1 = new Promise((resolve, reject) => {
+    var Prom = new Promise((resolve, reject) => {
 
       getHome().then((res) => {
           // 测试用 添加未经过处理数据与 window 全局变量中
@@ -109,7 +109,7 @@ export  const Data = () => {
       }
     })
 
-    return  p1
+    return  Prom
 
 }
 

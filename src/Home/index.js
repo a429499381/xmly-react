@@ -16,17 +16,26 @@ class Top extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: []
+          Fl: [],
+          List: {}
         }
     }
   render() {
-        const data = this.state.data
+        let Fl = this.state.Fl
+        let List = this.state.List
     return (
         <div>
             <div>
               {
-                data.map((item, index) => {
-                  return <a key={index} href={item.href}>{item.name} </a>
+                Fl.map((item, index) => {
+                  return <p key={index} href={item.href}>{item.name} </p>
+                })
+              }
+            </div>
+            <div>
+              {
+                List.map((item, index) => {
+                  return <p key={index}>{item}</p>
                 })
               }
             </div>
@@ -34,15 +43,14 @@ class Top extends Component {
     )
   }
   componentDidMount() {
-     var Home = {}
      Data().then(reslove => {
        console.log('reslove', reslove)
-       Home.data = reslove
-       console.log('Home ',Home.data.Fl)
 
        this.setState({
-         data: Home.data.Fl
+         Fl: reslove.Fl,
+         List: reslove.Lists
        })
+       console.log('this.state.data', this.state.Fl)
      })
 
   }
