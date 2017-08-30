@@ -63,6 +63,7 @@ export  const Data = () => {
           })
 
           // 提取 列表 数据
+          let Num = 0
           res.data.replace(Section, function (match) {
             let Data = match
             let Name = 'No'
@@ -71,26 +72,26 @@ export  const Data = () => {
             Data.replace(header_href, function (data1, href, name1, name, more, title) {
               name ? name : name = name1
               Name = name
-              HomeData.Lists[name] = []
-              HomeData.Lists[name].push({
+              HomeData.Lists[Num] = []
+              HomeData.Lists[Num].push({
                 'name': name, 'href': href, 'title': title, 'more': more
               })
 
-
-            })
+              })
 
             // 列表正文 内容 数据提取
             Data.replace(Section_href, function (data, href, src, txt, num ) {
               // HomeData.Lists[Name].list[Num] = {}
-              HomeData.Lists[Name].push({
+              HomeData.Lists[Num].push({
                 'href': href,
                 'src': src,
                 'txt': txt,
                 'num': num
               })
-            })
-          })
 
+            })
+             Num = Num + 1
+          })
 
 
           // 打印 数据  验证
