@@ -14,7 +14,7 @@ export  const Data = () => {
           // banner 图数据
           HomeData.banner = {}
           // 列表  内容
-          HomeData.Lists = {}
+          HomeData.Lists = []
           // 个人电台 内容
           HomeData.zhibo = []
 
@@ -71,15 +71,10 @@ export  const Data = () => {
             Data.replace(header_href, function (data1, href, name1, name, more, title) {
               name ? name : name = name1
               Name = name
-              HomeData.Lists[name] = {}
-              HomeData.Lists[name].header = {}
-              HomeData.Lists[name].list = []
-              HomeData.Lists[name].header = {
-                'name': name,
-                'href': href,
-                'more': more,
-                'title': title
-              }
+              HomeData.Lists[name] = []
+              HomeData.Lists[name].push({
+                'name': name, 'href': href, 'title': title, 'more': more
+              })
 
 
             })
@@ -87,7 +82,7 @@ export  const Data = () => {
             // 列表正文 内容 数据提取
             Data.replace(Section_href, function (data, href, src, txt, num ) {
               // HomeData.Lists[Name].list[Num] = {}
-              HomeData.Lists[Name].list.push({
+              HomeData.Lists[Name].push({
                 'href': href,
                 'src': src,
                 'txt': txt,

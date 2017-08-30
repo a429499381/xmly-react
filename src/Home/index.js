@@ -16,41 +16,45 @@ class Top extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          Fl: [],
-          List: {}
+            Fl: [],
+            List: []
         }
     }
   render() {
-        let Fl = this.state.Fl
-        let List = this.state.List
+        const data = this.state.Fl
+        const List = this.state.List
     return (
         <div>
             <div>
               {
-                Fl.map((item, index) => {
+                data.map((item, index) => {
                   return <p key={index} href={item.href}>{item.name} </p>
                 })
               }
             </div>
             <div>
-              {
-                List.map((item, index) => {
-                  return <p key={index}>{item}</p>
-                })
-              }
+              <h2>List</h2>
+
+              {/*{*/}
+                {/*List.map((item, index) => {*/}
+                  {/*return <p key={index}>List {item.List}</p>*/}
+                {/*})*/}
+              {/*}*/}
             </div>
         </div>
     )
   }
   componentDidMount() {
+     var Home = {}
      Data().then(reslove => {
        console.log('reslove', reslove)
+       Home.data = reslove
+       console.log('Home ',Home.data.Lists)
 
        this.setState({
-         Fl: reslove.Fl,
-         List: reslove.Lists
+         Fl: Home.data.Fl,
+         List: Home.data.Lists
        })
-       console.log('this.state.data', this.state.Fl)
      })
 
   }
