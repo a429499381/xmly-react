@@ -37,10 +37,8 @@ class Top extends Component {
 
               {
                 List.map((item, index) => {
-                  item.map((item1, index1) => {
-                    return <p>{item1}</p>
+                  return <p data = {item} key = {index}>{item.length}</p>
                   })
-                })
               }
             </div>
         </div>
@@ -51,7 +49,7 @@ class Top extends Component {
      Data().then(reslove => {
        console.log('reslove', reslove)
        Home.data = reslove
-       console.log('Home ',Home.data.Lists[0])
+       console.log('Home ',Home.data.Lists[0][0].name)
        this.setState({
          Fl: Home.data.Fl,
          List: Home.data.Lists

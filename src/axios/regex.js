@@ -74,7 +74,7 @@ export  const Data = () => {
               Name = name
               HomeData.Lists[Num] = []
               HomeData.Lists[Num].push({
-                'name': name, 'href': href, 'title': title, 'more': more
+                'name': name, 'href': href, 'title': title, 'more': more, 'num': Num
               })
 
               })
