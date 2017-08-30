@@ -32,14 +32,11 @@ class Top extends Component {
     )
   }
   componentDidMount() {
-   var Lin = []
-   function callback(HomeData) {
-     Lin = HomeData.Fl
-   }
+    var D = Data().then((resolve) => {
+      console.log('resolve',resolve.Fl)
+    })
 
-   Data(callback)
-
-    console.log('Home', Lin)
+    console.log('Hi!',D, 'hi');
   }
 }
 

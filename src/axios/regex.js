@@ -1,9 +1,11 @@
 import {getHome} from './get.js'
 
-export  const Data = (callback) => {
+export  const Data = () => {
     let HomeData = {}
     //  分类 数据提取
-    getHome().then((res) => {
+
+    var p1 = new Promise((resolve, reject) => {
+      getHome().then((res) => {
         // 测试用 添加未经过处理数据与 window 全局变量中
         window.data = res.data
         // 分类 列表内容
@@ -61,35 +63,35 @@ export  const Data = (callback) => {
 
         // 提取 列表 数据
         res.data.replace(Section, function (match) {
-            let Data = match
-            let Name = 'No'
+          let Data = match
+          let Name = 'No'
 
-            // 列表 header 数据提取
-            Data.replace(header_href, function (data1, href, name1, name, more, title) {
-                name ? name : name = name1
-                Name = name
-                HomeData.Lists[name] = {}
-                HomeData.Lists[name].header = {}
-                HomeData.Lists[name].list = []
-                HomeData.Lists[name].header = {
-                    'name': name,
-                    'href': href,
-                    'more': more,
-                    'title': title
-                }
+          // 列表 header 数据提取
+          Data.replace(header_href, function (data1, href, name1, name, more, title) {
+            name ? name : name = name1
+            Name = name
+            HomeData.Lists[name] = {}
+            HomeData.Lists[name].header = {}
+            HomeData.Lists[name].list = []
+            HomeData.Lists[name].header = {
+              'name': name,
+              'href': href,
+              'more': more,
+              'title': title
+            }
 
 
+          })
+
+          // 列表正文 内容 数据提取
+          Data.replace(Section_href, function (data, href, src, txt, num ) {
+            // HomeData.Lists[Name].list[Num] = {}
+            HomeData.Lists[Name].list.push({
+              'href': href,
+              'src': src,
+              'txt': txt,
+              'num': num
             })
-
-            // 列表正文 内容 数据提取
-            Data.replace(Section_href, function (data, href, src, txt, num ) {
-              // HomeData.Lists[Name].list[Num] = {}
-              HomeData.Lists[Name].list.push({
-                'href': href,
-                'src': src,
-                'txt': txt,
-                'num': num
-              })
           })
         })
 
@@ -98,8 +100,14 @@ export  const Data = (callback) => {
         // 打印 数据  验证
         window.HomeData = HomeData
         console.log('reg',HomeData)
-    }).then(() => {
-      callback(HomeData)
+      })
+      resolve(HomeData)
     })
+
+    return  p1
+
+
+
+
 }
 
