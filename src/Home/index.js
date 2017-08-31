@@ -26,7 +26,15 @@ class Top extends Component {
     return (
         <div>
           <Header/>
-          <ListSrcoll data = {List}/>
+          {
+            List.length
+            ? <div>{
+              List.map((item, index) => {
+                return <ListSrcoll data = {item} key = {index} />
+              })
+            }</div>
+            : <div>没有内容啦</div>
+          }
 
         </div>
     )
