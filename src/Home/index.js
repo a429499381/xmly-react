@@ -25,27 +25,15 @@ class Top extends Component {
         const List = this.state.List
     return (
         <div>
-            <div>
-              {
-                data.map((item, index) => {
-                  return <p key={index} href={item.href}>{item.name} </p>
-                })
-              }
-            </div>
-            <div>
-              <h2>List</h2>
+          <Header/>
+          <ListSrcoll data = {List}/>
 
-              {
-                List.map((item, index) => {
-                  return <p data = {item} key = {index}>{item.length}</p>
-                  })
-              }
-            </div>
         </div>
     )
   }
   componentDidMount() {
-     var Home = {}
+     // 提取数据与  state
+     let Home = {}
      Data().then(reslove => {
        console.log('reslove', reslove)
        Home.data = reslove
@@ -55,6 +43,8 @@ class Top extends Component {
          List: Home.data.Lists
        })
      })
+    // 提取数据与  state
+
 
   }
 }

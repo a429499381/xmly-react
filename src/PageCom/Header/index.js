@@ -26,7 +26,7 @@ class Top extends Component {
         </span>&nbsp;
             <i className="content">&nbsp;</i>
           </div>
-          <div className="nav ">
+          <div className="nav">
             <a href="#/Home" className="nav_item active">热门</a>&nbsp;
             <a href="#/FenLei" className="nav_item">分类</a>&nbsp;
             <a href="#/JingPin" className="nav_item">精品</a>&nbsp;
