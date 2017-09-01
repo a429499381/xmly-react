@@ -16,7 +16,7 @@ class Top extends Component {
       <div>
         <div className="n_content">
           <div className="love_title">
-            <a className="love_t" href={title.href}>商业财经{title.title}</a>&nbsp;
+            <a className="love_t" href={title.href}>{title.title}</a>&nbsp;
             <a href={this.state.title.href} className="more">更多 ></a>&nbsp;
             <i className="content">&nbsp;</i>
           </div>
@@ -57,12 +57,11 @@ class Top extends Component {
         this.setState({
             title: item
         })
-        console.log('title', item)
       } else {
-         let  title = []
-         title.push(item)
+         let  container = []
+          container.push(item)
          this.setState({
-             title : title
+             container : container
          })
       }
     })
