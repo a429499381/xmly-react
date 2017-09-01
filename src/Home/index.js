@@ -30,7 +30,7 @@ class Top extends Component {
           <div className="mt86"></div>
           <Banner data = {this.state.Banner}/>
           <TjScroll data = {Fl}/>
-          <Love/>
+          <Love data = {List}/>
           <div className="list">
             {
               List.length

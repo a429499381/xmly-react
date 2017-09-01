@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import './index.css'
 
 class Top extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      love: []
+    }
+  }
   render() {
     return (
       <div>
@@ -25,6 +31,13 @@ class Top extends Component {
         {/* 猜你喜欢 */}
       </div>
     )
+  }
+
+  componentDidMount() {
+    let List = this.props.data
+    let love = []
+    console.log('love list', List)
+
   }
 }
 
