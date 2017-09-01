@@ -4,15 +4,15 @@
   padding: 10px 0; }
 .link_icon .link_item {
   display: inline-block;
-  width: 50px;
+  width: 60px;
   overflow: hidden;
   text-align: center; }
 .link_icon .link_item .icon {
   display: block;
   margin: 0 auto;
-  width: 30px;
-  height: 30px;
-  background: #ff8383;
-  border-radius: 50%; }
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+}
 .link_icon .link_item .txt {
   line-height: 20px; }

@@ -2,47 +2,24 @@ import React, { Component } from 'react';
 import './index.css'
 
 class Top extends Component {
+  constructor(props) {
+    super(props)
+  }
   render() {
+    let data = this.props.data
     return (
       <div>
         {/* 推荐 横向滚动 */}
           <div className="link_icon">
-          <a className="link_item" href="javascript:;">
-            <p className="icon"></p>
-            <span className="txt">精品</span>
-          </a>
-          <a className="link_item" href="javascript:;">
-            <p className="icon"></p>
-            <span className="txt">巅峰会员</span>
-          </a>
-          <a className="link_item" href="javascript:;">
-            <p className="icon"></p>
-            <span className="txt">必听榜</span>
-          </a>
-          <a className="link_item" href="javascript:;">
-            <p className="icon"></p>
-            <span className="txt">必听榜</span>
-          </a>
-          <a className="link_item" href="javascript:;">
-            <p className="icon"></p>
-            <span className="txt">必听榜</span>
-          </a>
-          <a className="link_item" href="javascript:;">
-            <p className="icon"></p>
-            <span className="txt">必听榜</span>
-          </a>
-          <a className="link_item" href="javascript:;">
-            <p className="icon"></p>
-            <span className="txt">必听榜</span>
-          </a>
-          <a className="link_item" href="javascript:;">
-            <p className="icon"></p>
-            <span className="txt">必听榜</span>
-          </a>
-          <a className="link_item" href="javascript:;">
-            <p className="icon"></p>
-            <span className="txt">必听榜</span>
-          </a>
+            {
+              data.map((item, index) => {
+                return  <a className="link_item" href={item.href} key = {index}>
+                              <img className="icon" src={item.src} alt={item.name}/>
+                        </a>
+
+              })
+            }
+
 
         </div>
         {/* 推荐 横向滚动 */}

@@ -22,13 +22,15 @@ class Top extends Component {
         }
     }
   render() {
-        const data = this.state.Fl
+        const Fl = this.state.Fl
         const List = this.state.List
     return (
         <div>
           <Header/>
           <div className="mt86"></div>
           <Banner data = {this.state.Banner}/>
+          <TjScroll data = {Fl}/>
+          <Love/>
           <div className="list">
             {
               List.length
