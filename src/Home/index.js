@@ -36,6 +36,8 @@ class Top extends Component {
             : <div>没有内容啦</div>
           }
 
+          <NoMore/>
+          <FooterNavgtion/>
         </div>
     )
   }
