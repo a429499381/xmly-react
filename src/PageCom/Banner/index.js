@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import './index.css'
 
-class Top extends Component {
+class Banner extends Component {
+  constructor(props) {
+    super(props)
+  }
   render() {
+    let data = this.props.data
     return (
       <div>
         {/* banner 图 */}
           <div className="banner_ad">
-          <a href="javascript:;" className="ad_img">12
+          <a href={data.href} key='0' className="ad_img">
+            <img src={data.src} alt=""/>{data.txt}
           </a>
         </div>
         {/* banner 图 */}
@@ -16,4 +21,4 @@ class Top extends Component {
   }
 }
 
-export default Top;
+export default Banner;

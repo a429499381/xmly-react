@@ -17,7 +17,8 @@ class Top extends Component {
         super(props)
         this.state = {
             Fl: [],
-            List: []
+            List: [],
+            Banner: []
         }
     }
   render() {
@@ -26,16 +27,20 @@ class Top extends Component {
     return (
         <div>
           <Header/>
-          {
-            List.length
-            ? <div>{
-              List.map((item, index) => {
-                return <ListSrcoll data = {item} key = {index} />
-              })
-            }</div>
-            : <div>没有内容啦</div>
-          }
+          <div className="mt86"></div>
+          <Banner data = {this.state.Banner}/>
+          <div className="list">
+            {
+              List.length
+                ? <div>{
+                List.map((item, index) => {
+                  return <ListSrcoll data = {item} key = {index} />
+                })
+              }</div>
+                : <div>没有内容啦</div>
+            }
 
+          </div>
           <NoMore/>
           <FooterNavgtion/>
         </div>
@@ -50,7 +55,8 @@ class Top extends Component {
        console.log('Home ',Home.data.Lists)
        this.setState({
          Fl: Home.data.Fl,
-         List: Home.data.Lists
+         List: Home.data.Lists,
+         Banner: Home.data.banner
        })
      })
     // 提取数据与  state
