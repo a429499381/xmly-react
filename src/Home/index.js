@@ -30,11 +30,12 @@ class Top extends Component {
           <div className="mt86"></div>
           <Banner data = {this.state.Banner}/>
           <TjScroll data = {Fl}/>
-          <Love data = {List}/>
           <div className="list">
             {
               List.length
-                ? <div>{
+                ? <div>
+                      <Love love = {List}/>
+                      {
                 List.map((item, index) => {
                   return <ListSrcoll data = {item} key = {index} />
                 })

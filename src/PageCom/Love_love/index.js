@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.css'
 
-class Top extends Component {
+class Love extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -34,11 +34,13 @@ class Top extends Component {
   }
 
   componentDidMount() {
-    let List = this.props.data
-    let love = []
-    console.log('love list', List)
+      let love = []
+      let data = this.props.love[3]
 
+      this.setState({
+          love: data
+      })
   }
 }
 
-export default Top;
+export default Love;
