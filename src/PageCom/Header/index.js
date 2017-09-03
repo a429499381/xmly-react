@@ -3,7 +3,7 @@ import {Link, hashHistory} from 'react-router'
 
 import './index.css'
 
-class Top extends Component {
+class Header extends Component {
   render() {
     return (
       <div>
@@ -42,4 +42,4 @@ class Top extends Component {
 
 }
 
-export default Top;
+export default Header;

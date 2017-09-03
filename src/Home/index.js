@@ -8,11 +8,10 @@ import ListSrcoll from '../PageCom/ListSrcoll'
 import NoMore from '../PageCom/NoMore'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 
-import {getJson, getHome} from '../axios/get.js'
 import  {Data} from '../axios/regex'
 
 
-class Top extends Component {
+class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -68,4 +67,4 @@ class Top extends Component {
   }
 }
 
-export default Top;
+export default Home;

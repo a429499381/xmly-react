@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.css'
 
-class Top extends Component {
+class TjScroll extends Component {
   constructor(props) {
     super(props)
   }
@@ -28,4 +28,4 @@ class Top extends Component {
   }
 }
 
-export default Top;
+export default TjScroll;
