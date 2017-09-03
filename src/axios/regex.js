@@ -32,7 +32,7 @@ export  const Data = () => {
           const data = /href\b="(\/.+\/(.+)(?:\/.+)?)"[\d\D]+?src="([^';"]+)(?=")/g
 
           // 完美匹配 li 标签的模板， 留存参考
-          const Lireg = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?(<\/li\b>)/g
+          // const Lireg = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?(<\/li\b>)/g
 
           // 获取 焦点 标签 banner 数据
           const banner = /<div\b\s?class="single-banner"[\d\D]+?href="(.+)"[\d\D]+?\bdata-original\b="([^";']+)"[\d\D]+?<p class="name">(.+)<\/p>/g
@@ -73,13 +73,12 @@ export  const Data = () => {
 
             // 列表 header 数据提取
             Data.replace(header_href, function (data1, href, name1, name, more, title) {
-              name ? name : name = name1
-              Name = name
-              HomeData.Lists[Num] = []
-              HomeData.Lists[Num].push({
-                'name': name, 'href': href, 'title': title, 'more': more, 'num': Num
-              })
-
+                  name ? name : name = name1
+                  Name = name
+                  HomeData.Lists[Num] = []
+                  HomeData.Lists[Num].push({
+                    'name': name, 'href': href, 'title': title, 'more': more, 'num': Num
+                  })
               })
 
             // 列表正文 内容 数据提取

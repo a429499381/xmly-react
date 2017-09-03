@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './index.css'
 
 import RectSwiper from 'react-swipe'
-import ItemSwiper from './ItemSwiper'
 
 class Banner extends Component {
   constructor(props) {
