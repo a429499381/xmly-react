@@ -9,7 +9,15 @@ class ItemSwiper extends Component {
     render() {
         return (
            <div>
-               ItemSwiper
+               {
+                   this.props.data.map((item, index) => {
+                       return <div key ={index}>
+                           <a href={item.href}>
+                               <img src={item.src} alt=""/>
+                           </a>
+                       </div>
+                   })
+               }
            </div>
         )
     }
