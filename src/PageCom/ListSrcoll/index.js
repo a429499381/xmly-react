@@ -14,10 +14,10 @@ class ListSrcoll extends Component {
     let title = this.state.title
     let container = this.state.container
     return (
-      <div>
+      <div  key = {title.num}>
         {/* 标题 */}
         <div className="n_content">
-          <div className="love_title" key = {title.num}>
+          <div className="love_title">
             <a className="love_t" href={title.href}>{title.title}</a>&nbsp;
             <a href={this.state.title.href} key ={title.num} className="more">更多 ></a>&nbsp;
             <i className="content">&nbsp;</i>
@@ -26,9 +26,9 @@ class ListSrcoll extends Component {
           {/* 列表 */}
             {
               container.map((item,index) =>{
-                  return <div>
+                  return <div  key={index}>
                            <Link to = {item.href}>
-                            <div className="list" key={index}>
+                            <div className="list">
                               <div className="list_img">
                             <img src={item.src} className="img"></img>
                             <div className="list_txt">
@@ -44,7 +44,7 @@ class ListSrcoll extends Component {
                                 <span className="num4">会员价</span>
                               </p>
                               <p className="txt_con">
-                                <p className="txt_1">雪球 聪明的投资者都在听！</p>
+                                <span className="txt_1">雪球 聪明的投资者都在听！</span>
                                 <span className="con_num1">5072.4万</span>
                                 <span className="con_num2">407集</span>
                               </p>

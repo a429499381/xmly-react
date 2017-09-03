@@ -98,8 +98,8 @@ export  const Data = () => {
 
 
           // 打印 数据  验证
-          window.HomeData = HomeData
-          console.log('reg',HomeData)
+          // window.HomeData = HomeData
+          // console.log('reg',HomeData)
         })
 
       time  = setInterval(Go,50)

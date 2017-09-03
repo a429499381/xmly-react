@@ -14,18 +14,18 @@ class Love extends Component {
         let title = this.state.title
         let love = this.state.love
         return (
-            <div>
+            <div  key={title.num} >
                 {/* 猜你喜欢 */}
                 <div className="love">
                     <div className="love_title">
-                        <a className="love_t" key={title.num} href={title.href}>{title.title}</a>&nbsp;
+                        <a className="love_t"  href={title.href}>{title.title}</a>&nbsp;
                         <a href={title.href} className="more">更多 ></a>&nbsp;
                         <i className="content">&nbsp;</i>
                     </div>
                     <div className ="love_list">
                         {
                             love.map((item, index) => {
-                                return  <div>
+                                return  <div  key ={index}>
                                             <div className="love_con">
                                                 <a key ={index} href={item.href} className="con_item">
                                                     <p className="img">

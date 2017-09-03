@@ -53,9 +53,9 @@ class Top extends Component {
      // 提取数据与  state
      let Home = {}
      Data().then(reslove => {
-       console.log('reslove', reslove)
+       // console.log('reslove', reslove)
        Home.data = reslove
-       console.log('Home ',Home.data.Lists)
+       // console.log('Home ',Home.data.Lists)
        this.setState({
          Fl: Home.data.Fl,
          List: Home.data.Lists,
