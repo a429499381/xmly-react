@@ -16,21 +16,28 @@
   font-size: 12px;
   color: #999999; }
 
-.love_con {
+
+.love_list {
   text-align: justify;
-  font-size: 0; }
-.love_con .con_item {
   display: inline-block;
-  vertical-align: top;
+  font-size: 0;
+}
+.love_con {
+  display: inline-block;
   width: 30%;
-  padding-bottom: 10px; }
-.love_con .con_item .img {
+  }
+.love_con .con_item {
+
+  vertical-align: top;
+  padding-bottom: 5px; }
+.love_con .con_item .img, .con_item .img_bg{
+  display: inline-block;
   width: 100%;
-  position: relative;
+  /*position: relative;*/
   height: 100px;
   background: #ff8484; }
 .love_con .con_item .img .img_number {
-  position: absolute;
+  /*position: absolute;*/
   left: 5px;
   bottom: 5px;
   font-size: 12px;

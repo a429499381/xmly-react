@@ -34,7 +34,7 @@ class Top extends Component {
             {
               List.length
                 ? <div>
-                      <Love love = {List}/>
+                      <Love love = {List[3]}/>
                       {
                 List.map((item, index) => {
                   return <ListSrcoll data = {item} key = {index} />
