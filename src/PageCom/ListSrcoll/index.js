@@ -30,7 +30,7 @@ class ListSrcoll extends Component {
                            <Link to = {item.href}>
                             <div className="list">
                               <div className="list_img">
-                            <img src={item.src} className="img"></img>
+                            <img src={item.src} className="img" alt=""></img>
                             <div className="list_txt">
                               <h6 className="txt_title">{item.txt}</h6>
                               <p className="txt_num">
@@ -72,8 +72,10 @@ class ListSrcoll extends Component {
         this.setState({
             title: item
         })
+        return false
       } else {
           container.push(item)
+          return true
       }
     })
       this.setState({

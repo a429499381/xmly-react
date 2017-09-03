@@ -51,13 +51,14 @@ class Love extends Component {
         let love = []
         let title = []
         let data = this.props.love
-        let datas = this.props.love
 
         data.map((item, index) => {
             if (index === 0) {
                 title = item
+                return false
             } else {
                 love.push(item)
+                return true
             }
         })
 

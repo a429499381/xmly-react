@@ -8,12 +8,11 @@ class Banner extends Component {
     super(props)
       this.state = {
         index: '',
-        data: []
       }
   }
 
     render() {
-        let data =this.state.data
+        const data =this.props.data
         const opt = {
             auto: 2500,
             callback: function (index) {
@@ -25,7 +24,7 @@ class Banner extends Component {
             <div>
                 <RectSwiper className="swiper_box" swipeOptions={opt}>
                     {
-                        this.props.data.map((item, index) => {
+                        data.map((item, index) => {
                             return <div key ={index}>
                                 <a href={item.href}>
                                     <img src={item.src} alt=""/>
@@ -42,13 +41,7 @@ class Banner extends Component {
         )
     }
     componentDidMount() {
-      let data = this.props.data
-      data.shift()
-
-      this.setState({
-          data: data
-      })
-
+      this.props.data.shift()
     }
 }
 

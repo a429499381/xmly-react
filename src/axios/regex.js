@@ -73,7 +73,10 @@ export  const Data = () => {
 
             // 列表 header 数据提取
             Data.replace(header_href, function (data1, href, name1, name, more, title) {
-                  name ? name : name = name1
+                  if(!name) {
+                    name = name1
+                  }
+                  // name ? name : name = name1
                   Name = name
                   HomeData.Lists[Num] = []
                   HomeData.Lists[Num].push({
