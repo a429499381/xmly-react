@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css'
 
 import RectSwiper from 'react-swipe'
+import ItemSwiper from 'ItemSwiper'
 
 class Banner extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Banner extends Component {
   }
 
     render() {
-        let data = this.state.data
+        let data =this.state.data
         const opt = {
             auto: 2500,
             callback: function (index) {
@@ -23,10 +24,9 @@ class Banner extends Component {
         }
         return (
             <div>
+
                 <RectSwiper className="swiper_box" swipeOptions={opt}>
-                   <div>1</div>
-                   <div>2</div>
-                   <div>3</div>
+                   <ItemSwiper data = {data}/>
                 </RectSwiper>
                 <div className="index">
                     {this.state.index }
@@ -37,7 +37,12 @@ class Banner extends Component {
     }
     componentDidMount() {
       let data = this.props.data
-        data.shift()
+      data.shift()
+
+      this.setState({
+          data: data
+      })
+
     }
 }
 
