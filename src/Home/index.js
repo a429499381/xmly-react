@@ -21,13 +21,18 @@ class Home extends Component {
         }
     }
   render() {
-        const Fl = this.state.Fl
-        const List = this.state.List
+        let Fl = this.state.Fl
+        let List = this.state.List
     return (
         <div>
           <Header/>
           <div className="mt86"></div>
-          <Banner data = {this.state.Banner}/>
+            {
+                List.length
+                ?  <Banner data = {List[6]}/>
+                : <div>没有内容啦</div>
+
+            }
           <TjScroll data = {Fl}/>
           <div className="list">
             {
