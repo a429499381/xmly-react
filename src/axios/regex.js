@@ -2,11 +2,14 @@ import {getHome} from './get.js'
 
 export  const Data = () => {
     var HomeData = {}
+    let OK = 'No'
+    let time = 'No'
     //  分类 数据提取
 
     var Prom = new Promise((resolve, reject) => {
 
       getHome().then((res) => {
+
           // 测试用 添加未经过处理数据与 window 全局变量中
           window.data = res.data
           // 分类 列表内容
@@ -88,7 +91,7 @@ export  const Data = () => {
                 'txt': txt,
                 'num': num
               })
-
+                return OK = 'OK'
             })
              Num = Num + 1
           })
@@ -99,9 +102,12 @@ export  const Data = () => {
           console.log('reg',HomeData)
         })
 
-      setTimeout(Go,1000)
+      time  = setInterval(Go,50)
       function Go() {
-        resolve(HomeData)
+          if (OK === 'OK') {
+              resolve(HomeData)
+              clearInterval(time)
+          }
       }
     })
 
