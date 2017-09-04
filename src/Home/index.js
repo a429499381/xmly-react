@@ -9,7 +9,7 @@ import NoMore from '../PageCom/NoMore'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 
 // 数据库处理
-import {getDB,} from '../DB/HomeDB'
+import {getDB} from '../DB/HomeDB'
 
 
 import  {Data} from '../axios/regex'
