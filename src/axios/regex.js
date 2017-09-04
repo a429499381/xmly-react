@@ -11,7 +11,7 @@ export  const Data = () => {
       getHome().then((res) => {
 
           // 测试用 添加未经过处理数据与 window 全局变量中
-          window.data = res.data
+          // window.data = res.data
           // 分类 列表内容
           HomeData.Fl = []
           // banner 图数据

@@ -4,7 +4,8 @@ import './index.css'
 
 class Nav extends Component {
   render() {
-    return (
+      let data = this.props.data
+      return (
             <div className="nav">
               <a href="#/Home" className="nav_item active">热门</a>&nbsp;
               <a href="#/FenLei" className="nav_item">分类</a>&nbsp;

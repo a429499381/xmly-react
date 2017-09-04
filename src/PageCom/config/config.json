@@ -1,8 +1,9 @@
 {
   "top": {
-    "List": "List",
-    "Placeholder": "散文 鲁智深乡村灵异时间让你..",
-    "sourceMap": true
+    "href": "/List",
+    "value": "散文 鲁智深乡村灵异时间让你..",
+    "lishi": "历史",
+    "down": "下载"
   },
   "nav":[
     {

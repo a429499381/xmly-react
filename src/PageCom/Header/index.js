@@ -3,17 +3,31 @@ import React, { Component } from 'react';
 import './index.css'
 import Nav from '../Nav/index'
 import HeaderTop from '../HeaderTop/index'
-import Data from '../config/config.json'
+import * as Data from '../config/config.json'
 
 
 class Header extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            nav: [],
+            top: ''
+        }
+    }
   render() {
     return (
             <div className="pos">
-              <HeaderTop data = {Data.top}/>
-              <Nav/>
+              <HeaderTop data = {this.state.top}/>
+              <Nav data = {this.state.nav}/>
             </div>
          )
+  }
+
+  componentDidMount() {
+      this.setState({
+          nav: Data.nav,
+          top: Data.top
+      })
   }
 
 }

@@ -5,21 +5,22 @@ import './index.css'
 
 class HeaderTop extends Component {
   render() {
+      let data = this.props.data
     return (
       <div className="top">
         {/* top */}
-            <Link to="/List">
+            <Link to={data.href}>
               <span className="xinxi">
                 信息
                 <i></i>
               </span>&nbsp;
             </Link>
             <div className="input dib">
-              <input type="text" placeholder="散文 鲁智深乡村灵异时间让你.."/>
+              <input type="text" placeholder={data.value}/>
             </div>&nbsp;
             <span className="top_r dib">
-            <a href="/Ls" className="lishi">历史</a>
-            <a href="/Down" className="down">下载</a>
+            <a href="/Ls" className="lishi">{data.lishi}</a>
+            <a href="/Down" className="down">{data.down}</a>
             <i className="content">&nbsp;</i>
         </span>&nbsp;
             <i className="content">&nbsp;</i>
