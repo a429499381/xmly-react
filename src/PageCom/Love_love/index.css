@@ -18,13 +18,17 @@
 
 
 .love_list {
-  text-align: justify;
   display: inline-block;
-  font-size: 0;
+  width: 100%;
+  padding: 0 5px;
 }
 .love_con {
   display: inline-block;
   width: 30%;
+  height: 140px;
+  overflow: hidden;
+  margin: 0 5px;
+  text-align: center;
   }
 .love_con .con_item {
 
@@ -33,16 +37,13 @@
 .love_con .con_item .img, .con_item .img_bg{
   display: inline-block;
   width: 100%;
-  /*position: relative;*/
   height: 100px;
-  background: #ff8484; }
+}
 .love_con .con_item .img .img_number {
-  /*position: absolute;*/
-  left: 5px;
-  bottom: 5px;
   font-size: 12px;
   color: #ffffff; }
 .love_con .con_item .item_txt {
   font-size: 12px;
   color: #222222;
-  line-height: 18px; }
+  line-height: 1.5;
+}

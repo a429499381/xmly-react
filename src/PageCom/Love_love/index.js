@@ -25,20 +25,18 @@ class Love extends Component {
                     <div className ="love_list">
                         {
                             love.map((item, index) => {
-                                return  <div  key ={index}>
-                                            <div className="love_con">
-                                                <a key ={index} href={item.href} className="con_item">
-                                                    <p className="img">
-                                                        <img className = "img_bg" src={item.src} alt=""/>
-                                                        <span className="img_number">{item.num}</span>
-                                                    </p>
-                                                    <span className="item_txt">{item.txt}</span>
-                                                </a>
-                                            </div>&nbsp;
+                                return <div className="love_con" key ={index}>
+                                            <a key ={index} href={item.href} className="con_item">
+                                                <p className="img">
+                                                    <img className = "img_bg" src={item.src} alt=""/>
+                                                    <span className="img_number">{item.num}</span>
+                                                </p>
+                                                <span className="item_txt">{item.txt}</span>
+                                            </a>
                                         </div>
+
                             })
                         }
-                        <i className="content">&nbsp;</i>
                     </div>
 
                 </div>
