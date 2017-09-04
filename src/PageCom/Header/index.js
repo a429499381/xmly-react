@@ -17,8 +17,17 @@ class Header extends Component {
   render() {
     return (
             <div className="pos">
-              <HeaderTop data = {this.state.top} />
-              <Nav data = {this.state.nav} index="0"/>
+                {
+                    this.state.top
+                    ?  <HeaderTop data = {this.state.top} />
+                    : ''
+                }
+                {
+                    this.state.top
+                        ? <Nav data = {this.state.nav} index="0"/>
+                        : ''
+                }
+
             </div>
          )
   }
