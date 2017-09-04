@@ -7,3 +7,20 @@
   width: 100%;
   height: 100%;
   background: rgba(255, 132, 132, 0.66); }
+
+.index {
+  text-align: center;
+  width: 100%;
+}
+
+.index .item {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 10px;
+  background: rgba(207, 207, 207, 0.98);
+  margin: 0 4px;
+}
+.index .active {
+  background: #ff8484;
+}

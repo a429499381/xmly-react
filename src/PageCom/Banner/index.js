@@ -34,7 +34,14 @@ class Banner extends Component {
                     }
                 </RectSwiper>
                 <div className="index">
-                    {this.state.index }
+                    <ul>
+                        <li className={this.state.index == 0 ? "item active" : "item"}></li>
+                        <li className={this.state.index == 1 ? "item active" : "item"}></li>
+                        <li className={this.state.index == 2 ? "item active" : "item"}></li>
+                        <li className={this.state.index == 3 ? "item active" : "item"}></li>
+                        <li className={this.state.index == 4 ? "item active" : "item"}></li>
+                        <li className={this.state.index == 5 ? "item active" : "item"}></li>
+                    </ul>
                 </div>
             </div>
 

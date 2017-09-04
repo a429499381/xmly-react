@@ -7,23 +7,23 @@
   },
   "nav":[
     {
-    "href": "/Home",
+    "href": "#/Home",
     "txt": "热门"
     },
     {
-      "href": "/FenLei",
+      "href": "#/FenLei",
       "txt": "分类"
     },
     {
-      "href": "/JingPin",
+      "href": "#/JingPin",
       "txt": "精品"
     },
     {
-      "href": "/ZhiBo",
+      "href": "#/ZhiBo",
       "txt": "直播"
     },
     {
-      "href": "/Fm",
+      "href": "#/Fm",
       "txt": "广播"
     }
   ]
