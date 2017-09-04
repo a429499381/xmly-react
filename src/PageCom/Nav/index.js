@@ -5,9 +5,6 @@ import './index.css'
 class Nav extends Component {
   render() {
     return (
-      <div>
-        {/* top */}
-          <div className="pos">
             <div className="nav">
               <a href="#/Home" className="nav_item active">热门</a>&nbsp;
               <a href="#/FenLei" className="nav_item">分类</a>&nbsp;
@@ -16,10 +13,7 @@ class Nav extends Component {
               <a href="#/Fm" className="nav_item">广播</a>&nbsp;
               <i className="content">&nbsp;</i>
             </div>
-        </div>
-        {/* top */}
-    </div>
-    )
+        )
   }
 
 }

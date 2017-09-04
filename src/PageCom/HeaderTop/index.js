@@ -6,7 +6,7 @@ import './index.css'
 class HeaderTop extends Component {
   render() {
     return (
-      <div>
+      <div className="top">
         {/* top */}
             <Link to="/List">
               <span className="xinxi">
