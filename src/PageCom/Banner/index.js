@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css'
 
 import RectSwiper from 'react-swipe'
+import * as Data from './BannerData.json'
 
 class Banner extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Banner extends Component {
   }
 
     render() {
-        const data =this.props.data
+        const data = Data.data || this.props.data
         const opt = {
             auto: 2500,
             callback: function (index) {
@@ -25,9 +26,9 @@ class Banner extends Component {
                 <RectSwiper className="swiper_box" swipeOptions={opt}>
                     {
                         data.map((item, index) => {
-                            return <div key ={index}>
-                                <a href={item.href}>
-                                    <img src={item.src} alt=""/>
+                            return <div className="banner_ad"  key ={index}>
+                                <a  href={item.href}>
+                                    <img className="ad_img"  src={item.src} alt=""/>
                                 </a>
                             </div>
                         })
@@ -35,12 +36,12 @@ class Banner extends Component {
                 </RectSwiper>
                 <div className="index">
                     <ul>
-                        <li className={this.state.index == 0 ? "item active" : "item"}></li>
-                        <li className={this.state.index == 1 ? "item active" : "item"}></li>
-                        <li className={this.state.index == 2 ? "item active" : "item"}></li>
-                        <li className={this.state.index == 3 ? "item active" : "item"}></li>
-                        <li className={this.state.index == 4 ? "item active" : "item"}></li>
-                        <li className={this.state.index == 5 ? "item active" : "item"}></li>
+                        <li className={this.state.index === 0 ? "item active" : "item"}></li>
+                        <li className={this.state.index === 1 ? "item active" : "item"}></li>
+                        <li className={this.state.index === 2 ? "item active" : "item"}></li>
+                        <li className={this.state.index === 3 ? "item active" : "item"}></li>
+                        <li className={this.state.index === 4 ? "item active" : "item"}></li>
+                        <li className={this.state.index === 5 ? "item active" : "item"}></li>
                     </ul>
                 </div>
             </div>
