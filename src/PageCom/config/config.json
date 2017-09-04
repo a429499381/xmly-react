@@ -1,0 +1,30 @@
+{
+  "top": {
+    "List": "List",
+    "Placeholder": "散文 鲁智深乡村灵异时间让你..",
+    "sourceMap": true
+  },
+  "nav":[
+    {
+    "href": "/Home",
+    "txt": "热门"
+    },
+    {
+      "href": "/FenLei",
+      "txt": "分类"
+    },
+    {
+      "href": "/JingPin",
+      "txt": "精品"
+    },
+    {
+      "href": "/ZhiBo",
+      "txt": "直播"
+    },
+    {
+      "href": "/Fm",
+      "txt": "广播"
+    }
+  ]
+
+}

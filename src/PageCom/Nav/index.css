@@ -1,0 +1,16 @@
+.nav {
+  font-size: 0;
+  text-align: justify;
+  padding: 0 10px; }
+.nav .active {
+  color: #ff8484 !important;
+  border-bottom: 2px solid #ff8484; }
+.nav .nav_item {
+  display: inline-block;
+  text-align: center;
+  width: 10%;
+  font-size: 14px;
+  line-height: 34px;
+  color: #666666; }
+
+
