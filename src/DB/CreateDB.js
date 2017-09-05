@@ -72,6 +72,22 @@ export const DB = {
         };
       }
   },
+   searchData:function (db,storename, data) {
+     let store = store = db.transaction(storename,'readwrite').objectStore(storename),request;
+     // let range = IDBKeyRange.lowerBound(1);
+     request = store.openCursor()
+     request.onsuccess = function (e) {
+       let cursor = e.target.result
+       if (cursor) {
+         // 搜索到的内容保存到 data数据中
+         data.push(cursor.value)
+         // 下一个  如果没有 返回 undefine
+         cursor.continue()
+       } else {
+         console.log('查询结束')
+       }
+     }
+   }
 }
 
 

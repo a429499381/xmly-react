@@ -31,9 +31,19 @@ export const HomeDB = function () {
   }];
 
   DB.openDB(myDB)
-  setTimeout(add, 1000)
+  setTimeout(add, 500)
+
   function add() {
     DB.putData(myDB.db,myDB.ojstore.name, students)
+    setTimeout(search, 500)
+  }
+  function close() {
+    DB.closeDB(myDB.db)
+  }
+  function search() {
+    var Data = []
+    DB.searchData(myDB.db, myDB.ojstore.name, Data)
+    console.log('Data', Data)
   }
 }
 
