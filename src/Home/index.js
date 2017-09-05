@@ -9,7 +9,7 @@ import NoMore from '../PageCom/NoMore'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 
 // 数据库处理
-import {getDB} from '../DB/HomeDB'
+import {HomeDB} from '../DB/HomeDB'
 
 
 import  {Data} from '../axios/regex'
@@ -73,7 +73,7 @@ class Home extends Component {
     // 提取数据与  state
 
     // 创建数据库
-    getDB()
+    HomeDB()
 
   }
 }

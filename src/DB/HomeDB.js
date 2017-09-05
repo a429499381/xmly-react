@@ -2,13 +2,18 @@
  * Created by xutao on 2017/9/4.
  */
 
-import {openDB, addData} from './CreateDB'
+import {DB} from './CreateDB'
 
-export const getDB = function () {
+export const HomeDB = function () {
+
   var myDB = {
     name: 'Home',
     version: 3,
-    db: 'null'
+    db: 'null',
+    ojstore:{
+      name:'students',//存储空间表的名字
+      keypath:'id'//主键
+    }
   }
 
   var students=[{
@@ -25,20 +30,10 @@ export const getDB = function () {
     age: 26
   }];
 
-  //
-  // openDB(myDB, myDB.version, students)
-
-  openDB(myDB.name,myDB.version, students);
-
-  setTimeout(function (){
-      addData(myDB.db, students);
-    }, 1000);
-
-  // setTimeout(function () {
-  //   closeDB(myDB.db)
-  //   delDB(myDB.name)
-  // },500)
-
-  // var transaction=db.transaction(['students','taecher'])
-  // var objectStore=transaction.objectStore('students')
+  DB.openDB(myDB)
+  setTimeout(add, 1000)
+  function add() {
+    DB.putData(myDB.db,myDB.ojstore.name, students)
+  }
 }
+
