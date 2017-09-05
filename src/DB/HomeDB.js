@@ -13,7 +13,7 @@ export const HomeDB = function (name, name1, version, data) {
       db: 'null',
       ojstore:{
         name: name1,//存储空间表的名字
-        keypath:'id'//主键
+        keypath:'name'//主键
       }
     }
 
@@ -26,7 +26,7 @@ export const HomeDB = function (name, name1, version, data) {
     }
 
   } else {
-    console.log('参数不全 不能保存')
+    console.log(name1, '参数不全 不能保存')
   }
 }
 

@@ -60,7 +60,7 @@ class Home extends Component {
   componentDidMount() {
      // 提取数据与  state
      let Home = {}
-     let Version = 4
+     let Version = new Data().getTime
      Data().then(reslove => {
        // console.log('reslove', reslove)
        Home.data = reslove
@@ -72,7 +72,8 @@ class Home extends Component {
        })
        // 创建数据库 并且存储与 indexDB 中
        HomeDB('Home','Fl', Version, Home.data.Fl,)
-       // HomeDB('Home','List', Home.data.List,)
+       // Version = Version + 2
+       // HomeDB('Home','List', Version, Home.data.Lists,)
        // HomeDB('Home','Banner', Home.data.Banner,)
      })
     // 提取数据与  state
