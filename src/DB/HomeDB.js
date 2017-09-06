@@ -6,13 +6,12 @@ import {DB} from './CreateDB'
 
 export const HomeDB = function (name, version, data, type) {
 
-
+  let DbVersion  = version
   for(let i in data) {
     let callback = function(myDB) {
       DB.putData(myDB.db,myDB.ojstore.name, data, type)
     }
     // 解析数组
-    let DbVersion = version + 1
     let myDB = {
       name: name,
       version: DbVersion,
@@ -22,6 +21,8 @@ export const HomeDB = function (name, version, data, type) {
         keypath: 'href'//主键
       }
     }
+    DbVersion = DbVersion + 1
+    console.log(myDB.ojstore.name, 'version:', myDB.version)
 
 
     // 打开 indexedDB 数据库
