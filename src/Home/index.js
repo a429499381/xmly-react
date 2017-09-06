@@ -75,7 +75,7 @@ class Home extends Component {
          Fl: Home.data.Fl,
          List: Home.data.Lists[0]
         }
-       HomeDB('Home', 4, data)
+       HomeDB('Home', new Date().getTime(), data)
        // Version = Version + 2
        // HomeDB('Home','List', Version, Home.data.Lists,)
      })

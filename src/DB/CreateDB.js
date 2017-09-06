@@ -11,7 +11,10 @@ export const DB = {
        console.log(myDB.ojstore.name, 'Open Error')
      }
      res.onsuccess = function (e) {
+       let Versions = myDB.db.version + 1
        myDB.db = e.target.result || ''
+       // 打印当前版本号
+       console.log('当前版本号', myDB.db.version)
        console.log(myDB.ojstore.name, 'Sucess')
        DB.addData(myDB.db,myDB.ojstore.name, data)
      }
