@@ -5,14 +5,15 @@
 
 
 export const DB = {
-   openDB : function (myDB) {
+   openDB : function (myDB, data) {
      let res = window.indexedDB.open(myDB.name, myDB.version)
      res.onerror = function (e) {
-       console.log('Open Error')
+       console.log(myDB.ojstore.name, 'Open Error')
      }
      res.onsuccess = function (e) {
        myDB.db = e.target.result || ''
-       console.log('Sucess')
+       console.log(myDB.ojstore.name, 'Sucess')
+       DB.addData(myDB.db,myDB.ojstore.name, data)
      }
      res.onupgradeneeded = function (e) {
        myDB.db =e.target.result;
@@ -21,7 +22,7 @@ export const DB = {
        if (!myDB.db.objectStoreNames.contains(myDB.ojstore.name)){
          store = myDB.db.createObjectStore(myDB.ojstore.name,{keyPath:myDB.ojstore.keypath});
        }
-       console.log("DB version changed to "+ myDB.version);
+       console.log(myDB.ojstore.name, "DB version changed to "+ myDB.version);
      }
    },
    closeDB: function(db) {
@@ -58,18 +59,28 @@ export const DB = {
         console.log(result);
       };
   },
-   putData:function(db,storename,data){
+   putData:function(db,storename,data, type){
       //添加数据，重复添加会更新原有数据
       var store = store = db.transaction(storename,'readwrite').objectStore(storename),request;
-      for(var i = 0 ; i < data.length;i++){
-        let dataS = data[i]
-        request = store.put(data[i]);
-        request.onerror = function(){
-          console.error('put添加数据库中已有该数据')
-        };
-        request.onsuccess = function(){
-          console.log(dataS, 'put添加数据已存入数据库')
-        };
+      if (type == 'obj2') {
+        for (let K = 0; K < data.length; K++) {
+          let item = data[K]
+          put(item)
+        }
+      }
+      put(data)
+      function put(data) {
+        for(var i = 0 ; i < data.length;i++){
+          let dataS = data[i]
+          request = store.put(data[i]);
+          request.onerror = function(){
+            console.error(storename,'put添加数据库中已有该数据')
+          };
+          request.onsuccess = function(){
+            console.log(storename, 'put添加数据已存入数据库')
+          };
+        }
+
       }
   },
    searchData:function (db,storename, data) {
