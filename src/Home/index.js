@@ -71,10 +71,9 @@ class Home extends Component {
          Banner: Home.data.banner
        })
        // 创建数据库 并且存储与 indexDB 中
-       HomeDB('Home','Fl', Version, Home.data.Fl,)
+       HomeDB('Home', 4, Home.data)
        // Version = Version + 2
        // HomeDB('Home','List', Version, Home.data.Lists,)
-       // HomeDB('Home','Banner', Home.data.Banner,)
      })
     // 提取数据与  state
 
