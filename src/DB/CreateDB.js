@@ -27,7 +27,7 @@ export const DB = {
    },
    closeDB: function(db) {
      db.close()
-     console.log('数据库已关闭')
+     console.log(db, '数据库已关闭')
    },
    delDB: function (dbname) {
      indexedDB.deleteDatabase(dbname)
@@ -45,6 +45,7 @@ export const DB = {
          console.log('Error', data[i])
        }
      }
+     DB.closeDB(db)
    },
    getDataByKey:function(db,storename,key){
       //根据存储空间的键找到对应数据
