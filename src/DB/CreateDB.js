@@ -5,7 +5,7 @@
 
 
 export const DB = {
-   openDB : function (myDB, data) {
+   openDB : function (myDB, callback) {
      let res = window.indexedDB.open(myDB.name, myDB.version)
      res.onerror = function (e) {
        console.log(myDB.ojstore.name, 'Open Error')
@@ -16,7 +16,10 @@ export const DB = {
        // 打印当前版本号
        console.log('当前版本号', myDB.db.version)
        console.log(myDB.ojstore.name, 'Sucess')
-       DB.addData(myDB.db,myDB.ojstore.name, data)
+
+       if (callback) {
+         callback()
+       }
      }
      res.onupgradeneeded = function (e) {
        myDB.db =e.target.result;

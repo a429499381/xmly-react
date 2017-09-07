@@ -10,6 +10,7 @@ import FooterNavgtion from '../PageCom/FooterNavgtion'
 
 // 数据库处理
 import {HomeDB} from '../DB/HomeDB'
+import {DB} from '../DB/CreateDB'
 
 
 import  {Data} from '../axios/regex'
@@ -60,7 +61,25 @@ class Home extends Component {
   componentDidMount() {
      // 提取数据与  state
      let Home = {}
-     let version
+     Home.data = []
+     let newTime = new Date().getTime()
+     let localTime = localStorage.getItem('HomeData') * 1
+     let OverTime = newTime - localTime
+     if (OverTime) {
+       let myDB = {
+         name: 'Home',
+         version: newTime,
+         db: 'null',
+         ojstore: {
+           name: 'List',//存储空间表的名字
+           keypath: 'href'//主键
+         }
+       }
+       let search = function() {
+         DB.searchData(myDB.db,'List',Home.data)
+       }
+       DB.openDB(myDB, search)
+     }
      Data().then(reslove => {
          Home.data = reslove
 
