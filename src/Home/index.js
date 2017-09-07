@@ -62,8 +62,10 @@ class Home extends Component {
      let Home = {}
      let version
      Data().then(reslove => {
-       // console.log('reslove', reslove)
-       Home.data = reslove
+         Home.data = reslove
+         // 深拷贝， 解决未知地方修改导致数据不全。
+         let data = JSON.parse(JSON.stringify(Home.data))
+
        // console.log('Home ',Home.data.Lists)
        this.setState({
          Fl: Home.data.Fl,
@@ -71,7 +73,7 @@ class Home extends Component {
          Banner: Home.data.banner
        })
        // 创建数据库 并且存储与 indexDB 中
-       HomeDB(Home.data)
+       HomeDB(data)
        // Version = Version + 2
        // HomeDB('Home','List', Version, Home.data.Lists,)
      })
