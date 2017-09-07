@@ -63,19 +63,10 @@ export const DB = {
         console.log(result);
       };
   },
-   putData:function(db,storename,data, type){
+   putData:function(db,storename,data){
       //添加数据，重复添加会更新原有数据
       var store = store = db.transaction(storename,'readwrite').objectStore(storename),request;
-      if (type == 'obj2') {
-        for (let K = 0; K < data.length; K++) {
-          let item = data[K]
-          put(item)
-        }
-      }
-      put(data)
-      function put(data) {
         for(var i = 0 ; i < data.length;i++){
-          let dataS = data[i]
           request = store.put(data[i]);
           request.onerror = function(){
             console.error(storename,'put添加数据库中已有该数据')
@@ -84,10 +75,8 @@ export const DB = {
             console.log(storename, 'put添加数据已存入数据库')
           };
         }
-
-      }
   },
-   searchData:function (db,storename, data) {
+   searchData:function(db,storename, data) {
      let store = store = db.transaction(storename,'readwrite').objectStore(storename),request;
      // let range = IDBKeyRange.lowerBound(1);
      request = store.openCursor()

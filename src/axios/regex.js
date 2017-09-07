@@ -15,7 +15,7 @@ export  const Data = () => {
           // 分类 列表内容
           HomeData.Fl = []
           // banner 图数据
-          HomeData.banner = {}
+          HomeData.banner = []
           // 列表  内容
           HomeData.Lists = []
           // 个人电台 内容
@@ -58,12 +58,7 @@ export  const Data = () => {
 
           // 正则匹配 焦点 banner 数据
           res.data.replace(banner, function (match, href, src, txt) {
-            HomeData.banner = {
-              'href': href,
-              'src': src,
-              'txt': txt
-            }
-          })
+            HomeData.banner.push({'href': href, 'src': src, 'txt': txt})})
 
           // 提取 列表 数据
           let Num = 0
