@@ -13,7 +13,10 @@ class Banner extends Component {
   }
 
     render() {
-        const data = Data.data || this.props.data
+        const data = this.props.data || Data.data
+        // 深拷贝
+        let dataS = JSON.parse(JSON.stringify(data))
+        dataS.shift()
         const opt = {
             auto: 2500,
             callback: function (index) {
@@ -25,7 +28,7 @@ class Banner extends Component {
             <div>
                 <RectSwiper className="swiper_box" swipeOptions={opt}>
                     {
-                        data.map((item, index) => {
+                        dataS.map((item, index) => {
                             return <div className="banner_ad"  key ={index}>
                                 <a  href={item.href}>
                                     <img className="ad_img"  src={item.src} alt=""/>
@@ -49,7 +52,6 @@ class Banner extends Component {
         )
     }
     componentDidMount() {
-      this.props.data.shift()
     }
 }
 
