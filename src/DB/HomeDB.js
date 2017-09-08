@@ -7,7 +7,7 @@ import {DB} from './CreateDB'
 // 统一 接受参数为 空间名: 版本号:(没有当前时间作为版本号) 数据集合:(必须为数组格式 可以为多维度数组)
 export const HomeDB = function (data, name, version) {
   var myDB = {}
-  let config = function (name, name1, version) {
+  var config = function (name, name1, version) {
     let DbVersion  = version || new Date().getTime()
     // 解析数组
     myDB = {
@@ -26,9 +26,9 @@ export const HomeDB = function (data, name, version) {
   let Lname = ''
   let Name = 'Home'
   // 解析传过来的数据， 可以处理 一维 -- 多维数组 数据   indexedDB 接受的是 数据格式 统一为 对象
-  for(let i  in data) {
-      let dataL = data[i][0][0]
-      let dataI = data[i]
+  for(var i  in data) {
+      var dataL = data[i][0][0]
+      var dataI = data[i]
       Lname = i
       if (dataL) {
           // for (let K  in dataI) {
@@ -44,15 +44,24 @@ export const HomeDB = function (data, name, version) {
           //
           // }
       } else {
-        function callback() {
-          let D = {}
-          DB.addData(myDB.db,myDB.ojstore.name, dataI)
-        }
-        // 当前配置信息
-        config(Name,Lname)
-        // 打开 indexedDB 数据库
-        DB.openDB(myDB, callback)
+              // 当前配置信息
+              // 打开 indexedDB 数据库
+            var add = null
+          config(Name,Lname)
+          var open = function (myDB) {
 
+                  DB.openDB(myDB)
+
+                add = function () {
+                    DB.addData(myDB.db,myDB.ojstore.name, dataI)
+                }
+            }
+
+          config(Name,Lname)
+
+          open(myDB)
+
+          add()
 
 
       }

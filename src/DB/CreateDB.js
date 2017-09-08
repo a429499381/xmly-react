@@ -12,10 +12,11 @@ export const DB = {
      }
      res.onsuccess = function (e) {
        let Versions = myDB.db.version + 1
-       myDB.db = e.target.result || ''
+       myDB.db = e.target.result
        // 打印当前版本号
        console.log('当前版本号', myDB.db.version)
        console.log(myDB.ojstore.name, 'Sucess')
+       console.log('myDB.db', myDB.db)
 
        if (callback) {
          console.log(callback)
@@ -24,7 +25,9 @@ export const DB = {
      }
      res.onupgradeneeded = function (e) {
        myDB.db =e.target.result;
-       let tr = e.target.transaction, store
+       console.log('myDB.db', myDB.db)
+
+         let tr = e.target.transaction, store
 
        if (!myDB.db.objectStoreNames.contains(myDB.ojstore.name)){
          store = myDB.db.createObjectStore(myDB.ojstore.name,{keyPath:myDB.ojstore.keypath});
