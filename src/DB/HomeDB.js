@@ -52,16 +52,16 @@ export const HomeDB = function (data, name, version) {
 
                   DB.openDB(myDB)
 
-                add = function () {
+                  add = function () {
                     DB.addData(myDB.db,myDB.ojstore.name, dataI)
                 }
             }
 
           config(Name,Lname)
 
-          open(myDB)
+          open(myDB,add)
 
-          add()
+          // add()
 
 
       }
