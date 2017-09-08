@@ -65,21 +65,21 @@ class Home extends Component {
      let newTime = new Date().getTime()
      let localTime = localStorage.getItem('HomeData') * 1
      let OverTime = newTime - localTime
-     if (OverTime) {
-       let myDB = {
-         name: 'Home',
-         version: newTime,
-         db: 'null',
-         ojstore: {
-           name: 'List',//存储空间表的名字
-           keypath: 'href'//主键
-         }
-       }
-       let search = function() {
-         DB.searchData(myDB.db,'List',Home.data)
-       }
-       DB.openDB(myDB, search)
-     }
+     // if (OverTime) {
+     //   let myDB = {
+     //     name: 'Home',
+     //     version: newTime,
+     //     db: 'null',
+     //     ojstore: {
+     //       name: 'List',//存储空间表的名字
+     //       keypath: 'href'//主键
+     //     }
+     //   }
+     //   let search = function() {
+     //     DB.searchData(myDB.db,'List',Home.data)
+     //   }
+     //   DB.openDB(myDB, search)
+     // }
      Data().then(reslove => {
          Home.data = reslove
 

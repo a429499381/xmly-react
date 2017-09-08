@@ -18,6 +18,7 @@ export const DB = {
        console.log(myDB.ojstore.name, 'Sucess')
 
        if (callback) {
+         console.log(callback)
          callback()
        }
      }

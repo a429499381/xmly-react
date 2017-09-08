@@ -31,28 +31,29 @@ export const HomeDB = function (data, name, version) {
       let dataI = data[i]
       Lname = i
       if (dataL) {
-          for (let K  in dataI) {
-              K = K || 0
-              let Kname = dataI[K][0].title
-              let dataK = dataI[K]
-              let callback = function () {
-                DB.addData(myDB.db,myDB.ojstore.name, dataK)
-              }
-              config(Lname, Kname)
-              // 打开 indexedDB 数据库
-              DB.openDB(myDB, callback)
-
-          }
+          // for (let K  in dataI) {
+          //     K = K || 0
+          //     let Kname = dataI[K][0].title
+          //     let dataK = dataI[K]
+          //     let callback = function () {
+          //       DB.addData(myDB.db,myDB.ojstore.name, dataK)
+          //     }
+          //     config(Lname, Kname)
+          //     // 打开 indexedDB 数据库
+          //     DB.openDB(myDB, callback)
+          //
+          // }
       } else {
+        function callback() {
+          let D = {}
+          DB.addData(myDB.db,myDB.ojstore.name, dataI)
+        }
         // 当前配置信息
         config(Name,Lname)
         // 打开 indexedDB 数据库
         DB.openDB(myDB, callback)
 
-        let callback = function() {
-          let D = {}
-          DB.addData(myDB.db,myDB.ojstore.name, dataI)
-        }
+
 
       }
 
