@@ -44,35 +44,31 @@ export const HomeDB = function (data, name, version) {
           //
           // }
       } else {
+          (function (dataI) {
               // 当前配置信息
               // 打开 indexedDB 数据库
-            var add =  function (db) {
-                DB.addData(db.db,db.ojstore.name, dataI)
-            }
-          config(Name,Lname)
-          var open = function (myDB) {
+              var add =  function (db, data) {
+                  DB.addData(db.db,db.ojstore.name, data)
+              }
+              config(Name,Lname)
+              var open = function (myDB) {
+                  let time = 'null'
+                  DB.openDB(myDB)
+                  setInterval(function () {
+                      ok()
+                  },100)
+                  function ok() {
+                      if (myDB.db){
+                          clearInterval(time)
+                          add(myDB, dataI)
+                          return
+                      }
+                  }
 
-                    new Promise(function (reslove,recjet) {
-                        let time = 'null'
+              }
 
-                        DB.openDB(myDB)
-                        ok()
-                        function ok() {
-                            while (myDB.db){
-                                clearInterval(time)
-                                add(myDB)
-                                return
-                            }
-                        }
-                        return reslove(myDB)
-                    })
-
-            }
-
-          open(myDB)
-
-
-
+              open(myDB)
+          })(dataI)
 
       }
 
