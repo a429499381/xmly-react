@@ -54,12 +54,9 @@ export const HomeDB = function (data, name, version) {
               var open = function (myDB) {
                   let time = 'null'
                   DB.openDB(myDB)
-                  setInterval(function () {
-                      ok()
-                  },100)
+                  ok()
                   function ok() {
                       if (myDB.db){
-                          clearInterval(time)
                           add(myDB, dataI)
                           return
                       }
