@@ -55,7 +55,7 @@ export const DB = {
          console.log('Error', data[i])
        }
      }
-     DB.closeDB(db)
+     // DB.closeDB(db)
    },
    getDataByKey:function(db,storename,key){
       //根据存储空间的键找到对应数据
