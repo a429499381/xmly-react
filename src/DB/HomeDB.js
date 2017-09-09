@@ -46,22 +46,32 @@ export const HomeDB = function (data, name, version) {
       } else {
               // 当前配置信息
               // 打开 indexedDB 数据库
-            var add = null
+            var add =  function (db) {
+                DB.addData(db.db,db.ojstore.name, dataI)
+            }
           config(Name,Lname)
           var open = function (myDB) {
 
-                  DB.openDB(myDB)
+                    new Promise(function (reslove,recjet) {
+                        let time = 'null'
 
-                  add = function () {
-                    DB.addData(myDB.db,myDB.ojstore.name, dataI)
-                }
+                        DB.openDB(myDB)
+                        ok()
+                        function ok() {
+                            while (myDB.db){
+                                clearInterval(time)
+                                add(myDB)
+                                return
+                            }
+                        }
+                        return reslove(myDB)
+                    })
+
             }
 
-          config(Name,Lname)
+          open(myDB)
 
-          open(myDB,add)
 
-          // add()
 
 
       }
