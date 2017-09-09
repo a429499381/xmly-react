@@ -23,53 +23,25 @@ export const HomeDB = function (data, name, version) {
     console.log(myDB.ojstore.name, 'version:', myDB.version)
 
   }
-  let Lname = ''
+  let Lname = 0
   let Name = 'Home'
   // 解析传过来的数据， 可以处理 一维 -- 多维数组 数据   indexedDB 接受的是 数据格式 统一为 对象
   for(var i  in data) {
-      var dataL = data[i][0][0]
-      var dataI = data[i]
-      Lname = i
-      if (dataL) {
-          // for (let K  in dataI) {
-          //     K = K || 0
-          //     let Kname = dataI[K][0].title
-          //     let dataK = dataI[K]
-          //     let callback = function () {
-          //       DB.addData(myDB.db,myDB.ojstore.name, dataK)
-          //     }
-          //     config(Lname, Kname)
-          //     // 打开 indexedDB 数据库
-          //     DB.openDB(myDB, callback)
-          //
-          // }
-      } else {
-          (function (dataI) {
-              // 当前配置信息
-              // 打开 indexedDB 数据库
-              var add =  function (db, data) {
-                  DB.addData(db.db,db.ojstore.name, data)
-              }
-              config(Name,Lname)
-              var open = function (myDB) {
-                  let time = 'null'
-                  DB.openDB(myDB)
-                  ok()
-                  function ok() {
-                      if (myDB.db){
-                          add(myDB, dataI)
-                          return
-                      }
-                  }
 
-              }
+        (function (dataI,name1, N) {
 
-              open(myDB)
-          })(dataI)
+            config(Name,name1)
+            DB.openDB(myDB)
+
+          setTimeout(function () {
+            DB.addData(myDB.db,name1,dataI)
+            console.log(dataI, myDB, N)
+          },N * 100)
+
+
+          })(data,i, Lname=Lname+1)
 
       }
-
-  }
 
 
 }
