@@ -48,9 +48,20 @@ for (var i = 0; i < 3; i++) {
     }).then(function () {
       console.log('Promise 第二个then')
       return (function () {
-         return bbc++
+         // return bbc++
       })()
-    }).then((sleep(3000))()).then(function (num) {
+    })
+      .then(
+        // sleep(3000)
+        function () {
+          var N = 0
+          while(N < 1000) {
+            N++
+            console.log('阻塞延迟')
+          }
+          return bbc++
+        }
+      ).then(function (num) {
       console.log('OK', num)
     }).then(function () {
       console.log('Ok +++')
