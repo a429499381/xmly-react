@@ -20,7 +20,7 @@ export const HomeDB = function (data, name, version) {
       }
     }
 
-    console.log(myDB.ojstore.name, 'version:', myDB.version)
+    console.log('配置',myDB.ojstore.name, 'version:', myDB.version)
 
   }
   let Lname = 0
@@ -29,27 +29,33 @@ export const HomeDB = function (data, name, version) {
   let end = 0
   let up = 0
   // 解析传过来的数据， 可以处理 一维 -- 多维数组 数据   indexedDB 接受的是 数据格式 统一为 对象
-  for(var i  in data) {
+  // for(var i  in data) {
+  //       (function (dataI,name1, N) {
+  //
+  //         setTimeout(function () {
+  //           config(Name,name1)
+  //           myDB.db === null ? DB.closeDB(myDB.db) : DB.openDB(myDB)
+  //           DB.addData(myDB.db,name1,dataI)
+  //         },0)
+  //
+  //
+  //         })(data[i],i, Lname=Lname+1)
+  //
+  //     }
 
-        (function (dataI,name1, N) {
-
-            config(Name,name1)
-            DB.openDB(myDB)
-
-             start = new Date().getTime()
-             while (up < 2000) {
-               end = new Date().getTime()
-               up = up + 1
-               console.log(up)
-             }
-             DB.addData(myDB.db,name1,dataI)
+  for(var i in data) {
+    // var dataI = data[i]
+    (function (i, datas) {
+      setTimeout(function () {
+        config('Home', i)
+        DB.openDB(myDB)
+        // DB.addData(myDB.db,i,datas)
+      },0)
+    })(i, data[i])
 
 
+  }
 
-
-          })(data[i],i, Lname=Lname+1)
-
-      }
 
 
 }

@@ -14,9 +14,7 @@ export const DB = {
        let Versions = myDB.db.version + 1
        myDB.db = e.target.result
        // 打印当前版本号
-       console.log('当前版本号', myDB.db.version)
-       console.log(myDB.ojstore.name, 'Sucess')
-       console.log('myDB.db', myDB.db)
+       console.log('当前版本号', myDB.db.version, myDB.ojstore.name, 'Sucess')
 
        if (callback) {
          console.log(callback)
@@ -25,7 +23,6 @@ export const DB = {
      }
      res.onupgradeneeded = function (e) {
        myDB.db =e.target.result;
-       console.log('myDB.db', myDB.db)
 
          let tr = e.target.transaction, store
 
