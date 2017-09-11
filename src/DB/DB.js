@@ -5,17 +5,11 @@
 
 
 export const DB = {
-   openDB : function (myDB, callback) {
+   openDB : function (myDB) {
       return  new Promise(function (resolve, reject) {
              let res =  window.indexedDB.open(myDB.name, myDB.version)
              let time
              let state = res.readyState
-             time = setInterval(function () {
-                 if(res.readyState === 'pending') {
-                 } else {
-                     clearInterval(time)
-                 }
-             },100)
              res.onerror = function (e) {
                  console.log(myDB.ojstore.name, 'Open Error')
              }
@@ -25,10 +19,8 @@ export const DB = {
                  // 打印当前版本号
                  console.log('当前版本号', myDB.db.version, myDB.ojstore.name, 'Sucess')
 
-                 if (callback) {
-                     console.log(callback)
-                     callback()
-                 }
+                 return resolve(myDB.db)
+
              }
              res.onupgradeneeded = function (e) {
                  myDB.db =e.target.result;

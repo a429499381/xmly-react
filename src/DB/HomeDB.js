@@ -2,7 +2,7 @@
  * Created by xutao on 2017/9/4.
  */
 
-import {DB} from './CreateDB'
+import {DB} from './DB'
 
 // 统一 接受参数为 空间名: 版本号:(没有当前时间作为版本号) 数据集合:(必须为数组格式 可以为多维度数组)
 export const HomeDB = function (data, name, version) {
@@ -27,7 +27,7 @@ export const HomeDB = function (data, name, version) {
   let Name = 'Home'
   let start = 0
   let end = 0
-  let up = 0
+  let up = 0;
   // 解析传过来的数据， 可以处理 一维 -- 多维数组 数据   indexedDB 接受的是 数据格式 统一为 对象
   // for(var i  in data) {
   //       (function (dataI,name1, N) {
@@ -44,19 +44,19 @@ export const HomeDB = function (data, name, version) {
   //     }
 
   for(var i in data) {
-    // var dataI = data[i]
-    (function (i, datas) {
-      setTimeout(function () {
-        config('Home', i)
-        DB.openDB(myDB)
-        // DB.addData(myDB.db,i,datas)
-      },0)
+      // var dataI = data[i]
+      (function (name,data) {
+         config('Home', name)
+        DB.openDB(myDB).then(function (db) {
+          console.log('Promise 成功', db.objectStoreNames)
+           // DB.addData(db,name,data)
+            DB.closeDB(db)
+        }).then(function (db) {
+        })
+
     })(i, data[i])
-
-
   }
 
-
-
+ 
 }
 
