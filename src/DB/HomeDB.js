@@ -30,48 +30,40 @@ export const HomeDB = function (data, name, version) {
       setTimeout(function () {
         if (i === 'Lists') {
           for (var k = 0; k < datas.length; k++) {
-            (function (i, k) {
+            (function (i, k, datas) {
               var J = k + 1
+              //  当前配置文件
               config(i, J)
-
-              DB.openDB(myDB)
-                .then(function (db) {
-                  if (db) {
-                    DB.addData(db,J,datas[k])
-                    console.log('add Data  ok', db)
-                  }
-                  setTimeout(function () {
-                    DB.closeDB(db)
-                  },0)
-
-                })
-            })(i, k)
+              // 执行 写入数据 indexedDB
+              DbOpen(myDB, datas)
+            })(i, k, datas[k])
 
           }
         } else {
+          //  当前配置文件
           config('Home', i)
-
-          DB.openDB(myDB)
-            .then(function (db) {
-              if (db) {
-                DB.addData(db,i,datas)
-                console.log('add Data  ok', db)
-              }
-              setTimeout(function () {
-                DB.closeDB(db)
-              },0)
-
-            })
+          // 执行 写入数据 indexedDB
+            DbOpen(myDB, datas)
         }
-
-
       },0)
     })(i, data[i])
 
 
   }
 
+  function DbOpen(myDB, datas) {
+      DB.openDB(myDB)
+        .then(function (db) {
+          if (db) {
+            DB.addData(db,myDB.ojstore.name,datas)
+            console.log('add Data  ok', db)
+          }
+          setTimeout(function () {
+            DB.closeDB(db)
+          },0)
 
+        })
+  }
 
 }
 
