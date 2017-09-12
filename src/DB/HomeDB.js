@@ -57,11 +57,12 @@ export const HomeDB = function (data, name, version) {
                         DB.addData(db,i,datas)
                         console.log('add Data  ok', db)
                     }
+                    setTimeout(function () {
+                        DB.closeDB(db)
+                    },1000)
 
                   })
-                .then(function (db) {
-                    console.log('closed DB', db)
-                  })
+
       },0)
     })(i, data[i])
 
