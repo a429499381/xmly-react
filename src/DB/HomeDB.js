@@ -47,21 +47,42 @@ export const HomeDB = function (data, name, version) {
     // var dataI = data[i]
     (function (i, datas) {
       setTimeout(function () {
-        config('Home', i)
-            DB.openDB(myDB)
-                .then(function (db) {
-                    if (i === 'Lists') {
-                      datas = datas[0]
-                    }
-                    if (db) {
-                        DB.addData(db,i,datas)
-                        console.log('add Data  ok', db)
-                    }
-                    setTimeout(function () {
-                        DB.closeDB(db)
-                    },1000)
+        if (i === 'Lists') {
+          for (var k = 0; k < datas.length; k++) {
+            (function (i, k) {
+              var J = k + 1
+              config(i, J)
 
-                  })
+              DB.openDB(myDB)
+                .then(function (db) {
+                  if (db) {
+                    DB.addData(db,J,datas[k])
+                    console.log('add Data  ok', db)
+                  }
+                  setTimeout(function () {
+                    DB.closeDB(db)
+                  },0)
+
+                })
+            })(i, k)
+
+          }
+        } else {
+          config('Home', i)
+
+          DB.openDB(myDB)
+            .then(function (db) {
+              if (db) {
+                DB.addData(db,i,datas)
+                console.log('add Data  ok', db)
+              }
+              setTimeout(function () {
+                DB.closeDB(db)
+              },0)
+
+            })
+        }
+
 
       },0)
     })(i, data[i])
