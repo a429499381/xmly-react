@@ -6,41 +6,36 @@
 
 export const DB = {
    openDB : function (myDB, callback) {
-      return  new Promise(function (resolve, reject) {
-             let res =  window.indexedDB.open(myDB.name, myDB.version)
-             let time
-             let state = res.readyState
-             time = setInterval(function () {
-                 if(res.readyState === 'pending') {
-                 } else {
-                     clearInterval(time)
-                 }
-             },100)
-             res.onerror = function (e) {
-                 console.log(myDB.ojstore.name, 'Open Error')
-             }
-             res.onsuccess = function (e) {
-                 let Versions = myDB.db.version + 1
-                 myDB.db = e.target.result
-                 // 打印当前版本号
-                 console.log('当前版本号', myDB.db.version, myDB.ojstore.name, 'Sucess')
 
-                 if (callback) {
-                     console.log(callback)
-                     callback()
-                 }
-             }
-             res.onupgradeneeded = function (e) {
-                 myDB.db =e.target.result;
+     return new Promise(function (reslove, reject) {
+         let res = window.indexedDB.open(myDB.name, myDB.version)
+         res.onerror = function (e) {
+             console.log(myDB.ojstore.name, 'Open Error')
+         }
+         res.onsuccess = function (e) {
+             let Versions = myDB.db.version + 1
+             myDB.db = e.target.result
+             // 打印当前版本号
+             console.log('当前版本号', myDB.db.version, myDB.ojstore.name, 'Sucess')
 
-                 let tr = e.target.transaction, store
-
-                 if (!myDB.db.objectStoreNames.contains(myDB.ojstore.name)){
-                     store = myDB.db.createObjectStore(myDB.ojstore.name,{keyPath:myDB.ojstore.keypath});
-                 }
-                 console.log(myDB.ojstore.name, "DB version changed to "+ myDB.version);
+             if (callback) {
+                 console.log(callback)
+                 callback()
              }
-         })
+
+             return reslove(myDB.db)
+         }
+         res.onupgradeneeded = function (e) {
+             myDB.db =e.target.result;
+
+             let tr = e.target.transaction, store
+
+             if (!myDB.db.objectStoreNames.contains(myDB.ojstore.name)){
+                 store = myDB.db.createObjectStore(myDB.ojstore.name,{keyPath:myDB.ojstore.keypath});
+             }
+             console.log(myDB.ojstore.name, "DB version changed to "+ myDB.version);
+         }
+     })
 
    },
    closeDB: function(db) {
@@ -58,6 +53,9 @@ export const DB = {
        store.add(data[i]);
        store.onsuccess =function () {
          console.log('Ok', data[i])
+         if (i === data.length) {
+             return db
+         }
        }
        store.onerror = function () {
          console.log('Error', data[i])
