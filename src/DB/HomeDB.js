@@ -23,25 +23,6 @@ export const HomeDB = function (data, name, version) {
     console.log('配置',myDB.ojstore.name, 'version:', myDB.version)
 
   }
-  let Lname = 0
-  let Name = 'Home'
-  let start = 0
-  let end = 0
-  let up = 0
-  // 解析传过来的数据， 可以处理 一维 -- 多维数组 数据   indexedDB 接受的是 数据格式 统一为 对象
-  // for(var i  in data) {
-  //       (function (dataI,name1, N) {
-  //
-  //         setTimeout(function () {
-  //           config(Name,name1)
-  //           myDB.db === null ? DB.closeDB(myDB.db) : DB.openDB(myDB)
-  //           DB.addData(myDB.db,name1,dataI)
-  //         },0)
-  //
-  //
-  //         })(data[i],i, Lname=Lname+1)
-  //
-  //     }
 
   for(var i in data) {
     // var dataI = data[i]
