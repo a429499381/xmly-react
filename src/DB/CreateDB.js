@@ -5,7 +5,7 @@
 
 
 export const DB = {
-   openDB : function (myDB, callback) {
+   openDB : function (myDB) {
 
      return new Promise(function (reslove, reject) {
          let res = window.indexedDB.open(myDB.name, myDB.version)
@@ -17,12 +17,6 @@ export const DB = {
              myDB.db = e.target.result
              // 打印当前版本号
              console.log('当前版本号', myDB.db.version, myDB.ojstore.name, 'Sucess')
-
-             if (callback) {
-                 console.log(callback)
-                 callback()
-             }
-
              return reslove(myDB.db)
          }
          res.onupgradeneeded = function (e) {
@@ -39,28 +33,38 @@ export const DB = {
 
    },
    closeDB: function(db) {
-     db.close()
-     console.log(db, '数据库已关闭')
+     return new Promise(function (reslove, reject) {
+       db.close()
+       console.log(db, '数据库已关闭')
+       setTimeout(function () {
+         return reslove('ok')
+       },0)
+     })
+
    },
    delDB: function (dbname) {
      indexedDB.deleteDatabase(dbname)
    },
    addData: function(db,storeName,data) {
-     var transaction=db.transaction(storeName,'readwrite');
-     var store=transaction.objectStore(storeName);
+     return new Promise(function (reslove, reject) {
+       var transaction=db.transaction(storeName,'readwrite');
+       var store=transaction.objectStore(storeName);
 
-     for (var i=0;i<data.length;i++){
-       store.add(data[i]);
-       store.onsuccess =function () {
-         console.log('Ok', data[i])
-         if (i === data.length) {
-             return db
+       for (var i=0;i<data.length;i++){
+         store.add(data[i]);
+         store.onsuccess =function () {
+           console.log('Ok', data[i])
+           if (i === data.length) {
+             return reslove(db)
+           }
+         }
+         store.onerror = function () {
+           console.log('Error', data[i])
          }
        }
-       store.onerror = function () {
-         console.log('Error', data[i])
-       }
-     }
+     })
+
+
      // DB.closeDB(db)
    },
    getDataByKey:function(db,storename,key){
