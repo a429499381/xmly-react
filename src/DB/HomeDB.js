@@ -24,47 +24,40 @@ export const HomeDB = function (data, name, version) {
 
   }
 
-  for(var i in data) {
-    // var dataI = data[i]
-    (function (i, datas) {
-      setTimeout(function () {
-        if (i === 'Lists') {
-          for (var k = 0; k < datas.length; k++) {
-            (function (i, k, datas) {
-              var J = k + 1
-              //  当前配置文件
-              config(i, J)
-              // 执行 写入数据 indexedDB
-              DbOpen(myDB, datas)
-            })(i, k, datas[k])
+  var  DbOpen = function (myDB, datas) {
+    //  打开指定数据 空间。
+    DB.openDB(myDB)
+    //  成功后返回该空间的 db
+      .then(function (db) {
+        // 将数组对象覆盖写入。
+        DB.putData(db,myDB.ojstore.name,datas)
+        // 写入完成后返回 db
+          .then(function (db) {
+            // 关闭当前空间数据 空间
+            DB.closeDB(db)
+          })
+      })
 
+  }
+
+
+  for(var i in data) {
+        if (i === 'Lists') {
+          var dataL = data[i]
+          for (var k = 0; k < dataL.length; k++) {
+            //  当前配置文件
+            config(i , k)
+            // 执行 写入数据 indexedDB
+            DbOpen(myDB, dataL[k])
           }
         } else {
           //  当前配置文件
           config('Home', i)
           // 执行 写入数据 indexedDB
-            DbOpen(myDB, datas)
+            DbOpen(myDB, data[i])
         }
-      },0)
-    })(i, data[i])
-
-
   }
 
-    var  DbOpen = function (myDB, datas) {
-      //  打开指定数据 空间。
-      DB.openDB(myDB)
-        //  成功后返回该空间的 db
-        .then(function (db) {
-            // 将数组对象覆盖写入。
-            DB.putData(db,myDB.ojstore.name,datas)
-              // 写入完成后返回 db
-              .then(function (db) {
-                      // 关闭当前空间数据 空间
-                      DB.closeDB(db)
-                  })
-            })
-  }
 
 
 }
