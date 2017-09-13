@@ -52,10 +52,15 @@ export const HomeDB = function (data, name, version) {
   }
 
     var  DbOpen = function (myDB, datas) {
+      //  打开指定数据 空间。
       DB.openDB(myDB)
+        //  成功后返回该空间的 db
         .then(function (db) {
+            // 将数组对象覆盖写入。
             DB.putData(db,myDB.ojstore.name,datas)
+              // 写入完成后返回 db
               .then(function (db) {
+                      // 关闭当前空间数据 空间
                       DB.closeDB(db)
                   })
             })
