@@ -66,17 +66,23 @@ export const DB = {
 
    },
    getDataByKey:function(db,storename,key){
-      //根据存储空间的键找到对应数据
-      var store = db.transaction(storename,'readwrite').objectStore(storename);
-      var request = store.get(key);
-      request.onerror = function(){
-        console.error('getDataByKey error');
-      };
-      request.onsuccess = function(e){
-        var result = e.target.result;
-        console.log('查找数据成功')
-        console.log(result);
-      };
+     new Promise(function (reslove, reject) {
+       //根据存储空间的键找到对应数据
+       var store = db.transaction(storename,'readwrite').objectStore(storename);
+       var request = store.get(key);
+       request.onerror = function(){
+         console.error('getDataByKey error');
+       };
+       request.onsuccess = function(e){
+         var result = e.target.result;
+         console.log('查找数据成功')
+         console.log(result);
+         return setTimeout(function () {
+           return reslove(request)
+         },0)
+       };
+     })
+
   },
    putData:function(db,storename,data){
       return new Promise(function (reslove, reject) {
@@ -99,21 +105,29 @@ export const DB = {
       })
 
   },
-   searchData:function(db,storename, data) {
-     let store = store = db.transaction(storename,'readwrite').objectStore(storename),request;
-     // let range = IDBKeyRange.lowerBound(1);
-     request = store.openCursor()
-     request.onsuccess = function (e) {
-       let cursor = e.target.result
-       if (cursor) {
-         // 搜索到的内容保存到 data数据中
-         data.push(cursor.value)
-         // 下一个  如果没有 返回 undefine
-         cursor.continue()
-       } else {
-         console.log('查询结束')
+   searchData:function(db,storename) {
+     return new Promise(function (reslove, reject) {
+       let store = store = db.transaction(storename,'readwrite').objectStore(storename),request;
+       // let range = IDBKeyRange.lowerBound(1);
+       let data = []
+       request = store.openCursor()
+       request.onsuccess = function (e) {
+         let cursor = e.target.result
+         if (cursor) {
+           // 搜索到的内容保存到 data数据中
+           data.push(cursor.value)
+           // 下一个  如果没有 返回 undefine
+           cursor.continue()
+         } else {
+           console.log('查询结束')
+           DB.closeDB(db)
+           return setTimeout(function () {
+             reslove(data)
+           },0)
+         }
        }
-     }
+     })
+
    }
 }
 
