@@ -64,8 +64,6 @@ export const DB = {
        }
      })
 
-
-     // DB.closeDB(db)
    },
    getDataByKey:function(db,storename,key){
       //根据存储空间的键找到对应数据
@@ -81,8 +79,9 @@ export const DB = {
       };
   },
    putData:function(db,storename,data){
-      //添加数据，重复添加会更新原有数据
-      var store = store = db.transaction(storename,'readwrite').objectStore(storename),request;
+      return new Promise(function (reslove, reject) {
+        //添加数据，重复添加会更新原有数据
+        var store = store = db.transaction(storename,'readwrite').objectStore(storename),request;
         for(var i = 0 ; i < data.length;i++){
           request = store.put(data[i]);
           request.onerror = function(){
@@ -90,8 +89,15 @@ export const DB = {
           };
           request.onsuccess = function(){
             console.log(storename, 'put添加数据已存入数据库')
+            if (i === data.length) {
+              return  setTimeout(function () {
+                return reslove(db)
+              },100)
+            }
           };
         }
+      })
+
   },
    searchData:function(db,storename, data) {
      let store = store = db.transaction(storename,'readwrite').objectStore(storename),request;

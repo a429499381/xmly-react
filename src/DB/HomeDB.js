@@ -51,16 +51,14 @@ export const HomeDB = function (data, name, version) {
 
   }
 
-    var  DbOpen = async function (myDB, datas) {
+    var  DbOpen = function (myDB, datas) {
       DB.openDB(myDB)
         .then(function (db) {
-            DB.addData(db,myDB.ojstore.name,datas)
-            return db
-          })
-        .then(function (db) {
-            DB.closeDB(db)
-          })
-
+            DB.putData(db,myDB.ojstore.name,datas)
+              .then(function (db) {
+                      DB.closeDB(db)
+                  })
+            })
   }
 
 
