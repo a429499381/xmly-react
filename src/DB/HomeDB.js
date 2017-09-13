@@ -45,8 +45,9 @@ export const HomeDB = function (data, name, version) {
         if (i === 'Lists') {
           var dataL = data[i]
           for (var k = 0; k < dataL.length; k++) {
+            var name = dataL[k][0].title || k
             //  当前配置文件
-            config(i , k)
+            config(i , name)
             // 执行 写入数据 indexedDB
             DbOpen(myDB, dataL[k])
           }
