@@ -9,7 +9,9 @@
   width: 10%;
   height: 30px;
   line-height: 30px;
-  vertical-align: middle; }
+  vertical-align: middle;
+  cursor: pointer;
+}
 .top .input {
   vertical-align: middle;
   width: 60%; }

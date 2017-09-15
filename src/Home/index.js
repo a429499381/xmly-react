@@ -15,6 +15,10 @@ import {GetData} from '../DB/GetData'
 
 import  {Data} from '../axios/regex'
 
+// 头部 数据
+import  HeaderData from '../PageCom/config/config.json'
+
+
 
 class Home extends Component {
     constructor(props) {
@@ -30,7 +34,7 @@ class Home extends Component {
         let List = this.state.List
     return (
         <div>
-          <Header/>
+          <Header data = {HeaderData}/>
           <div className="mt86"></div>
             {
                 List.length

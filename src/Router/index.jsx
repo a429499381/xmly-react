@@ -10,7 +10,7 @@ import FenLei from '../FenLei'
 import Fm from '../Fm'
 import JingPin from '../JingPin'
 import ZhiBo from '../ZhiBo'
-import List from '../PageCom/List'
+import Sms from '../PageCom/Sms'
 import Down from '../PageCom/Down'
 import Ls from '../PageCom/Ls'
 
@@ -29,7 +29,7 @@ class RouterMap extends React.Component {
           <Route path='/Fm' component={Fm}/>
           <Route path='/JingPin' component={JingPin}/>
           <Route path='/ZhiBo' component={ZhiBo}/>
-          <Route path='/List' component={List}/>
+          <Route path='/Sms' component={Sms}/>
           <Route path='/Down' component={Down}/>
           <Route path='/Ls' component={Ls}/>
           {/*<Route path='/User' component={User}/>*/}

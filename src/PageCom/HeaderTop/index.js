@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hashHistory, Link } from 'react-router'
 
 import './index.css'
 
@@ -13,29 +14,34 @@ class HeaderTop extends Component {
   render() {
       let data = this.state.data
     return (
-      <div className="top">
-        {/* top */}
-            <a href={data.href} title ='传递过的消息'>
-              <span className="xinxi">
-                {this.props.title}
-                <i></i>
-              </span>&nbsp;
+      <div>
+        {
+          this.state.data
+            ?   <div className="top">
+            <a href={data.href} >
+                    <span className="xinxi" onClick={this.back.bind(this)}>
+                      {this.props.title}
+                      <i></i>
+                    </span>&nbsp;
             </a>
             <div className="input dib">
-              <input type="text" placeholder={data.value}
-                      value ={this.state.value}
-                      onChange={this.ChangeHandle.bind(this)}
-                      onKeyUp={this.KeyCode.bind(this)}
+              <input type="text" placeholder={data.value || '请输入要搜索的内容'}
+                     value ={this.state.value}
+                     onChange={this.ChangeHandle.bind(this)}
+                     onKeyUp={this.KeyCode.bind(this)}
               />
             </div>&nbsp;
             <span className="top_r dib">
-            <a href="#/Ls" className="lishi">{data.lishi}</a>
-            <a href="#/Down" className="down">{data.down}</a>
+                  <a href="#/Ls" className="lishi">{data.lishi}</a>
+                  <a href="#/Down" className="down">{data.down}</a>
+                  <i className="content">&nbsp;</i>
+              </span>&nbsp;
             <i className="content">&nbsp;</i>
-        </span>&nbsp;
-            <i className="content">&nbsp;</i>
-        {/* top */}
-    </div>
+          </div>
+            : <div>'没有内容'</div>
+        }
+      </div>
+
     )
   }
   componentDidMount() {
@@ -55,7 +61,13 @@ class HeaderTop extends Component {
     if(e.keyCode !== 13) {
         return
     }
+    hashHistory.push('/Fenlei')
 
+  }
+
+  // 单击返回
+  back() {
+    hashHistory.push('/')
   }
 
 }

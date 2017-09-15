@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import './index.css'
 import Nav from '../Nav/index'
 import HeaderTop from '../HeaderTop/index'
-import * as Data from '../config/config.json'
 
 
 class Header extends Component {
@@ -33,10 +32,16 @@ class Header extends Component {
   }
 
   componentDidMount() {
-      this.setState({
+      let Data = this.props.data
+      if(Data) {
+        this.setState({
           nav: Data.nav,
           top: Data.top
-      })
+        })
+      }
+
+
+
   }
 
 }
