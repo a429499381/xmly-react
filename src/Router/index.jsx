@@ -43,7 +43,7 @@ class RouterMap extends React.Component {
           <Route path='*/album/*' component={Sound}/>
           <Route path='/Ls' component={Ls}/>
           <Route path='/Search/*' component={Search}/>
-          <Route path='/explore/*' component={Search}/>
+          <Route path='/explore/*' component={explore}/>
           {/*<Route path='/User' component={User}/>*/}
           {/*<Route path='/search/:category(/:keyword)' component={Search}/>*/}
           {/*<Route path='/detail/:id' component={Detail}/>*/}
