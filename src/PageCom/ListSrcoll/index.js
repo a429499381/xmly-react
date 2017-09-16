@@ -19,7 +19,7 @@ class ListSrcoll extends Component {
         <div className="n_content">
           <div className="love_title">
             <a className="love_t" href={'#'+title.href} onClick={this.PushRouter.bind(this, title.href)}>{title.title}</a>&nbsp;
-            <a href={this.state.title.href} key ={title.num} className="more">更多 ></a>&nbsp;
+            <a href={'#'+this.state.title.href} className="more" onClick={this.PushRouter.bind(this, this.state.title.href)}>更多</a>&nbsp;
             <i className="content">&nbsp;</i>
           </div>
 
