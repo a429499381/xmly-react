@@ -15,3 +15,10 @@ export  const getHome = () => {
 
   return axios.get(code.CODEURL + url)
 }
+
+
+export  const Search = (id) => {
+  const url = 'http://m.ximalaya.com/search/' + id
+
+  return axios.get(code.CODEURL + url)
+}

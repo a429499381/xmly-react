@@ -4,23 +4,32 @@ import Header from '../PageCom/Header'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 import NoMore from '../PageCom/NoMore'
 
+import {SearchData} from '../axios/Search'
+
+
+
 class Search extends Component {
   render() {
     return (
       <div>
         {/* top */}
           <Header/>
-          <div className="mt86"></div>
-           <h1>Search</h1>
-
+        <div className="mt86"></div>
+        Search
         {/* 底部导航 */}
           <FooterNavgtion/>
-
         {/* 没有更多 */}
           <NoMore/>
     </div>
     )
   }
+  componentDidMount() {
+    let id = this.props.params.id
+    SearchData(id).then(data => {
+        console.log(data)
+    })
+  }
+
 }
 
 export default Search;

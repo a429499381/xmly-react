@@ -105,6 +105,7 @@ export  const Data = () => {
               resolve(HomeData)
               clearInterval(time)
           }
+
       }
     })
 

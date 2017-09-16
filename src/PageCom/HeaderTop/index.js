@@ -3,6 +3,7 @@ import { hashHistory, Link } from 'react-router'
 
 import './index.css'
 
+
 class HeaderTop extends Component {
     constructor(props) {
         super(props)
@@ -58,10 +59,11 @@ class HeaderTop extends Component {
   }
   // 回车 处理  13 代码回车键
   KeyCode(e) {
+    let search = e.target.value
     if(e.keyCode !== 13) {
         return
     }
-    hashHistory.push('/Fenlei')
+    hashHistory.push('/Search' + '/' + search)
 
   }
 
