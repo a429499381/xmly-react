@@ -13,7 +13,10 @@ import ZhiBo from '../ZhiBo'
 import Sms from '../PageCom/Sms'
 import Down from '../PageCom/Down'
 import Ls from '../PageCom/Ls'
-
+import AlbumQuan from '../AlbumQuan'
+import AlbumTag from '../AlbumTag'
+import Sound from '../Sound'
+import Search from '../Search'
 
 // 如果是大型项目，router部分就需要做更加复杂的配置
 // 参见 https://github.com/reactjs/react-router/tree/master/examples/huge-apps
@@ -31,7 +34,12 @@ class RouterMap extends React.Component {
           <Route path='/ZhiBo' component={ZhiBo}/>
           <Route path='/Sms' component={Sms}/>
           <Route path='/Down' component={Down}/>
+          <Route path='/Album-Quan/all/rank' component={AlbumQuan}/>
+          <Route path='/Album-Tag/*' component={AlbumTag}/>
+          <Route path='*/Sound/*' component={Sound}/>
+          <Route path='*/album/*' component={Sound}/>
           <Route path='/Ls' component={Ls}/>
+          <Route path='/Search/*' component={Search}/>
           {/*<Route path='/User' component={User}/>*/}
           {/*<Route path='/search/:category(/:keyword)' component={Search}/>*/}
           {/*<Route path='/detail/:id' component={Detail}/>*/}

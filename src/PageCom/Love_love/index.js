@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { hashHistory } from 'react-router';
 import './index.css'
 
 class Love extends Component {
@@ -19,14 +20,14 @@ class Love extends Component {
                 <div className="love">
                     <div className="love_title">
                         <a className="love_t"  href={title.href}>{title.title}</a>&nbsp;
-                        <a href={title.href} className="more">更多 ></a>&nbsp;
+                        <a href={'#'+title.href} onClick={this.PushRouter.bind(this, title.href)} className="more">更多 ></a>&nbsp;
                         <i className="content">&nbsp;</i>
                     </div>
                     <div className ="love_list">
                         {
                             love.map((item, index) => {
                                 return <div className="love_con" key ={index}>
-                                            <a key ={index} href={item.href} className="con_item">
+                                            <a key ={index} href={'#'+item.href} className="con_item" onClick={this.PushRouter.bind(this, item.href)}>
                                                 <p className="img">
                                                     <img className = "img_bg" src={item.src} alt=""/>
                                                     <span className="img_number">{item.num}</span>
@@ -64,6 +65,11 @@ class Love extends Component {
             love: love,
             title: title
         })
+    }
+
+    //  跳转路由
+    PushRouter(param) {
+        hashHistory.push(param)
     }
 }
 

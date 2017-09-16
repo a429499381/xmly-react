@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hashHistory } from 'react-router';
 import './index.css'
 
 import RectSwiper from 'react-swipe'
@@ -29,8 +30,8 @@ class Banner extends Component {
                 <RectSwiper className="swiper_box" swipeOptions={opt}>
                     {
                         dataS.map((item, index) => {
-                            return <div className="banner_ad"  key ={index}>
-                                <a  href={item.href}>
+                            return <div className="banner_ad"  key ={index} >
+                                <a  href={'#'+item.href} onClick={this.PushRouter.bind(this, item.href)}>
                                     <img className="ad_img"  src={item.src} alt=""/>
                                 </a>
                             </div>
@@ -52,6 +53,9 @@ class Banner extends Component {
         )
     }
     componentDidMount() {
+    }
+    PushRouter(param) {
+      hashHistory.push(param)
     }
 }
 
