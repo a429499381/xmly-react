@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, hashHistory   } from 'react-router'
+import { Link } from 'react-router'
 import './index.css'
 
 class ListSrcoll extends Component {
@@ -18,8 +18,8 @@ class ListSrcoll extends Component {
         {/* 标题 */}
         <div className="n_content">
           <div className="love_title">
-            <a className="love_t" href={'#'+title.href} onClick={this.PushRouter.bind(this, title.href)}>{title.title}</a>&nbsp;
-            <a href={'#'+this.state.title.href} className="more" onClick={this.PushRouter.bind(this, this.state.title.href)}>更多</a>&nbsp;
+            <a className="love_t" href={'#'+title.href} >{title.title}</a>&nbsp;
+            <a href={'#'+this.state.title.href} className="more">更多</a>&nbsp;
             <i className="content">&nbsp;</i>
           </div>
 
@@ -28,7 +28,7 @@ class ListSrcoll extends Component {
               container.map((item,index) =>{
                   return <div  key={index}>
                            <Link to = {item.href}>
-                            <div className="list"  onClick={this.PushRouter.bind(this, item.href)}>
+                            <div className="list" >
                               <div className="list_img">
                             <img src={item.src} className="img" alt=""></img>
                             <div className="list_txt">
@@ -85,10 +85,6 @@ class ListSrcoll extends Component {
 
   }
 
-  // 跳转路由
-    PushRouter(param) {
-      hashHistory.push(param)
-    }
 }
 
 
