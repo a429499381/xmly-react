@@ -25,7 +25,8 @@ class Search extends Component {
   }
   componentDidMount() {
     let id = this.props.params.id
-    SearchData(id).then(data => {
+    let more = this.props.params.more
+    SearchData(id,more).then(data => {
         console.log(data)
     })
   }
