@@ -3,8 +3,11 @@ import {GetId} from './get.js'
 export  const DetailData = (id) => {
     var GetData = {}
     GetData.album = []
+    GetData.album.Lists = []
     let OK = 'No'
     let time = 'No'
+    var N = 0
+
 
   //  分类 数据提取
 
@@ -44,11 +47,13 @@ export  const DetailData = (id) => {
                 const TitleX = /<h4\b.+?([^><]+?)</g
 
                 // 播放列表
+                const OlP = /(?!<\/?ol>)<ol\b\s?class="mod\b.+>[\d\D]+?(<\/ol\b>)/g
                 const LiregP = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?(<\/li\b>)/g
                 const MetaP = /<meta[\d\D]+?content="([^';"<>]+)">/g
                 const HrefP = /<a\s.+href="([^<>"]+)"/g
-                const ImsrcP = /<a\s.+sound_url="([^<>"]+)".+sound_id="([^<>"]+)"/g
+                const Play = /<a\s.+sound_url=["']([^<>";']+)["'].+sound_id=["']([^<>";']+)["']/g
                 const TitleP = /<h4\b.+?([^><]+?)</g
+
 
                  // 相关专辑提取
                  data.replace(SectionX, function (match) {
@@ -105,43 +110,51 @@ export  const DetailData = (id) => {
 
 
                 // 播放列表
-                data.replace(LiregP, function (match) {
-                    let NumM = 0
-                    let NumM1 = 0
-                    let NumM2 = 0
-                    let NumH = 0
-                    let NumI = 0
-                    let NumT = 0
-                    GetData.album.Lists = []
-                    let Detail = GetData.album.Lists
-                    match.replace(MetaP, function (match, name) {
-                        GetData.album.Lists[NumH] = {}
-                        Object.assign(Detail[NumH], {name})
-                        NumM++
+
+                data.replace(OlP, function (match) {
+                  let NumM = 0
+                  let NumH = 0
+                  let NumP = 0
+                  let NumT = 0
+
+                  // 测试用
+                  window.data = match
+                  // 测试用
+
+                  match.replace(LiregP, function (match) {
+
+                    match.replace(MetaP, function (match, name ) {
+                      let Name = ['name', 'time', 'img', 'type']
+                      let Num = Name[NumM]
+
+                      if (!GetData.album.Lists[N]) {
+                        GetData.album.Lists[N] = {}
+                      }
+                      Object.assign(GetData.album.Lists[N], {[Num]: name})
+
+                      NumM++
+                      if (NumM === Name.length){
+                        N++
+                        NumM = 0
+                      }
+
                     })
-                    match.replace(MetaP, function (match, time) {
-                        Object.assign( Detail[NumM1], {time})
-                        NumM1++
+                    match.replace(Play, function (match, play, id) {
+                      Object.assign( GetData.album.Lists[NumP], {play, id})
+                      NumP++
                     })
-                    match.replace(MetaP, function (match, img) {
-                        Object.assign( Detail[NumM2], {img})
-                        NumM2++
-                    })
-                    match.replace(HrefP, function (match, Href) {
-                        // Detail.push({Href})
-                        Object.assign( Detail[NumH], {Href})
-                        NumH++
-                    })
-                    match.replace(ImsrcP, function (match, ImgSrc) {
-                        Object.assign( Detail[NumH], {ImgSrc})
-                        NumI++
+                    match.replace(HrefP, function (match, href) {
+                      Object.assign( GetData.album.Lists[NumH], {href})
+                      NumH++
                     })
                     match.replace(TitleP, function (match, Title) {
-                        Object.assign( Detail[NumT], {Title})
-                        NumT++
+                      Object.assign( GetData.album.Lists[NumT], {Title})
+                      NumT++
                     })
 
                     return OK = 'OK'
+                  })
+
                 })
             })
       // 5秒后退出 定时
