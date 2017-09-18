@@ -1,8 +1,8 @@
 import {GetId} from './get.js'
 
-export  const SearchData = (id,more) => {
+export  const DetailData = (id) => {
     var GetData = {}
-    GetData.album = []
+    GetData.album = {}
     let OK = 'No'
     let time = 'No'
 
@@ -11,7 +11,8 @@ export  const SearchData = (id,more) => {
     var Prom = new Promise((resolve, reject) => {
 
 
-            GetId(id).then((res) => {
+     GetId(id).then((res) => {
+                let data = res.data
                 // 列表 标签
 
                 // 提取 详情内容
@@ -40,49 +41,79 @@ export  const SearchData = (id,more) => {
                 const ImsrcP = /<a\s.+sound_url="([^<>"]+)".+sound_id="([^<>"]+)"/g
                 const TitleP = /<h4\b.+?([^><]+?)</g
 
-
-
-
-
-
-                // 提取 列表 数据
-                let PNum = 0
-                let ImgNum = 0
-                let TitleNum = 0
-                res.data.replace(Lireg, function (match, Href) {
-                    // 提取 路由 地址
-                    SearchData.album.push({ Href })
-                    // 提取 标题 单条数据节目数量
-                    match.replace(Playnums, function (data,  PlayNum) {
-                        Object.assign(SearchData.album[PNum],{ PlayNum})
-                        PNum ++
+                // 提取 详情内容
+                data.replace(SectionD, function (match) {
+                    GetData.album.Detail = []
+                    let Detail = GetData.album.Detail
+                    match.replace(jianjieD, function (match, Txt) {
+                        Detail.push({Txt})
                     })
-                    match.replace(ImgSrc, function (data, ImgSrc) {
-                        Object.assign(SearchData.album[ImgNum],{ ImgSrc})
-                        ImgNum ++
+                    match.replace(jianjieD, function (match, Title) {
+                        Detail.album.push({Title})
                     })
-                    match.replace(Title, function (data, Title0,Title2, Title1) {
-                        let Title = Title2 ? Title2 : ''
-                        Object.assign(SearchData.album[TitleNum],{Title, Title1})
-                        TitleNum ++
-
-                        return OK = 'OK'
+                    match.replace(jianjieD, function (match, Href) {
+                        Detail.album.push({Href})
+                    })
+                    match.replace(jianjieD, function (match, Img) {
+                        Detail.album.push({Img})
+                    })
+                    match.replace(jianjieD, function (match, IntroD) {
+                        Detail.album.push({IntroD})
+                    })
+                    match.replace(jianjieD, function (match, Txt1) {
+                        Detail.album.push({Txt1})
+                    })
+                    match.replace(jianjieD, function (match, TxtFullD) {
+                        Detail.album.push({TxtFullD})
                     })
                 })
 
+                // 相关专辑提取
+                data.replace(SectionX, function (match) {
+                    GetData.album.MoreAlbum = []
+                    let Detail = GetData.album.MoreAlbum
+                    match.replace(HrefX, function (match, Href) {
+                        Detail.push({Href})
+                    })
+                    match.replace(PlayNumX, function (match, PlayNUm, PlayTime) {
+                        Detail.push({PlayNUm, PlayTime})
+                    })
+                    match.replace(TitleX, function (match, Title) {
+                        Detail.push({Title})
+                    })
+                })
+
+                // 播放列表
+                data.replace(LiregP, function (match) {
+                    GetData.album.Lists = []
+                    let Detail = GetData.album.Lists
+                    match.replace(MetaP, function (match, num1, num2 ,num3, num4) {
+                        Detail.push({num1, num2 ,num3, num4})
+                    })
+                    match.replace(HrefP, function (match, Href) {
+                        Detail.push({Href})
+                    })
+                    match.replace(ImsrcP, function (match, ImgSrc) {
+                        Detail.push({ImgSrc})
+                    })
+                    match.replace(TitleP, function (match, Title) {
+                        Detail.push({Title})
+                    })
+
+                    return OK = 'OK'
+                })
             })
-        }
 
-
-
+      // 5秒后退出 定时
       time  = setInterval(Go,100)
       setTimeout(function () {
         clearInterval(time)
       },5000)
+
       function Go() {
           if (OK === 'OK') {
               clearInterval(time)
-              resolve(SearchData)
+              resolve(GetData.album)
 
           }
       }

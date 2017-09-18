@@ -24,7 +24,6 @@ export  const Search = (id) => {
 }
 
 export const GetId = (id) => {
-    const url = 'http://m.ximalaya.com/search/' + id
-
+    const url = 'http://m.ximalaya.com' + id
     return axios.get(code.CODEURL + url)
 }
