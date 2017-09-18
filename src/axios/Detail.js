@@ -1,4 +1,4 @@
-import {getHome, Search} from './get.js'
+import {GetId} from './get.js'
 
 export  const SearchData = (id,more) => {
     var GetData = {}
@@ -11,14 +11,38 @@ export  const SearchData = (id,more) => {
     var Prom = new Promise((resolve, reject) => {
 
 
-            Search(id).then((res) => {
+            GetId(id).then((res) => {
                 // 列表 标签
-                // const Lireg = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?(<\/li\b>)/g
-                const Lireg = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?href="(.+)">[\d\D]+?(<\/li\b>)/g
-                const Title = /<h2\b.+?([^><]+?)<\/h2>/g
-                const Img = /<img\b.+?src="([^><"]+?)"/g
-                const href = /<a\sclass="c-link\snickname"\shref="([^><"]+?)"[^><]+>([^><]+)<\/a>/g
-                const PlayNum = /<p\sclass="elli\splayCount".+[^><]<\/p>/g
+
+                // 提取 详情内容
+                const SectionD = /(?!<\/?section>)<section\b\s?class="mod\suserInfo?[\d\D]+?(<\/section\b>)/g
+                const jianjieD = /<div\sclass="intro-breviary">[^><]+<\/div>/g
+                const TitleD = /<h3\sclass="sub-header">[^<>]+<\/h3>/g
+                const HrefD = /<a\s.+href="([^<>"]+)"/g
+                const ImgD = /<img\b.+?src="([^><"]+?)"/g
+                const IntroD = /<p\b.+?([^><]+?)<\/p>/g
+                const nameD = /<h4\b.+?([^><]+?)</g
+                const TxtD = /<div\sclass="intro-breviary\sj-zintro">([^><]+?)</g
+                const TxtFullD = /<div\sclass="intro-full\sj-zintro\suserIntro">([^><]+?)</g
+
+
+                // 相关专辑提取
+                const SectionX = /(?!<\/?section>)<section class="mod relativeAlbum">[\d\D]+?(<\/section\b>)/g
+                const HrefX = /<a\s.+href="([^<>"]+)"/g
+                // 提取 播放量 可播放集数
+                const PlayNumX = /(?:<span.+<\/i>([^<>"]+)<\/span>){1}/g
+                const TitleX = /<h4\b.+?([^><]+?)</g
+
+                // 播放列表
+                const LiregP = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?(<\/li\b>)/g
+                const MetaP = /<meta[\d\D]+?content="([^';"<>]+)">\s\n/g
+                const HrefP = /<a\s.+href="([^<>"]+)"/g
+                const ImsrcP = /<a\s.+sound_url="([^<>"]+)".+sound_id="([^<>"]+)"/g
+                const TitleP = /<h4\b.+?([^><]+?)</g
+
+
+
+
 
 
                 // 提取 列表 数据
