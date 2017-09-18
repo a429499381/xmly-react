@@ -25,7 +25,7 @@ class Search extends Component {
     )
   }
   componentDidMount() {
-    let url = '/26820812/album/5290734'
+    let url = '/33733258/album/4026875'
     let id = this.props.params.id
     let more = this.props.params.more
     //  搜索 数据

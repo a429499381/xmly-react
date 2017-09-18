@@ -30,9 +30,10 @@ export  const DetailData = (id) => {
 
                 // 内容简介
                 const SectionJ = /(?!<\/?section>)<section\b\s?class="mod">[\d\D]+?(<\/section\b>)/g
-                const jianjieJ = /<div\sclass="intro-breviary">[^><]+<\/div>/g
-                const TitleJ = /<h3\sclass="sub-header">[^<>]+<\/h3>/g
+                // const jianjieJ = /<div\sclass="intro-breviary">[^><]+<\/div>/g
+                const TitleJ = /<h3\sclass="sub-header">([^<>]+?)<\/h3>/g
                 const ImgSrcJ = /src="([^';"]+)"/g
+                const IntroJ = /<p\b.+?([^><]+?)<\/p>/g
                 // 提取所有 标签内的 内容
                 const All  = /<[\d\D]+?>/g
 
@@ -107,10 +108,23 @@ export  const DetailData = (id) => {
                     return OK ='OK'
                 })
 
+                // 提取 内容简介
+                data.replace(SectionJ, function (match) {
+                  GetData.album.Txt= {}
+                  match.replace(TitleJ, function (data, title) {
+                     Object.assign(GetData.album.Txt, {title})
+                  })
+                  match.replace(ImgSrcJ, function (data, img) {
+                    Object.assign(GetData.album.Txt, {img})
+                  })
+                  match.replace(IntroJ, function (data, intro) {
+                    Object.assign(GetData.album.Txt, {intro})
+                  })
+                })
+
 
 
                 // 播放列表
-
                 data.replace(OlP, function (match) {
                   let NumM = 0
                   let NumH = 0
@@ -156,20 +170,20 @@ export  const DetailData = (id) => {
                   })
 
                 })
-            })
-      // 5秒后退出 定时
-      time  = setInterval(Go,100)
-      setTimeout(function () {
-        clearInterval(time)
-      },5000)
+        })
+                // 5秒后退出 定时
+                time  = setInterval(Go,100)
+                setTimeout(function () {
+                  clearInterval(time)
+                },5000)
 
-      function Go() {
-          if (OK === 'OK') {
-              clearInterval(time)
-              resolve(GetData.album)
+                function Go() {
+                    if (OK === 'OK') {
+                        clearInterval(time)
+                        resolve(GetData.album)
 
-          }
-      }
+                    }
+                }
     })
 
     return  Prom
