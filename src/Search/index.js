@@ -7,6 +7,7 @@ import NoMore from '../PageCom/NoMore'
 import {SearchData} from '../axios/Search'
 import {DetailData} from '../axios/Detail'
 import {UserDetailData} from '../axios/UserDetail'
+import {JinPinData} from '../axios/Jinpin'
 
 
 
@@ -28,6 +29,7 @@ class Search extends Component {
   componentDidMount() {
     let url = '/33733258/album/4026875'
     let Userurl = '/zhubo/33733258'
+    let Jinpin = '/49265909/album/7368509'
     let id = this.props.params.id
     let more = this.props.params.more
     //  搜索 数据
@@ -42,6 +44,10 @@ class Search extends Component {
     // 用户 详情页
     UserDetailData(Userurl).then(data => {
       console.log('用户详情页',data)
+    })
+
+    JinPinData(Jinpin).then(data => {
+      console.log('精品页OK', data)
     })
 
   }
