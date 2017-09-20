@@ -1,6 +1,9 @@
 import {GetId} from './get.js'
 import {TagAll, Taghref, Tagtxt} from '../Regex/config'
 
+// 返回传进去函数 中变量名 的数组
+import {BackArray} from '../Array/callArray'
+
 export  const JinPinData = (id) => {
     let JinPinData = {}
     JinPinData.top = []
@@ -73,7 +76,7 @@ export  const JinPinData = (id) => {
             })
 
             // 详情 tabDetail
-                data.replace(tabDetail, function (match) {
+                data.replace(tabDetail, function call(match) {
                    let model = TagAll('section', 'class', 'album-model')
                    let title = Taghref('p', 'class', 'hr-under')
                    let title1 = Tagtxt('span', 'class', '')
@@ -87,10 +90,15 @@ export  const JinPinData = (id) => {
                    let largeH = Taghref('img','data-large-height')
                    let largeW = Taghref('img','data-large-width')
 
+                    let $callString = call.toString()
+                    // 返回当前 变量名 数组
+                    let arr$  = BackArray(call)
+                    console.log(arr$)
+
                    let arr = [model, title, title1, txt, img, origin, preview, previewH, previewH, large, largeH, largeW]
-                   let Num = 0
-                   JinPinData.tabDetail[Num] = {}
-                   let tabDetail = JinPinData.tabDetail[Num]
+                   let $Num = 0
+                   JinPinData.tabDetail[$Num] = {}
+                   let tabDetail = JinPinData.tabDetail[$Num]
                    arr.forEach((item, index) => {
                      match.replace(item, function (data, item) {
                           Object.assign(tabDetail, {item})
