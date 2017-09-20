@@ -7,6 +7,7 @@ export  const JinPinData = (id) => {
     JinPinData.tabDetail = []
     JinPinData.tabProgram = []
     JinPinData.tabComment = []
+    JinPinData.buy = {}
     let OK = 'No'
     let time = 'No'
 
@@ -14,7 +15,6 @@ export  const JinPinData = (id) => {
   //  分类 数据提取
 
     var Prom = new Promise((resolve, reject) => {
-
 
        GetId(id).then((res) => {
            let data = res.data
@@ -54,13 +54,17 @@ export  const JinPinData = (id) => {
                  let tablink = Tagtxt('a', 'class', 'tablink')
 
                  let top = JinPinData.top[Num]= {}
-                  let arr = [title, href, id, img, subscribe, suburl, unsuburl, loginurl, priceOld, priceNew, othen, playNum, grade, tablink, top]
+                 let arr = [title, href, id, img, subscribe, suburl, unsuburl, loginurl, priceOld, priceNew, othen, playNum, grade, tablink, top]
 
                  arr.forEach((item, index) => {
                    match.replace(item, function (data, item) {
                      if (item === tablink) {
-                       Object.assign(top, {[tablink[tabNum]]: item})
+                        item[tabNum] = {}
+                        let tab = item[tabNum]
+                       Object.assign(top, {tab: item})
                        tabNum++
+                     } else {
+                       tabNum = 0
                      }
                      Object.assign(top, {item})
                    })
@@ -82,21 +86,22 @@ export  const JinPinData = (id) => {
                    let large = Taghref('img','data-large')
                    let largeH = Taghref('img','data-large-height')
                    let largeW = Taghref('img','data-large-width')
-                   match.replace(model, function (match) {
 
+                   let arr = [model, title, title1, txt, img, origin, preview, previewH, previewH, large, largeH, largeW]
+                   let Num = 0
+                   JinPinData.tabDetail[Num] = {}
+                   let tabDetail = JinPinData.tabDetail[Num]
+                   arr.forEach((item, index) => {
+                     match.replace(item, function (data, item) {
+                          Object.assign(tabDetail, {item})
+                     })
                    })
+
                 })
-            // tabProgram
-               data.replace(tabDetail, function (match) {
 
-               })
-            // tabComment
-               data.replace(tabDetail, function (match) {
-
-               })
             // 购买
                data.replace(buy, function (match) {
-                 let btnBuy = TagAll('a', 'class', 'btn1')
+                 // let btnBuy = TagAll('a', 'class', 'btn1')
                  let lisBtn = TagAll('span', 'class', 'album-lisBtn')
                  let albumid = Taghref('a', 'data-albumid')
                  let category = Taghref('a', 'data-category')
@@ -107,6 +112,20 @@ export  const JinPinData = (id) => {
                  let xmlogSpy = Taghref('a', 'xmlog-spy')
                  let xmlogId = Taghref('a', 'xmlog-id')
                  let xmlogMod= Taghref('a', 'xmlog-mod')
+
+                 let arr = [{lisBtn}, {albumid}, {category}, {dataDone}, {tag}, {event}, {role}, {xmlogSpy}, {xmlogId}, {xmlogMod}]
+                 let buyData = JinPinData.buy
+                 arr.forEach((item, index) => {
+                   //  获取对象 key 转换为 字符串
+                   let key = Object.keys(arr[index]).toString()
+                   // 根据获取key 名 得到 vlaue 即 正则语法
+                   let reg = arr[index][key]
+                   // 匹配到的 value 保存
+                   match.replace(reg, function (data, itemValue) {
+                     Object.assign(buyData, {[key]: itemValue})
+                   })
+                 })
+                 return OK = 'OK'　　　　　　　
                })
         })
 
@@ -119,7 +138,7 @@ export  const JinPinData = (id) => {
         function Go() {
             if (OK === 'OK') {
                 clearInterval(time)
-                resolve()
+                resolve(JinPinData)
 
             }
         }
