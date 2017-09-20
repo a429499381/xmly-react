@@ -37,6 +37,7 @@ export  const JinPinData = (id) => {
             // 精品页 头部 数据
             data.replace(top, function (match) {
                  let Num = 0
+                 let tabNum = 0
                  let title = Tagtxt('h2', 'class', 'title')
                  let href = Taghref('a', 'href')
                  let id = Taghref('a', 'album_id')
@@ -51,20 +52,20 @@ export  const JinPinData = (id) => {
                  let playNum = Tagtxt('span', 'class', 'album-playNum')
                  let grade = Tagtxt('span', 'class', 'comment-star')
                  let tablink = Tagtxt('a', 'class', 'tablink')
-                 let top = JinPinData.top[Num]= {}
 
-                 match.replace(title, function (match, title) {
-                   Object.assign(top, {title})
+                 let top = JinPinData.top[Num]= {}
+                  let arr = [title, href, id, img, subscribe, suburl, unsuburl, loginurl, priceOld, priceNew, othen, playNum, grade, tablink, top]
+
+                 arr.forEach((item, index) => {
+                   match.replace(item, function (data, item) {
+                     if (item === tablink) {
+                       Object.assign(top, {[tablink[tabNum]]: item})
+                       tabNum++
+                     }
+                     Object.assign(top, {item})
+                   })
                  })
-                match.replace(title, function (match, title) {
-                  Object.assign(top, {title})
-                })
-                match.replace(title, function (match, title) {
-                  Object.assign(top, {title})
-                })
-                match.replace(title, function (match, title) {
-                  Object.assign(top, {title})
-                })
+
             })
 
             // 详情 tabDetail
