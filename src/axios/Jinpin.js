@@ -37,10 +37,8 @@ export  const JinPinData = (id) => {
 
 
             // 详情 tabDetail
-            let getMod = (name, regMod) => {
-               data.replace(regMod, function call(match) {
-                 console.log('getMod reg Ok')
-                 // let model = TagAll('section', 'class', 'album-model')
+               data.replace(tabDetail, function call(match) {
+                 console.log('tabDetail Ok')
                  let title = new RegExp('<p\\sclass="hr-under\\b[\\d\\D]+?<span\\sclass="">(.+)</span>','g')
                  let txt =  Tagtxt('p', 'data-flag', 'normal')
                  let img = Taghref('img','src')
@@ -52,23 +50,32 @@ export  const JinPinData = (id) => {
                  let largeH = Taghref('img','data-large-height')
                  let largeW = Taghref('img','data-large-width')
                  let OO = undefined
+                 let model = TagAll('section', 'class', 'album-model')
+                 let Num = 0
+
                  // 返回当前 变量名 数组
                  let Call  = BackArray(call)
 
-                 let tabDetail = JinPinData[name]
-                 Call.forEach((item, index) => {
-                   // 将字符串 转换为 变量名
-                   let reg = eval(item)
+                 // let tabDetail = JinPinData.tabDetail
+                 match.replace(model, function (match) {
+                   console.log('model ok' )
+                   JinPinData.tabDetail[Num] = {}
+                   let tabDetail = JinPinData.tabDetail[Num]
+                   Num ++
+                   Call.forEach((item, index) => {
+                     // 将字符串 转换为 变量名
+                     let reg = eval(item)
 
-                   // tabDetail
-                   match.replace(reg, function (data, itemValue) {
-                     console.log({[Call[index]]:itemValue})
-                     Object.assign(tabDetail, {[Call[index]]:itemValue})
+                     // tabDetail
+
+                     match.replace(reg, function (data, itemValue) {
+                       Object.assign(tabDetail, {[Call[index]]:itemValue})
+                     })
                    })
-                 })
-              })
 
-            }
+                 })
+
+              })
 
             // 精品页 头部 数据
             data.replace(top, function (match) {
@@ -108,11 +115,6 @@ export  const JinPinData = (id) => {
 
          })
 
-            tab.forEach((reg, index) => {
-              let name = Object.keys(tab[index]).toString()
-              getMod(name, reg)
-
-            })
 
 
             // 购买
