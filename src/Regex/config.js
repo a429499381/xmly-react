@@ -20,3 +20,5 @@ export const TagAll = function (Tag, ClassOrHref, Name) {
   let reg  =  `(?!</?${Tag}>)<${Tag}.+${ClassOrHref}=['"](?:.+)?(${Name}\\b)(?:.+)?['"]>([\\d\\D]+?)</${Tag}>`
   return new RegExp(reg, 'g')
 }
+
+
