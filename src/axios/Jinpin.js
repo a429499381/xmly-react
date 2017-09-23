@@ -81,7 +81,7 @@ export  const JinPinData = (id) => {
                         // 如果不是 内容  进行属性配置
                         CalllArrayClone.forEach((itemC, indexC) => {
                           itemData.replace(itemC, (match, itemValue) => {
-                            Object.assign(DetailData, {[arritem]: itemValue})
+                            Object.assign(DetailData, {[itemC]: itemValue})
                           })
                         })
 
@@ -97,16 +97,6 @@ export  const JinPinData = (id) => {
                   })
                 }
               })
-
-                // Call.forEach((item, index) => {
-                //     // 将字符串 转换为 变量名
-                //     let reg = eval(item)
-                //
-                //     // tabDetail
-                //     match.replace(reg, function (data, itemValue) {
-                //       Object.assign(tabDetail, {[Call[index]]:itemValue})
-                //     })
-                //   })
 
             }
 
