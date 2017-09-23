@@ -27,7 +27,7 @@ export  const JinPinData = (id) => {
            let star = TagAll('div', 'class', 'album-mark-star')
            let tabs = TagAll('div', 'class', 'album-tabs')
 
-           let tabDetail = TagAll('div', 'id', 'tabDetail')
+           let tabDetail = /(?!<\/?div>)<div.+id=['"](?:.+)?(tabDetail\b)(?:.+)?['"]>[\d\D]+(<section.+>[\d\D]+<\/section>)/g
            let tabProgram = TagAll('div', 'id', 'tabProgram')
            let tabComment = TagAll('div', 'id', 'tabComment')
            let tab = [{tabDetail}, {tabProgram}, {tabComment}]
@@ -37,45 +37,69 @@ export  const JinPinData = (id) => {
 
 
             // 详情 tabDetail
-               data.replace(tabDetail, function call(match) {
-                 console.log('tabDetail Ok')
-                 let title = new RegExp('<p\\sclass="hr-under\\b[\\d\\D]+?<span\\sclass="">(.+)</span>','g')
-                 let txt =  Tagtxt('p', 'data-flag', 'normal')
-                 let img = Taghref('img','src')
-                 let origin = Taghref('img','data-origin')
-                 let preview = Taghref('img','data-preview')
-                 let previewH = Taghref('img','data-preview-height')
-                 let previewW = Taghref('img','data-preview-width')
-                 let large = Taghref('img','data-large')
-                 let largeH = Taghref('img','data-large-height')
-                 let largeW = Taghref('img','data-large-width')
-                 let OO = undefined
-                 let model = TagAll('section', 'class', 'album-model')
-                 let Num = 0
+            let Detail = function call() {
+              let title = new RegExp('<p\\sclass="hr-under\\b[\\d\\D]+?<span\\sclass="">(.+)</span>','g')
+              let txt =  Tagtxt('p', 'data-flag', 'normal')
+              let img = Taghref('img','src')
+              let origin = Taghref('img','data-origin')
+              let preview = Taghref('img','data-preview')
+              let previewH = Taghref('img','data-preview-height')
+              let previewW = Taghref('img','data-preview-width')
+              let large = Taghref('img','data-large')
+              let largeH = Taghref('img','data-large-height')
+              let largeW = Taghref('img','data-large-width')
+              let OO = undefined
+              let model = TagAll('section', 'class', 'album-model')
+              let Num = 0
 
-                 // 返回当前 变量名 数组
-                 let Call  = BackArray(call)
+              // 返回当前 变量名 数组
+              let CallArray  = BackArray(call)
 
-                 // let tabDetail = JinPinData.tabDetail
-                 match.replace(model, function (match) {
-                   console.log('model ok' )
-                   JinPinData.tabDetail[Num] = {}
-                   let tabDetail = JinPinData.tabDetail[Num]
-                   Num ++
-                   Call.forEach((item, index) => {
-                     // 将字符串 转换为 变量名
-                     let reg = eval(item)
+              let modelArray = data.match(model)
+              modelArray = modelArray.slice(0,3)
+              let DetailData = JinPinData.tabDetail
 
-                     // tabDetail
 
-                     match.replace(reg, function (data, itemValue) {
-                       Object.assign(tabDetail, {[Call[index]]:itemValue})
-                     })
-                   })
+              modelArray.forEach((itemData, indexData) => {
+                // 定义 数组每项 为对象
+                DetailData[indexData] = {}
+                let DetailData = DetailData[indexData]
+                if (CallArray) {
+                  CallArray.forEach((arritem, arrindex) => {
+                    let item = eval(arritem)
+                    // 内容有多项 要保存为数组
+                    if(arritem === 'txt'){
+                      DetailData = {[arritem]:[]}
+                      let DetailData = DetailData[indexData][arritem]
+                      itemData.replace(item, (match, itemValue) => {
+                        DetailData[arritem].push(itemValue)
+                      })
+                    } else {
+                      itemData.replace(item, (match, itemValue) => {
+                        Object.assign(DetailData, {[arritem]: itemValue})
+                      })
+                    }
 
-                 })
-
+                  })
+                }
               })
+
+                // Call.forEach((item, index) => {
+                //     // 将字符串 转换为 变量名
+                //     let reg = eval(item)
+                //
+                //     // tabDetail
+                //     match.replace(reg, function (data, itemValue) {
+                //       Object.assign(tabDetail, {[Call[index]]:itemValue})
+                //     })
+                //   })
+
+            }
+
+            // 执行 tabDetail
+            Detail()
+
+
 
             // 精品页 头部 数据
             data.replace(top, function (match) {
