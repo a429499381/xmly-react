@@ -5,19 +5,21 @@
   <title>LeanClound</title>
 </head>
 <body>
-
+<div id="welcome"></div>
 <form name="signIn">
   <input type="text" name="username" placeholder="用户名">
   <input type="password" name="password" placeholder="密码">
   <input type="email" name="emial" placeholder="邮箱">
-  <input type="submit" value="提交">
+  <input type="submit" value="注册">
 </form>
 
 <form name="signUp">
   <input type="text" name="username" placeholder="用户名">
   <input type="password" name="password" placeholder="密码">
-  <input type="submit" value="提交">
+  <input type="submit" value="登陆">
 </form>
+
+<button id="LogOut">登出</button>
 
 
 
@@ -32,7 +34,12 @@
     appKey: APP_KEY
   });
 
-  console.log(AV)
+  var user = AV.User.current()
+  if(user) {
+    welcome.textContent = '你好' + user.attributes.username
+    console.log(AV.User.current().attributes)
+
+  }
 
 //  // 要保存的 表名
 //  var Testobject = AV.Object.extend('object')
@@ -75,11 +82,18 @@ var singUpForm = document.querySelector('form[name=signUp]')
   // 登陆方法
   AV.User.logIn(username, password).then(function (loginedUser) {
     alert(loginedUser);
-//    location.reload()
+    location.reload()
   }, function (error) {
     alert(err)
   });
 })
+
+// 登出
+  LogOut.onclick = function () {
+    AV.User.logOut()
+    alert('登出陈功')
+    location.reload()
+  }
 
 
 </script>
