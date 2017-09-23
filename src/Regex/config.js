@@ -1,7 +1,15 @@
 // 通用 单标签 提取内容前后不带 空格 回车
-export const Tagtxt = function (Tag, ClassOrHref, Name) {
+export const Tagtxt = function (Tag, ClassOrHref, Name, All) {
+  //  内容不能出现 标签
   let reg =  `(?:<${Tag}>|<${Tag}.+${ClassOrHref}=['"](?:.+)?(?:${Name}\\b)(?:.+)?['"]>)[\\s\\n]?([^<>]+?)[\\s\\n]?</${Tag}>`
-  return new RegExp(reg, 'g')
+  //  内容可以包含标签
+  let regAll =  `(?:<${Tag}>|<${Tag}.+${ClassOrHref}=['"](?:.+)?(?:${Name}\\b)(?:.+)?['"]>)(?:<b>)?[\\s\\n]?([\\d\\D]+?)[\\s\\n]?(?:</b>)?</${Tag}>`
+  if (!All) {
+    All = reg
+  } else {
+    All = regAll
+  }
+  return new RegExp(All, 'g')
 }
 
 

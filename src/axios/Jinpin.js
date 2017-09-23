@@ -39,7 +39,8 @@ export  const JinPinData = (id) => {
             // 详情 tabDetail
             let Detail = function call() {
               let title = new RegExp('<p\\sclass="hr-under\\b[\\d\\D]+?<span\\sclass="">(.+)</span>','g')
-              let txt =  Tagtxt('p', 'data-flag', 'normal')
+              // let txt =  Tagtxt('p', 'data-flag', 'normal', 'all')
+              let txt =  /(?:data-flag=['"](?:.+)?(?:normal\b)(?:.+)?['"]>)(?:<b>)?[\s\n]?([\d\D]+?)[\s\n</b>]?(?:<\/b>)?<\/p>/
               let img = Taghref('img','src')
               let origin = Taghref('img','data-origin')
               let preview = Taghref('img','data-preview')
@@ -57,6 +58,7 @@ export  const JinPinData = (id) => {
 
               let modelArray = data.match(model)
               modelArray = modelArray.slice(0,3)
+              window.model = modelArray
               let DetailData = JinPinData.tabDetail
 
 
@@ -69,12 +71,15 @@ export  const JinPinData = (id) => {
                     let item = eval(arritem)
                     // 内容有多项 要保存为数组
                     if(arritem === 'txt'){
+                      // 深 克隆 并且 去掉前2项
+                      let CalllArrayClone = JSON.parse(JSON.stringify(CallArray))
+                      CalllArrayClone = CalllArrayClone.slice(2,)
+
                       // 动态定义 数组
                       Object.assign(DetailData, {[arritem]:[]})
-                      itemData.replace(item, (match, itemValue) => {
-                        // 深 克隆 并且 去掉前2项
-                        let CalllArrayClone = JSON.parse(JSON.stringify(CallArray))
-                        CalllArrayClone = CalllArrayClone.slice(2,)
+                      itemData.replace(txt, (match, itemValue) => {
+
+
                         // 匹配到的内容写入数组
                         DetailData[arritem].push(itemValue)
 
@@ -84,16 +89,12 @@ export  const JinPinData = (id) => {
                             Object.assign(DetailData, {[itemC]: itemValue})
                           })
                         })
-
                       })
-
                     } else if(arritem !== 'txt'){
                       itemData.replace(item, (match, itemValue) => {
                         Object.assign(DetailData, {[arritem]: itemValue})
-                        // DetailData.push({[arritem]: itemValue})
                       })
                     }
-
                   })
                 }
               })
