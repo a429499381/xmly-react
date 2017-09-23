@@ -57,26 +57,27 @@ export  const JinPinData = (id) => {
 
               let modelArray = data.match(model)
               modelArray = modelArray.slice(0,3)
-              let DetailData = JinPinData.tabDetail
+              // let DetailData = JinPinData.tabDetail
 
 
               modelArray.forEach((itemData, indexData) => {
                 // 定义 数组每项 为对象
-                DetailData[indexData] = {}
-                let DetailData = DetailData[indexData]
+                JinPinData.tabDetail[indexData]= {}
+                let DetailData =JinPinData.tabDetail[indexData]
                 if (CallArray) {
                   CallArray.forEach((arritem, arrindex) => {
                     let item = eval(arritem)
                     // 内容有多项 要保存为数组
                     if(arritem === 'txt'){
-                      DetailData = {[arritem]:[]}
-                      let DetailData = DetailData[indexData][arritem]
-                      itemData.replace(item, (match, itemValue) => {
-                        DetailData[arritem].push(itemValue)
-                      })
+                      // DetailData = {[arritem]:[]}
+                      // let DetailData = DetailData[indexData][arritem]
+                      // itemData.replace(item, (match, itemValue) => {
+                      //   DetailData[arritem].push(itemValue)
+                      // })
                     } else {
                       itemData.replace(item, (match, itemValue) => {
                         Object.assign(DetailData, {[arritem]: itemValue})
+                        // DetailData.push({[arritem]: itemValue})
                       })
                     }
 
