@@ -73,8 +73,8 @@ export  const JinPinData = (id) => {
                       Object.assign(DetailData, {[arritem]:[]})
                       itemData.replace(item, (match, itemValue) => {
                         // 深 克隆 并且 去掉前2项
-                        let CalllArrayClone = window.JSON(window.JSON.stringify(CallArray))
-                        CalllArrayClone.slice(2,)
+                        let CalllArrayClone = JSON.parse(JSON.stringify(CallArray))
+                        CalllArrayClone = CalllArrayClone.slice(2,)
                         // 匹配到的内容写入数组
                         DetailData[arritem].push(itemValue)
 
