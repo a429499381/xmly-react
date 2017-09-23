@@ -13,6 +13,12 @@
   <input type="submit" value="提交">
 </form>
 
+<form name="signUp">
+  <input type="text" name="username" placeholder="用户名">
+  <input type="password" name="password" placeholder="密码">
+  <input type="submit" value="提交">
+</form>
+
 
 
 <script src="//cdn1.lncld.net/static/js/3.2.1/av-min.js"></script>
@@ -38,6 +44,7 @@
 //  }).then(res => {
 //    consoel.log('保存OK')
 //  })
+// 注册
 var singInForm = document.querySelector('form[name=signIn]')
 singInForm.addEventListener('submit', function (e) {
   e.preventDefault()
@@ -51,9 +58,27 @@ singInForm.addEventListener('submit', function (e) {
 
   user.signUp().then(function (loginedUser) {
     console.log('注册成功')
+    // 刷新网页
+    location.reload()
   }), function (err) {
     console.log(err)
   }
+})
+
+// 登陆模块
+var singUpForm = document.querySelector('form[name=signUp]')
+  singUpForm.addEventListener('submit', function (e) {
+  e.preventDefault()
+
+  var username =   singUpForm.username.value
+  var password =   singUpForm.password.value
+  // 登陆方法
+  AV.User.logIn(username, password).then(function (loginedUser) {
+    alert(loginedUser);
+//    location.reload()
+  }, function (error) {
+    alert(err)
+  });
 })
 
 
