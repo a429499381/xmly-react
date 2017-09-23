@@ -57,7 +57,7 @@ export  const JinPinData = (id) => {
 
               let modelArray = data.match(model)
               modelArray = modelArray.slice(0,3)
-              // let DetailData = JinPinData.tabDetail
+              let DetailData = JinPinData.tabDetail
 
 
               modelArray.forEach((itemData, indexData) => {
@@ -69,12 +69,25 @@ export  const JinPinData = (id) => {
                     let item = eval(arritem)
                     // 内容有多项 要保存为数组
                     if(arritem === 'txt'){
-                      // DetailData = {[arritem]:[]}
-                      // let DetailData = DetailData[indexData][arritem]
-                      // itemData.replace(item, (match, itemValue) => {
-                      //   DetailData[arritem].push(itemValue)
-                      // })
-                    } else {
+                      // 动态定义 数组
+                      Object.assign(DetailData, {[arritem]:[]})
+                      itemData.replace(item, (match, itemValue) => {
+                        // 深 克隆 并且 去掉前2项
+                        let CalllArrayClone = window.JSON(window.JSON.stringify(CallArray))
+                        CalllArrayClone.slice(2,)
+                        // 匹配到的内容写入数组
+                        DetailData[arritem].push(itemValue)
+
+                        // 如果不是 内容  进行属性配置
+                        CalllArrayClone.forEach((itemC, indexC) => {
+                          itemData.replace(itemC, (match, itemValue) => {
+                            Object.assign(DetailData, {[arritem]: itemValue})
+                          })
+                        })
+
+                      })
+
+                    } else if(arritem !== 'txt'){
                       itemData.replace(item, (match, itemValue) => {
                         Object.assign(DetailData, {[arritem]: itemValue})
                         // DetailData.push({[arritem]: itemValue})
