@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>LeanClound</title>
+</head>
+<body>
+
+<form name="signIn">
+  <input type="text" name="username" placeholder="用户名">
+  <input type="password" name="password" placeholder="密码">
+  <input type="email" name="emial" placeholder="邮箱">
+  <input type="submit" value="提交">
+</form>
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.2.1/av-min.js"></script>
+<script>
+  // 初始化
+  var APP_ID = '3X9jTyLPjORGtQIdFneYartA-gzGzoHsz';
+  var APP_KEY = '9XKG8fPj4NlLgIWf71AWrQeD';
+
+  AV.init({
+    appId: APP_ID,
+    appKey: APP_KEY
+  });
+
+  console.log(AV)
+
+//  // 要保存的 表名
+//  var Testobject = AV.Object.extend('object')
+//  // 建立一个表的 实例
+//  var textobject = new Testobject()
+//  // 保存数据
+//  textobject.save({
+//    name: 'xutao'
+//  }).then(res => {
+//    consoel.log('保存OK')
+//  })
+var singInForm = document.querySelector('form[name=signIn]')
+singInForm.addEventListener('submit', function (e) {
+  e.preventDefault()
+
+  // 新建一个 实例
+  var user= new AV.User();
+
+  user.setUsername(singInForm.username.value)
+  user.setPassword(singInForm.password.value)
+  user.setEmail(singInForm.emial.value)
+
+  user.signUp().then(function (loginedUser) {
+    console.log('注册成功')
+  }), function (err) {
+    console.log(err)
+  }
+})
+
+
+</script>
+</body>
+</html>

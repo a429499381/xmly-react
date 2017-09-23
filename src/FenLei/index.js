@@ -4,6 +4,7 @@ import Header from '../PageCom/Header'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 import NoMore from '../PageCom/NoMore'
 
+import {a} from 'leancloud-storage'
 
 class FenLei extends Component {
   render() {
