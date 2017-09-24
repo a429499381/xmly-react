@@ -21,17 +21,17 @@ class FenLei extends Component {
     </div>
     )
   }
-  componentDidMount() {
-    var APP_ID = '3X9jTyLPjORGtQIdFneYartA-gzGzoHsz';
-    var APP_KEY = '9XKG8fPj4NlLgIWf71AWrQeD';
-
-    AV.init({
-      appId: APP_ID,
-      appKey: APP_KEY
-    });
-
-    console.log(AV)
-  }
+  // componentDidMount() {
+  //   var APP_ID = '3X9jTyLPjORGtQIdFneYartA-gzGzoHsz';
+  //   var APP_KEY = '9XKG8fPj4NlLgIWf71AWrQeD';
+  //
+  //   AV.init({
+  //     appId: APP_ID,
+  //     appKey: APP_KEY
+  //   });
+  //
+  //   console.log(AV)
+  // }
 }
 
 export default FenLei;

@@ -19,6 +19,7 @@ import Sound from '../Sound'
 import SoundQuan from '../SoundQuan'
 import Search from '../Search'
 import explore from '../explore'
+import Play from '../Play'
 
 // 如果是大型项目，router部分就需要做更加复杂的配置
 // 参见 https://github.com/reactjs/react-router/tree/master/examples/huge-apps
@@ -44,6 +45,7 @@ class RouterMap extends React.Component {
           <Route path='/Ls' component={Ls}/>
           <Route path='/Search/:id(/:more)' component={Search}/>
           <Route path='/explore/*' component={explore}/>
+          <Route path='/Play/*' component={Play}/>
           {/*<Route path='/User' component={User}/>*/}
           {/*<Route path='/search/:category(/:keyword)' component={Search}/>*/}
           {/*<Route path='/detail/:id' component={Detail}/>*/}

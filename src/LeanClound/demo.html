@@ -79,6 +79,7 @@ var singUpForm = document.querySelector('form[name=signUp]')
 
   var username =   singUpForm.username.value
   var password =   singUpForm.password.value
+  var phone = '13886077937'
   // 登陆方法
   AV.User.logIn(username, password).then(function (loginedUser) {
     alert(loginedUser);
