@@ -16,7 +16,7 @@ class FenLei extends Component {
           <div>
 
               <div className="mt86"></div>
-              <h4 classID="name">李玉刚 - 刚好遇见你</h4>
+              <h4 classID="name">李玉刚 - 刚好遇见你1</h4>
               <audio classID="audio" src="http://audio.xmcdn.com/group32/M08/05/87/wKgJnFnFHgmA3tnSAHEVQqq3e00956.m4a"
                      controls autoplay="true"></audio>
               <button classID="btn-play">播放</button>
