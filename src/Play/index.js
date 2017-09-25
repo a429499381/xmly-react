@@ -28,15 +28,18 @@ class Play extends Component {
         )
     }
   SingUpHandle() {
-    let APP_ID = '3X9jTyLPjORGtQIdFneYartA-gzGzoHsz';
-    let APP_KEY = '9XKG8fPj4NlLgIWf71AWrQeD';
+     let user = new AV.User()
+    if(!user.current()) {
+      let APP_ID = '3X9jTyLPjORGtQIdFneYartA-gzGzoHsz';
+      let APP_KEY = '9XKG8fPj4NlLgIWf71AWrQeD';
 
-    AV.init({
-      appId: APP_ID,
-      appKey: APP_KEY
-    });
+      AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+      });
+    }
 
-    var user= new AV.User();
+    // var user= new AV.User();
     console.log('user',user)
     user.setUsername(this.state.userName)
     user.setPassword(this.state.password)
