@@ -31,6 +31,16 @@
   line-height: 40px;
   text-align: center;
   color: #ffffff;
-  transition: transform 10s; }
-.bofang a:hover {
-  transform: rotate(1360deg); }
+
+  -webkit-transform: rotate(360deg);
+  animation: myfirst 3s linear infinite;
+
+}
+/*.bofang a:hover {*/
+  /*transform: rotate(1360deg); }*/
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+  0%   {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}

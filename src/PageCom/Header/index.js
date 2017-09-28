@@ -16,7 +16,7 @@ class Header extends Component {
   render() {
     return (
             <div className="pos">
-                {
+                  {
                     this.state.top
                     ?  <HeaderTop data = {this.state.top} title = '消息' />
                     : ''
