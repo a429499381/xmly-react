@@ -36,7 +36,11 @@ class FenLei extends Component {
   componentDidMount() {
     window.N = false
     var src="http://audio.xmcdn.com/group32/M08/05/87/wKgJnFnFHgmA3tnSAHEVQqq3e00956.m4a";
+    if(window.audio) {
+      return
+    }
     window.audio = new Audio(src)
+    console.log('window.audio', window.audio)
   }
   play() {
     let audio = this.refs.audio
@@ -47,6 +51,7 @@ class FenLei extends Component {
   }
 
   Seek() {
+    console.log('window.audio play or pause', window.audio)
     let audio = window.audio
     audio.paused ? audio.play() : audio.pause()
     console.log(audio.duration)
