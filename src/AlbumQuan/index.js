@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from '../PageCom/Header'
+import Back from '../PageCom/Back'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 import NoMore from '../PageCom/NoMore'
 
@@ -9,7 +10,7 @@ class AlbumQuan extends Component {
     return (
       <div>
         {/* top */}
-          <Header/>
+          <Back/>
           <div className="mt86"></div>
            <h1>AlbumQuan</h1>
         {/* 底部导航 */}
