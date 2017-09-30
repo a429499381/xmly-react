@@ -84,12 +84,12 @@ class Home extends Component {
        })
 
        // 创建数据库 并且存储与 indexDB 中
-       HomeDB(data)
+       // HomeDB(data)
      })
     // 提取数据与  state over
 
     // 查询特定 空间数据ok
-    GetData('Home', 'Fl')
+    // GetData('Home', 'Fl')
   }
 }
 
