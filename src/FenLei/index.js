@@ -14,14 +14,11 @@ class FenLei extends Component {
           <Header/>
         <div className="mt86"></div>
           <div>
-
+              <div className="mt86">001</div>
               <div className="mt86"></div>
               <h4 classID="name">李玉刚 - 刚好遇见你1</h4>
               <audio classID="audio" ref='audio' controls src="http://audio.xmcdn.com/group32/M08/05/87/wKgJnFnFHgmA3tnSAHEVQqq3e00956.m4a"></audio>
-              <button classID="btn-play" onClick={this.play.bind(this)}>播放</button>
-              <button classID="btn-stop" onClick={this.Seek.bind(this)}>暂停</button>
-              <button classID="btn-pre" onClick={this.Up.bind(this)}>上一首</button>
-              <button classID="btn-next" onClick={this.Dp.bind(this)}>下一首</button>
+             
           </div>
 
           分类页面
