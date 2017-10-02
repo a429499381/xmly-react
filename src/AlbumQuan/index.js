@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Header from '../PageCom/Header'
 import Back from '../PageCom/Back'
+import DetailTitle from '../PageCom/DetailTitle'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 import NoMore from '../PageCom/NoMore'
 
@@ -11,13 +12,11 @@ class AlbumQuan extends Component {
       <div>
         {/* top */}
           <Back/>
-          <div className="mt86"></div>
-           <h1>AlbumQuan</h1>
+          <DetailTitle/>
         {/* 底部导航 */}
           <FooterNavgtion/>
-
         {/* 没有更多 */}
-          <NoMore/>
+          {/*<NoMore/>*/}
     </div>
     )
   }
