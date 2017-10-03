@@ -1,0 +1,17 @@
+.BackTop {
+  width: 100%;
+  clear: both;
+}
+.BackTop .back {
+  display: block;
+  float: left;
+  color: #ff8484;
+}
+.BackTop .container {
+  float: right;
+}
+.BackTop .container a {
+  display: inline-block;
+  padding: 0 5px;
+
+}
