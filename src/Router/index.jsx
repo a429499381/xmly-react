@@ -13,10 +13,7 @@ import ZhiBo from '../ZhiBo'
 import Sms from '../PageCom/Sms'
 import Down from '../PageCom/Down'
 import Ls from '../PageCom/Ls'
-import AlbumQuan from '../AlbumQuan'
-import AlbumTag from '../AlbumTag'
-import Sound from '../Sound'
-import SoundQuan from '../SoundQuan'
+import Detail from '../PageCom/Detail'
 import Search from '../Search'
 import explore from '../explore'
 import Play from '../Play'
@@ -37,11 +34,11 @@ class RouterMap extends React.Component {
           <Route path='/ZhiBo' component={ZhiBo}/>
           <Route path='/Sms' component={Sms}/>
           <Route path='/Down' component={Down}/>
-          <Route path='/Album-Quan/*/rank' component={AlbumQuan}/>
-          <Route path='/Album-Tag/*' component={AlbumTag}/>
-          <Route path='/Sound-Quan/*/rank' component={SoundQuan}/>
-          <Route path='*/Sound/*' component={Sound}/>
-          <Route path='*/album/*' component={Sound}/>
+          <Route path='/Album-Quan/*/rank' component={Detail}/>
+          <Route path='/Album-Tag/*' component={Detail}/>
+          <Route path='/Sound-Quan/*/rank' component={Detail}/>
+          <Route path='*/Sound/*' component={Detail}/>
+          <Route path='*/album/*' component={Detail}/>
           <Route path='/Ls' component={Ls}/>
           <Route path='/Search/:id(/:more)' component={Search}/>
           <Route path='/explore/*' component={explore}/>
