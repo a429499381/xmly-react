@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './index.css'
 
+import SoundList from '../DetailSoundList'
+
 class DetailTitle extends Component {
   constructor(props) {
     super(props)
@@ -66,7 +68,11 @@ class DetailTitle extends Component {
               <a className="zbItme" href="#">商业</a>
               <a className="zbItme" href="#">脱口秀</a>
             </div>
+
+            <SoundList/>
           </div>
+
+
 
         )}
 }
