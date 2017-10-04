@@ -16,9 +16,14 @@ export default class Detail extends Component {
       <div>
         <Back/>
         <div className="DTitle">
-          <h2 className="title">中国男子在</h2>
-          <div className="paly">
-            <img src="" alt="" className="playImg"/>
+          <h2 className="title">女孩简历写“会用支付宝” 新西兰打工月薪2万 | 新闻早餐 2017.10.1 星期日</h2>
+          <div className="play">
+              <img src="" alt="" className="playImg" />
+              <div className="playImgP">
+                <a className="itemIcon ">
+                  <i className="palyIcon"></i>
+                </a>
+              </div>
             <p className="zhubo">主播：东方网</p>
             <div className="playScroll">
               <span className="start">00:00</span>
@@ -38,8 +43,8 @@ export default class Detail extends Component {
                 625辆出租车顶灯滚动播：老婆我错了。 结果...
               </p>
             </div>
-            <a href="#" className="itemIcon">
-              <i className="paly"></i>
+            <a className="itemIcon">
+              <i className="palyIcon"></i>
             </a>
           </div>
           <div className="blums">
@@ -48,8 +53,8 @@ export default class Detail extends Component {
                 625辆出租车顶灯滚动播：老婆我错了。 结果...
               </p>
             </div>
-            <a href="#" className="itemIcon">
-              <i className="paly"></i>
+            <a className="itemIcon">
+              <i className="palyIcon"></i>
             </a>
           </div>
         </div>

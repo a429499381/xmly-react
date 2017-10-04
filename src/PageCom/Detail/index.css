@@ -7,18 +7,26 @@
   color: rgba(75, 75, 75, 0.89);
 }
 .play {
-  padding: 40px 0;
+  position: relative;
+  margin: 20px 0;
 }
 .playImg {
   width: 80px;
   height: 80px;
   border-radius: 40px;
-  background: #ff8484;
+  background: rgba(229, 119, 119, 0.08);
   float: left;
   margin-right: 10px;
 }
 .zhubo {
-
+  padding-top: 20px;
+}
+.img {
+}
+.playImgP {
+  position: absolute;
+  top: 30px;
+  left: 30px;
 }
 .palyScroll {
   display: inline-block;
@@ -68,10 +76,24 @@
   font-size: 14px;
 }
 .itemIcon {
+  position: relative;
   display: inline-block;
   width: 24px;
   height: 24px;
   border-radius: 324px;
   border: 1px solid #ff8484;
+}
+
+.palyIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -5px;
+  margin-left: -4px;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-left: 10px solid rgba(212, 0, 0, 0.47);
+  border-bottom: 5px solid transparent;
 }
 
