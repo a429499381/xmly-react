@@ -1,133 +1,77 @@
-.DetailTitle {
+.DTitle {
   padding: 20px 10px;
 }
-.DetailTitle .title {
-  clear: both;
+.title {
+  line-height: 30px;
+  padding: 10px 0;
+  color: rgba(75, 75, 75, 0.89);
 }
-.title .img{
-  display: block;
-  float: left;
-  width: 26%;
-  height: 100px;
+.play {
+  padding: 40px 0;
+}
+.playImg {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
   background: #ff8484;
+  float: left;
   margin-right: 10px;
 }
-.container {
-  float: left;
-}
+.zhubo {
 
-.container h3 {
-  padding-top: 10px;
-  line-height: 1.6;
 }
-.container p {
-  line-height: 1.6;
-}
-.container p a {
-  color: #ff8484;
-}
-
-.btn {
-  padding: 10px 0;
+.palyScroll {
+  display: inline-block;
   width: 100%;
+}
+.start{
   display: inline-block;
-  text-align: justify;
+  margin:8px 8px 0 0;
 }
-.btn .btnL,.btn .btnR {
-  cursor: pointer;
-  display: inline-block;
-  width: 45%;
-  padding: 10px 0;
-  border-radius: 5px;
-  text-align: center;
-}
-.btnL {
-  float: left;
-  background: #ff8484;
-}
-.btnR {
-  float: right;
-  background: #00e5ff;
-}
-
-.smallTitle {
-  width: 100%;
-  background: rgba(255, 255, 104, 0.42);
-}
-.smallTitle img {
-  display: inline-block;
-  float: left;
-  margin-right: 10px;
-  width: 40px;
-  height: 40px;
-  background: rgba(91, 182, 255, 0.24);
-}
-.smallTitle  span {
-  display: inline-block;
-  line-height: 40px;
-}
-.more {
-  float: right;
-  margin-right: 10px;
-}
-
-.DetailTabs a{
-  display: inline-block;
-  padding: 10px 0;
-  width: 33%;
-  text-align: center;
-}
-.DetailTabs a.active {
-  color: #ff8484;
-  border-bottom:2px solid #ff8484;
-}
-
-.DetailZhubo {
-
-}
-
-.DetailZhubo .title {
-  padding: 10px 0;
-  clear: both;
-}
-.DetailZhubo .TitleC {
+.startIng {
   position: relative;
-}
-.DetailZhubo .TitleC img {
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 132, 132, 0.18);
   display: inline-block;
-  float: left;
-  margin-right: 10px;
-}
-.DetailZhubo .TitleC .gz {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-.DetailZhubo .TitleT h4 {
-  line-height: 24px;
-}
-.DetailZhubo .TitleT span {
-  line-height: 24px;
-}
-.DetailZhubo .txt {
-  clear: both;
-  padding: 10px 0;
-  line-height: 18px;
+  width: 40%;
+  border: 1px solid #cccccc;
 
 }
-.zjbq {
-  width: 100%;
+.red {
+  position: absolute;
+  top: -8px;
+  left: -5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+  background: #ff8484;
 }
-.zjbq .zbItme {
+
+.samllTitle {
+  font-size: 18px;
+  line-height: 30px
+}
+
+.blums {
+  position: relative;
   display: inline-block;
-  width: 30%;
-  line-height: 24px;
-  border: 1px solid #ff8484;
-  margin:5px 5px;
-  text-align: center;
-  border-radius: 5px;
-  box-shadow: 1px;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid rgba(204, 204, 204, 0.31);
+  box-shadow: inset;
 }
+.lists {
+  width: 90%;
+  float: left;
+}
+.item {
+  display: inline-block;
+  line-height: 24px;
+  font-size: 14px;
+}
+.itemIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 324px;
+  border: 1px solid #ff8484;
+}
+
