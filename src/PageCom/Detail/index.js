@@ -18,7 +18,8 @@ export default class Detail extends Component {
   }
 
   render() {
-    let list = this.state.lists
+    let data = this.state.data
+    let list = this.state.data.lists
     let play = this.state.data.play
     let blum = this.state.data.blum
     return (
@@ -26,14 +27,14 @@ export default class Detail extends Component {
         {
           data
             ? <div>
-            <Back/>
+               <Back/>
             <div className="DTitle">
               <h2 className="title">{play.title}</h2>
               <div className="play">
                 <img src="" alt="" className="playImg"/>
                 <div className="playImgP">
                   <a className="itemIcon">
-                    <i className="palyIcon"></i>
+                      <i className="palyIcon"></i>
                   </a>
                 </div>
                 <p className="zhubo">主播：{play.zhubo}</p>
@@ -47,31 +48,35 @@ export default class Detail extends Component {
               </div>
               <div className="fix pt20"></div>
               <p className="samllTitle">{blum.info}</p>
-
-              {
-                list.map((item, index) => {
-                  return <div key={index}>
-                    <Link to={item.href}>
-                      <div className="list">
-                        <p className="item">{tiem.title}</p>
+            </div>
+            {
+              list.map((item, index) => {
+                return <div key={index}>
+                  <Link to={item.href}>
+                    <div className="blums">
+                      <div className="lists">
+                        <p className="item">
+                          {item.title}
+                        </p>
                       </div>
                       <a className="itemIcon">
                         <i className="palyIcon"></i>
                       </a>
-                    </Link>
-                  </div>
-                })
-              }
-            </div>
+                    </div>
+                  </Link>
+                </div>
+              })
+            }
           </div>
             : <div>加载中</div>
         }
+      </div>
     )
   }
 
   componentDidMount() {
     // 获取当前页面url
-    const id = this.props.location.pathname
+    let id = this.props.location.pathname
     console.log(id)
 
     // 获取用户页数据
