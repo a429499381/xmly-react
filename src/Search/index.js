@@ -5,7 +5,7 @@ import FooterNavgtion from '../PageCom/FooterNavgtion'
 import NoMore from '../PageCom/NoMore'
 
 import {SearchData} from '../axios/Search'
-import {DetailData} from '../axios/Detail'
+import {albumData} from '../axios/album'
 import {UserDetailData} from '../axios/UserDetail'
 import {JinPinData} from '../axios/Jinpin'
 
@@ -27,7 +27,7 @@ class Search extends Component {
     )
   }
   componentDidMount() {
-    let url = '/33733258/album/4026875'
+    let url = '/80325809/album/10439439'
     let Userurl = '/zhubo/33733258'
     let Jinpin = '/49265909/album/7368509'
     let id = this.props.params.id
@@ -38,8 +38,8 @@ class Search extends Component {
     })
 
     // 专辑 详情页
-    DetailData(url).then(data => {
-        console.log('DetailData',data)
+    albumData(url).then(data => {
+        console.log('album',data)
     })
     // 用户 详情页
     UserDetailData(Userurl).then(data => {

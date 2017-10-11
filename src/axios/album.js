@@ -1,6 +1,7 @@
 import {GetId} from './get.js'
+import {TagAll, Tagtxt, Taghref} from '../Regex/config'
 
-export  const DetailData = (id) => {
+export  const albumData = (id) => {
     var GetData = {}
     GetData.album = []
     GetData.album.Lists = []
@@ -58,32 +59,39 @@ export  const DetailData = (id) => {
 
                  // 相关专辑提取
                  data.replace(SectionX, function (match) {
+                     let img = Taghref('img', 'src')
                      let NumH = 0
                      let NumP = 0
                      let NumT = 0
-                     GetData.album.MoreAlbum = []
-                     GetData.album.MoreAlbum[NumH] = {}
-                     GetData.album.MoreAlbum[NumP] = {}
-                     GetData.album.MoreAlbum[NumT] = {}
+                     let NumI = 0
+                     GetData.album.Album = []
+                     GetData.album.Album[NumH] = {}
+                     GetData.album.Album[NumP] = {}
+                     GetData.album.Album[NumT] = {}
+                     GetData.album.Album[NumI] = {}
                      match.replace(HrefX, function (match, Href) {
-                         GetData.album.MoreAlbum[NumH] = {Href}
+                         GetData.album.Album[NumH] = {Href}
                             NumH++
+                     })
+                     match.replace(img, function (match, img) {
+                         GetData.album.Album[NumI] = {img}
+                         NumI++
                      })
 
                      match.replace(TitleX, function (match, Title) {
-                         Object.assign(GetData.album.MoreAlbum[NumT], {Title})
+                         Object.assign(GetData.album.Album[NumT], {Title})
                             NumT++
                      })
-                     match.replace(PlayNumX, function (match, PlayNUm, PlayTime) {
-                         Object.assign(GetData.album.MoreAlbum[NumP], {PlayNUm, PlayTime})
+                     match.replace(PlayNumX, function (match, playNum, playTime) {
+                         Object.assign(GetData.album.Album[NumP], {playNum, playTime})
                              NumP++
                      })
                  })
 
                 // 提取 详情内容
                 data.replace(SectionD, function (match) {
-                    GetData.album.Detail= {}
-                    let Detail = GetData.album.Detail
+                    GetData.album.header= {}
+                    let Detail = GetData.album.header
                     match.replace(TitleD, function (match, Title) {
                         Object.assign(Detail,{Title})
                     })
