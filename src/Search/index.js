@@ -34,12 +34,12 @@ class Search extends Component {
     let more = this.props.params.more
     //  搜索 数据
     SearchData(id,more).then(data => {
-        console.log(data)
+        console.log('SearchData',data)
     })
 
     // 专辑 详情页
     DetailData(url).then(data => {
-        console.log(data)
+        console.log('DetailData',data)
     })
     // 用户 详情页
     UserDetailData(Userurl).then(data => {

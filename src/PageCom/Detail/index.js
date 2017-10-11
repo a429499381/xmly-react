@@ -6,6 +6,8 @@ import React, {Component} from 'react'
 import Back from '../../PageCom/Back'
 import './index.css'
 
+import {UserDetailData} from '../../axios/UserDetail'
+
 export default class Detail extends Component {
   constructor(props) {
     super(props)
@@ -61,5 +63,14 @@ export default class Detail extends Component {
 
       </div>
     )
+  }
+  componentDidMount() {
+    let id = this.props.location.pathname
+    console.log(id)
+
+    UserDetailData(id).then(data => {
+      console.log('用户数据', data)
+    })
+
   }
 }

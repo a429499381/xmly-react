@@ -1,4 +1,5 @@
 import {GetId} from './get.js'
+import {TagAll, Taghref, Tagtxt} from '../Regex/config'
 
 export  const UserDetailData = (id) => {
     var GetData = {}
@@ -12,15 +13,16 @@ export  const UserDetailData = (id) => {
   //  分类 数据提取
 
     var Prom = new Promise((resolve, reject) => {
-      let albumId = id + '/albums'
+      // let albumId = id + '/albums'
 
      GetId(id).then((res) => {
                 let data = res.data
                 // 列表 标签
 
                 // 提取 详情 主播介绍
-                const SectionD = /(?!<\/?section>)<section\b\s?class="anchor-info"[\d\D]+?(<\/section\b>)/g
-                const ImgD = /<img\b.+?src="([^><"]+?)"/g
+
+                const SectionD = TagAll('div', 'class', 'container bg-f')
+                const ImgD = Taghref('img', 'src')
                 const IntroD = /<p\b.+?([^><]+?)<\/p>/g
                 const nameD = /<p\sclass="name">([^<>]+)</g
                 const btnD = /<span\b.+?([^><]+?)<\/span>/g
@@ -79,40 +81,6 @@ export  const UserDetailData = (id) => {
                 })
         })
 
-     GetId(albumId).then((res) => {
-       let data = res.data
-       // 相关专辑提取
-       const SectionX = /<ul\sclass="list-album">[\d\D]+<\/ul>/g
-       const HrefX = /<a.+href="([^<>"]+)">/g
-       const Imgx = /<img\b.+?src="([^><"]+?)"/g
-       const name = /<p\sclass="name">([^><]+?)<\/p>/
-       const cont = /<p\sclass="cont">([^><]+?)<\/p>/
-
-       // 相关专辑提取
-       data.replace(SectionX, function (match) {
-         let N = 0
-         GetData.album.albums = []
-         match.replace(HrefX, function (data, href) {
-           GetData.album.albums[N] = {}
-           Object.assign(GetData.album.albums[N],{href})
-
-           match.replace(Imgx, function (data, img) {
-             Object.assign(GetData.album.albums[N],{img})
-           })
-           match.replace(name, function (data, name) {
-             Object.assign(GetData.album.albums[N],{name})
-           })
-           match.replace(cont, function (data, cont) {
-             Object.assign(GetData.album.albums[N],{cont})
-
-           })
-           N++
-         })
-
-
-         return OK ='OK'
-       })
-     })
                 // 5秒后退出 定时
                 time  = setInterval(Go,100)
                 setTimeout(function () {
