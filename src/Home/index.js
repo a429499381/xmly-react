@@ -13,7 +13,7 @@ import {HomeDB} from '../DB/HomeDB'
 import {GetData} from '../DB/GetData'
 
 
-import  {Data} from '../axios/regex'
+import  {Data} from '../axios/Home'
 
 // 头部 数据
 import  HeaderData from '../PageCom/config/config.json'

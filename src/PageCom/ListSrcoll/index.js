@@ -27,7 +27,7 @@ class ListSrcoll extends Component {
             {
               container.map((item,index) =>{
                   return <div  key={index}>
-                           <Link to = {item.href}>
+                           <Link to = {item.href.indexOf('/')? '/'+ item.href : item.href}  >
                             <div className="list" >
                               <div className="list_img">
                             <img src={item.src} className="img" alt=""></img>
@@ -65,7 +65,6 @@ class ListSrcoll extends Component {
   componentDidMount(){
     let data = this.props.data
     let  container = []
-
 
       data.map((item, index) => {
       if (index === 0) {
