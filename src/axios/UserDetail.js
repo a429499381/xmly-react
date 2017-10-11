@@ -1,101 +1,123 @@
 import {GetId} from './get.js'
 import {TagAll, Taghref, Tagtxt} from '../Regex/config'
 
-export  const UserDetailData = (id) => {
-    var GetData = {}
-    GetData.album = []
-    GetData.album.Lists = []
-    let OK = 'No'
-    let time = 'No'
-    var N = 0
-
+export const UserDetailData = (id) => {
+  var GetData = {}
 
   //  分类 数据提取
+  const Prom = new Promise((resolve, reject) => {
+    let OK = 'No'
+    let time = 'No'
+    let timeover = function () {
+      // 5秒后退出 定时
+      time = setInterval(Go, 100)
+      setTimeout(function () {
+        clearInterval(time)
+      }, 5000)
 
-    var Prom = new Promise((resolve, reject) => {
-      // let albumId = id + '/albums'
+      function Go() {
+        if (OK === 'OK') {
+          clearInterval(time)
+          resolve(GetData)
+        }
+      }
+    }
 
-     GetId(id).then((res) => {
-                let data = res.data
-                // 列表 标签
+    GetId(id).then((res) => {
+      let data = res.data
+      let play = function () {
+        GetData.play = {}
+        let play = GetData.play
 
-                // 提取 详情 主播介绍
+        // 提取 详情 主播介绍
+        const voiceHeader = TagAll('div', 'class', 'voice-header')
+        const ImgD = Taghref('img', 'src')
+        const soundId = Taghref('div', 'sound_id',)
+        const TotalTime = Tagtxt('span', 'class', 'time fr')
+        const title = /<span>([^><]+?)<\/span>/g
 
-                const SectionD = TagAll('div', 'class', 'container bg-f')
-                const ImgD = Taghref('img', 'src')
-                const IntroD = /<p\b.+?([^><]+?)<\/p>/g
-                const nameD = /<p\sclass="name">([^<>]+)</g
-                const btnD = /<span\b.+?([^><]+?)<\/span>/g
+        // 提取 主播内容介绍
+        data.replace(voiceHeader, function (match) {
+          match.replace(ImgD, function (match, Img) {
+            Object.assign(play, {Img})
+          })
+          match.replace(soundId, function (match, Intro) {
+            Object.assign(play, {Intro})
+          })
+          match.replace(TotalTime, function (match, time) {
+            Object.assign(play, {time})
+          })
+          match.replace(title, function (match, title) {
+            Object.assign(play, {title})
+          })
+        })
+      }
+      let blum = function () {
+        GetData.blum = {}
+        let blum = GetData.blum
 
-                // 播放列表
-                const OlP = /<ul>[\d\D]+?<\/ul>/
-                const LiregP = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?(<\/li\b>)/g
-                const HrefP = /<a\s.+href="([^<;'>"]+)">([^<>]+?)[\d\D]+?<\/a>/g
-                const txtP = /<a\b.+?([^><]+?)<\/a>/g
-                const Play = /<a\s.+sound_url=["']([^<>";']+)["']/g
+        // 所属专辑
+        const blumk = TagAll('section', 'class', 'pl-part', 'g')
+        const url = Taghref('div', 'data-url')
+        const plSubtit = Tagtxt('h2', 'class', 'pl-subtit')
+        const img = Taghref('img', 'src')
+        const title = Tagtxt('h3', 'class', 'name elli-multi-1')
+        const info = Tagtxt('p', 'class', 'info-intro')
 
-                // 提取 主播内容介绍
-                data.replace(SectionD, function (match) {
-                    GetData.album.Num= {}
-                    let Detail = GetData.album.Num
-
-                    match.replace(ImgD, function (match, Img) {
-                        Object.assign(Detail, {Img})
-                    })
-                    match.replace(IntroD, function (match, Intro) {
-                        Object.assign(Detail, {Intro})
-                    })
-                    match.replace(btnD, function (match, btn) {
-                        Object.assign(Detail, {btn})
-                    })
-                    match.replace(nameD, function (match, name) {
-                        Object.assign(Detail, {name})
-                    })
-                    return OK ='OK'
-                })
-
-                // 播放列表
-                data.replace(OlP, function (match) {
-                  let NumH = 0
-                  let NumP = 0
-
-
-                  match.replace(LiregP, function (match) {
-
-                    match.replace(Play, function (match, play) {
-                      GetData.album.Lists[NumP] = {}
-                      Object.assign( GetData.album.Lists[NumP], {play})
-                      NumP++
-                    })
-                    match.replace(HrefP, function (match, href) {
-                      Object.assign( GetData.album.Lists[NumH], {href})
-                      match.replace(txtP, function (match, txt) {
-                        Object.assign(GetData.album.Lists[NumH], {txt})
-                      })
-                      NumH++
-                    })
-
-                    return OK = 'OK'
-                  })
-
-                })
+        data.replace(blumk, function (match) {
+          match.replace(url, function (data, url) {
+            Object.assign(blum, {url})
+          })
+          match.replace(plSubtit, function (data, subtit) {
+            Object.assign(blum, {subtit})
+          })
+          match.replace(title, function (data, title) {
+            Object.assign(blum, {title})
+          })
+          match.replace(info, function (data, info) {
+            Object.assign(blum, {info})
+          })
         })
 
-                // 5秒后退出 定时
-                time  = setInterval(Go,100)
-                setTimeout(function () {
-                  clearInterval(time)
-                },5000)
+      }
+      let lists = function () {
+        // 播放列表
+        const ol = TagAll('ol', 'class', 'mod list-t1')
+        const li = TagAll('li', 'class', 'item-block trackItem')
+        const title = Tagtxt('h4', 'class', 'item-tit')
+        const href = Taghref('a', 'href')
 
-                function Go() {
-                    if (OK === 'OK') {
-                        clearInterval(time)
-                        resolve(GetData.album)
 
-                    }
-                }
+        // 播放列表
+        data.replace(ol, function (match) {
+          GetData.lists = []
+          let Num = 0
+
+          match.replace(li, function (data) {
+            GetData.lists[Num] = {}
+            let list = GetData.lists[Num]
+            data.replace(title, function (data, title) {
+              Object.assign(list, {title})
+            })
+            data.replace(href, function (data, href) {
+              Object.assign(list, {href})
+            })
+            Num ++
+          })
+          setTimeout(function () {
+            return OK = 'OK'
+          }, 0)
+        })
+      }
+
+      play()
+      blum()
+      lists()
     })
 
-    return  Prom
+    timeover()
+  })
+
+  return Prom
 }
 
