@@ -30,26 +30,31 @@ export const UserDetailData = (id) => {
         let play = GetData.play
 
         // 提取 详情 主播介绍
-        const voiceHeader = TagAll('div', 'class', 'voice-header')
+        const title = Tagtxt('h2', 'class', 'title')
+        const playpanel = TagAll('section', 'class', 'palypanel')
         const ImgD = Taghref('img', 'src')
         const soundId = Taghref('div', 'sound_id',)
-        const TotalTime = Tagtxt('span', 'class', 'time fr')
-        const title = /<span>([^><]+?)<\/span>/g
+        const zhubo = TagAll('h4', 'class', 'hostNam')
+        const zhubop = Tagtxt('span')
+        const time = Tagtxt('span', 'class', 'time fr')
 
         // 提取 主播内容介绍
-        data.replace(voiceHeader, function (match) {
+        data.replace(title, function (match, title) {
+          Object.assign(play, {title})
+        })
+        data.replace(playpanel, function (match) {
           match.replace(ImgD, function (match, Img) {
             Object.assign(play, {Img})
           })
-          match.replace(soundId, function (match, Intro) {
-            Object.assign(play, {Intro})
-          })
-          match.replace(TotalTime, function (match, time) {
+          match.replace(time, function (match, time) {
             Object.assign(play, {time})
           })
-          match.replace(title, function (match, title) {
-            Object.assign(play, {title})
+          match.replace(zhubo, function (data) {
+            data.replace(zhubop, function (data1, zhubo) {
+              Object.assign(play, {zhubo})
+            })
           })
+
         })
       }
       let blum = function () {
@@ -102,7 +107,7 @@ export const UserDetailData = (id) => {
             data.replace(href, function (data, href) {
               Object.assign(list, {href})
             })
-            Num ++
+            Num++
           })
           setTimeout(function () {
             return OK = 'OK'
