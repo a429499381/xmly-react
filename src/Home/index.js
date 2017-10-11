@@ -69,24 +69,40 @@ class Home extends Component {
      let newTime = new Date().getTime()
      let localTime = localStorage.getItem('HomeData') * 1
      let OverTime = newTime - localTime
+     let that = this
 
-     Data().then(reslove => {
-         Home.data = reslove
+     let data = function () {
+         if (localStorage.getItem('home')) {
+             Home.data =  JSON.parse(localStorage.getItem('home'))
 
-         // 深拷贝， 解决未知地方修改导致数据不全。
-         let data = JSON.parse(JSON.stringify(Home.data))
+             // 深拷贝， 解决未知地方修改导致数据不全。
+             let data = JSON.parse(JSON.stringify(Home.data))
+             that.setState({
+                 Fl: Home.data.Fl,
+                 List: Home.data.Lists,
+                 Banner: Home.data.banner
+             })
+         } else {
+             Data().then(reslove => {
+                 localStorage.setItem('home', JSON.stringify(reslove))
+                 Home.data = reslove
 
-         // console.log('Home ',Home.data.Lists)
-         this.setState({
-         Fl: Home.data.Fl,
-         List: Home.data.Lists,
-         Banner: Home.data.banner
-       })
+                 // 深拷贝， 解决未知地方修改导致数据不全。
+                 let data = JSON.parse(JSON.stringify(Home.data))
+                 that.setState({
+                     Fl: Home.data.Fl,
+                     List: Home.data.Lists,
+                     Banner: Home.data.banner
+                 })
 
-       // 创建数据库 并且存储与 indexDB 中
-       // HomeDB(data)
-     })
-    // 提取数据与  state over
+                 // 创建数据库 并且存储与 indexDB 中
+                 // HomeDB(data)
+             })
+         }
+     }
+     data()
+
+     // 提取数据与  state over
 
     // 查询特定 空间数据ok
     // GetData('Home', 'Fl')
