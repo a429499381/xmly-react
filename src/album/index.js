@@ -4,7 +4,7 @@ import Back from '../PageCom/Back'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 import NoMore from '../PageCom/NoMore'
 import {albumData} from '../data/axios/album'
-import './index.css'
+import './index.scss'
 
 class album extends Component {
     constructor(props) {
@@ -29,31 +29,33 @@ class album extends Component {
                     data
                         ?
                         <div className="pl10 pr10">
-                              <div className="albumheader">
+                              <div className="albumheader rel">
                                 <Link to="">
-                                    <img src={header.Img} className='haderImg' alt=""/>
+                                    <img src={header.Img} className='img abs' alt=""/>
                                 </Link>
-                                <div className="container">
-                                    <p className="title">{header.Title}</p>
-                                    <p className="intro">{header.Intro}</p>
-                                    <p className="name">{header.name}</p>
+                                <div className="container pt10">
+                                    <p className="ablumtitle">{header.Title}</p>
+                                    <p className="ablumintro">{header.Intro}</p>
+                                    <p className="ablumname">{header.name}</p>
                                 </div>
                             </div>
-                            <div className="txt">
+                            <div className="txt mt10 mb10   ">
                                 <h2 className="title">{data.Txt.title}</h2>
                                 <p className="intro">{data.Txt.intro}</p>
                             </div>
                             <div className="album">
                                 {
                                     more.map((item, index) => {
-                                        return <div key={index}>
+                                        return <div key={index} className="rel">
                                             <Link to={item.href}>
-                                                <img src={item.img} alt="" className="img"/>
-                                                <p className="title">{item.Title}</p>
-                                                <p className="smallIcon">
-                                                    <span className="paly">{item.playNum}</span>
-                                                    <span className="num">{item.playTime}</span>
-                                                </p>
+                                                <img src={item.img} alt="" className="albumimg abs"/>
+                                                <div className="container">
+                                                    <p className="title">{item.Title}</p>
+                                                    <p className="smallIcon">
+                                                        <span className="paly">{item.playNum}</span>
+                                                        <span className="num">{item.playTime}</span>
+                                                    </p>
+                                                </div>
                                             </Link>
                                         </div>
                                     })
