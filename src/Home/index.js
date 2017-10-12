@@ -9,11 +9,11 @@ import NoMore from '../PageCom/NoMore'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 
 // 数据库处理
-import {HomeDB} from '../DB/HomeDB'
-import {GetData} from '../DB/GetData'
+import {HomeDB} from '../data/DB/HomeDB'
+import {GetData} from '../data/DB/GetData'
 
 
-import  {Data} from '../axios/Home'
+import  {Data} from '../data/axios/Home'
 
 // 头部 数据
 import  HeaderData from '../PageCom/config/config.json'

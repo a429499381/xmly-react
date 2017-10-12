@@ -6,7 +6,7 @@ import NoMore from '../PageCom/NoMore'
 import {albumData} from '../data/axios/album'
 import './index.css'
 
-class AlbumQuan extends Component {
+class album extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -111,4 +111,4 @@ class AlbumQuan extends Component {
     }
 }
 
-export default AlbumQuan;
+export default album;

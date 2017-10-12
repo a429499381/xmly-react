@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 
-import Header from '../PageCom/Header'
-import FooterNavgtion from '../PageCom/FooterNavgtion'
-import NoMore from '../PageCom/NoMore'
+import Header from '../../PageCom/Header/index'
+import FooterNavgtion from '../../PageCom/FooterNavgtion/index'
+import NoMore from '../../PageCom/NoMore/index'
 
-class Search extends Component {
+class Fm extends Component {
   render() {
     return (
       <div>
         {/* top */}
           <Header/>
           <div className="mt86"></div>
-           <h1>explore</h1>
+          Fm 页面
 
         {/* 底部导航 */}
           <FooterNavgtion/>
@@ -23,4 +23,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default Fm;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Header from '../PageCom/Header'
-import FooterNavgtion from '../PageCom/FooterNavgtion'
-import NoMore from '../PageCom/NoMore'
+import Header from '../../PageCom/Header/index'
+import FooterNavgtion from '../../PageCom/FooterNavgtion/index'
+import NoMore from '../../PageCom/NoMore/index'
 
 class ZhiBo extends Component {
   render() {

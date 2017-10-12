@@ -4,10 +4,10 @@ import Header from '../PageCom/Header'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 import NoMore from '../PageCom/NoMore'
 
-import {SearchData} from '../axios/Search'
-import {albumData} from '../axios/album'
-import {UserDetailData} from '../axios/UserDetail'
-import {JinPinData} from '../axios/Jinpin'
+import {SearchData} from '../data/axios/Search'
+import {albumData} from '../data/axios/album'
+import {UserDetailData} from '../data/axios/UserDetail'
+import {JinPinData} from '../data/axios/Jinpin'
 
 
 
