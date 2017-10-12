@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import Header from '../PageCom/Header'
-import Back from '../PageCom/Back'
-import DetailTitle from '../Sound/index'
-import FooterNavgtion from '../PageCom/FooterNavgtion'
-import NoMore from '../PageCom/NoMore'
+import Header from '../../PageCom/Header/index'
+import Back from '../../PageCom/Back/index'
+import DetailTitle from '../../Sound/index'
+import FooterNavgtion from '../../PageCom/FooterNavgtion/index'
+import NoMore from '../../PageCom/NoMore/index'
 
 class AlbumQuan extends Component {
   render() {

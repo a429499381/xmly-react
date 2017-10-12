@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router'
-import Back from '../PageCom/Back'
-import FooterNavgtion from '../PageCom/FooterNavgtion'
-import NoMore from '../PageCom/NoMore'
-import {albumData} from '../data/axios/album'
+import Back from '../../PageCom/Back/index'
+import FooterNavgtion from '../../PageCom/FooterNavgtion/index'
+import NoMore from '../../PageCom/NoMore/index'
+import {albumData} from '../../data/axios/album'
 import './index.css'
 
 class AlbumQuan extends Component {
