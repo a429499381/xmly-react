@@ -30,6 +30,7 @@ class HeaderTop extends Component {
                      value ={this.state.value}
                      onChange={this.ChangeHandle.bind(this)}
                      onKeyUp={this.KeyCode.bind(this)}
+                     onFocus={this.Focus.bind(this)}
               />
             </div>&nbsp;
             <span className="top_r dib">
@@ -64,6 +65,9 @@ class HeaderTop extends Component {
         return
     }
     hashHistory.push('/Search' + '/' + search)
+
+  }
+  Focus() {
 
   }
 

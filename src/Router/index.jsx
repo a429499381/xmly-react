@@ -6,7 +6,7 @@ import { Router, Route, IndexRoute } from 'react-router'
 
 import App from '../App'
 import Home from '../Home/index'
-import FenLei from '../Home/FenLei'
+import comic from '../Home/comic'
 import Fm from '../Home/Fm'
 import JingPin from '../Home/JingPin'
 import ZhiBo from '../Home/ZhiBo'
@@ -28,7 +28,7 @@ class RouterMap extends React.Component {
         <Route path='/' component={App}>
           <IndexRoute component={Home}/>
           <Route path='/Home' component={Home}/>
-          <Route path='/FenLei' component={FenLei}/>
+          <Route path='/comic' component={comic}/>
           <Route path='/Fm' component={Fm}/>
           <Route path='/JingPin' component={JingPin}/>
           <Route path='/ZhiBo' component={ZhiBo}/>

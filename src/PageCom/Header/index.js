@@ -28,7 +28,6 @@ class Header extends Component {
                         ? <Nav data = {this.state.nav} index={this.props.index}/>
                         : <LoadIcon/>
                 }
-
             </div>
          )
   }

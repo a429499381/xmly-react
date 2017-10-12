@@ -10,7 +10,6 @@ class Fm extends Component {
       <div>
         {/* top */}
           <Header index={4}/>
-          <div className="mt86"></div>
           Fm 页面
 
         {/* 底部导航 */}

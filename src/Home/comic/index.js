@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
+import {Link } from 'react-router'
 
 import Header from '../../PageCom/Header/index'
 import FooterNavgtion from '../../PageCom/FooterNavgtion/index'
 import NoMore from '../../PageCom/NoMore/index'
+import List from './list'
 
 
-
-
-class FenLei extends Component {
+// 有声小说
+class comic extends Component {
   render() {
     return (
-      <div>
+      <div className="comic">
         {/* top */}
         <Header  index={1}/>
         <div className="mt86"></div>
-          <div>
-              <div className="mt86">001</div>
-              <div className="mt86"></div>
-              <h4 classID="name">李玉刚 - 刚好遇见你1</h4>
-              <audio classID="audio" ref='audio' controls src="http://audio.xmcdn.com/group32/M08/05/87/wKgJnFnFHgmA3tnSAHEVQqq3e00956.m4a"></audio>
-             
-          </div>
-
-          分类页面
+        <List/>
         {/* 底部导航 */}
           <FooterNavgtion/>
         {/* 没有更多 */}
@@ -71,4 +64,4 @@ class FenLei extends Component {
   }
 }
 
-export default FenLei;
+export default comic;
