@@ -9,7 +9,7 @@ class JingPin extends Component {
     return (
       <div>
         {/* top */}
-          <Header/>
+          <Header index={2}/>
           <div className="mt86"></div>
            精品页面
 

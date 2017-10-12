@@ -9,7 +9,7 @@ class ZhiBo extends Component {
     return (
       <div>
         {/* top */}
-          <Header/>
+          <Header index={3}/>
           <div className="mt86"></div>
           直播页面
         {/* 底部导航 */}

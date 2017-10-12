@@ -4,14 +4,15 @@ import Header from '../../PageCom/Header/index'
 import FooterNavgtion from '../../PageCom/FooterNavgtion/index'
 import NoMore from '../../PageCom/NoMore/index'
 
-// import {AV} from 'leancloud-storage'
+
+
 
 class FenLei extends Component {
   render() {
     return (
       <div>
         {/* top */}
-          <Header/>
+        <Header  index={1}/>
         <div className="mt86"></div>
           <div>
               <div className="mt86">001</div>

@@ -9,7 +9,7 @@ class Fm extends Component {
     return (
       <div>
         {/* top */}
-          <Header/>
+          <Header index={4}/>
           <div className="mt86"></div>
           Fm 页面
 

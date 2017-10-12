@@ -4,6 +4,7 @@ import Back from '../PageCom/Back'
 import FooterNavgtion from '../PageCom/FooterNavgtion'
 import NoMore from '../PageCom/NoMore'
 import {albumData} from '../data/axios/album'
+import LoadIcon from '../PageCom/loadIcon'
 import './index.scss'
 
 class album extends Component {
@@ -73,7 +74,7 @@ class album extends Component {
                                 }
                             </div>
                         </div>
-                        : <div>加载中</div>
+                        : <LoadIcon/>
                 }
 
                 {/* 底部导航 */}
