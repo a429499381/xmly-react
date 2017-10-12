@@ -22,13 +22,14 @@ class album extends Component {
         return (
             <div>
                 {/* top */}
-                <Back/>
-                <div className="mt86"></div>
+                <div className="fix">
+                  <Back />
+                </div>
                 {
                     data
                         ?
-                        <div>
-                            <div className="header">
+                        <div className="pl10 pr10">
+                              <div className="albumheader">
                                 <Link to="">
                                     <img src={header.Img} className='haderImg' alt=""/>
                                 </Link>

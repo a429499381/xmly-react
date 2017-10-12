@@ -33,14 +33,11 @@ class RouterMap extends React.Component {
           <Route path='/JingPin' component={JingPin}/>
           <Route path='/ZhiBo' component={ZhiBo}/>
           <Route path='/Sms' component={Sms}/>
+          <Route path='/Ls' component={Ls}/>
           <Route path='/Down' component={Down}/>
-          <Route path='/Album-Quan/*/rank' component={Sound}/>
-          <Route path='/Album-Tag/*' component={Sound}/>
-          <Route path='/Sound-Quan/*/rank' component={Sound}/>
+          <Route path='/Search/:id(/:more)' component={Search}/>
           <Route path='*/Sound/*' component={Sound}/>
           <Route path='*/album/*' component={album}/>
-          <Route path='/Ls' component={Ls}/>
-          <Route path='/Search/:id(/:more)' component={Search}/>
           <Route path='/Play' component={Play}/>
         </Route>
       </Router>
