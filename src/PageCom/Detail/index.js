@@ -77,15 +77,23 @@ export default class Detail extends Component {
   componentDidMount() {
     // 获取当前页面url
     let id = this.props.location.pathname
+    let data = localStorage.getItem(id)
     console.log(id)
-
-    // 获取用户页数据
-    UserDetailData(id).then(data => {
+    if (data) {
       this.setState({
-        data: data
+        data: JSON.parse(data)
       })
-      console.log('用户页面', data)
-    })
+    } else {
+      // 获取用户页数据
+      UserDetailData(id).then(data => {
+        localStorage.setItem(id, JSON.stringify(data))
+        this.setState({
+          data: data
+        })
+        console.log('用户页面', data)
+      })
+    }
+
 
   }
 }

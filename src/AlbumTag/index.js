@@ -84,14 +84,29 @@ class AlbumQuan extends Component {
 
     componentDidMount() {
         let id = this.props.location.pathname
+        let data = JSON.parse(localStorage.getItem(id))
+        let that = this
         console.log(id)
-        if (id) {
+        if (!data) {
             albumData(id).then(data => {
-                this.setState({
-                    data: data
-                })
-                console.log(data)
+                // 把数组 转换为 对象  再格式化为 字符串 才能保存 localStorage  中。
+                let obj = {}
+                let dataObj = JSON.stringify(Object.assign(obj, data))
+                localStorage.setItem(id, dataObj)
+
+                 this.setState({
+                   data: data
+                 })
+                 window.obj = obj
+                 console.log(obj)
+
             })
+        } else {
+            // 启动缓存数据
+            this.setState({
+              data: data
+            })
+            console.log('缓存数据', data)
         }
     }
 }
