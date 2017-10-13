@@ -10,49 +10,51 @@ export  const albumTagData = (id) => {
   //  分类 数据提取
 
     var Prom = new Promise((resolve, reject) => {
+        let callback = function () {
+            time  = setInterval(Go,100)
+            setTimeout(function () {
+                clearInterval(time)
+            },5000)
+            function Go() {
+                if (OK === 'OK') {
+                    clearInterval(time)
+                    resolve(SearchData)
+
+                }
+            }
+        }
         let albumTag = function () {
             let data = ''
             GetId(id).then(res => {
-                data = res
+                data = res.data
+                let li = TagAll('li', 'class', 'item item-3')
+                let href = Taghref('a', 'href')
+                let img = Taghref('img', 'src')
+                let txt = Tagtxt('p', 'class', 'name')
+                let n = 0
+                data.replace(li,function (match) {
+                    SearchData.albumTag[n]= {}
+                    match.replace(href, function (match1, href) {
+                        Object.assign(SearchData.albumTag[n], {href})
+                    })
+                    match.replace(img, function (match1, img) {
+                        Object.assign(SearchData.albumTag[n], {img})
+                    })
+                    match.replace(txt, function (match1, txt) {
+                        Object.assign(SearchData.albumTag[n], {txt})
+                    })
+                    n++
+                })
+                setTimeout(function () {
+                    if(SearchData.albumTag[0] !== undefined) {
+                        OK = 'OK'
+                    }
+                },0)
             })
-            let li = TagAll('li', 'class', 'item item-3')
-            let href = Taghref('a', 'href')
-            let img = Taghref('img', 'src')
-            let txt = Tagtxt('p', 'class', 'name')
-            let album = SearchData.albumTag
-            let n = 0
-            data.replace(li,function (match) {
-                album[n]= {}
-                match.replace(href, function (match1, href) {
-                    album[n].push({href})
-                })
-                match.replace(img, function (match1, img) {
-                    album[n].push({img})
-                })
-                match.replace(txt, function (match1, txt) {
-                    album[n].push({txt})
-                })
-                n++
-            })
-            setTimeout(function () {
-                return OK = 'OK'
-            },0)
         }
-
         albumTag()
+        callback()
 
-
-      time  = setInterval(Go,100)
-      setTimeout(function () {
-        clearInterval(time)
-      },5000)
-      function Go() {
-          if (OK === 'OK') {
-              clearInterval(time)
-              resolve(SearchData)
-
-          }
-      }
 
     })
 

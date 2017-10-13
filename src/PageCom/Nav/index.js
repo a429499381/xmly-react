@@ -9,7 +9,7 @@ class Nav extends Component {
             <div className="nav">
                 {
                     data.map((item, index) => {
-                        return  <a key ={index} href={item.href} className={this.props.index == index ? "nav_item active" : "nav_item"}>{item.txt}</a>
+                        return  <a key ={index} href={item.href} className={this.props.index === index ? "nav_item active" : "nav_item"}>{item.txt}</a>
                     })
                 }
             </div>

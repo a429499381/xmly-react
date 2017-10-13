@@ -1,5 +1,5 @@
 import {GetId} from './get.js'
-import {TagAll, Tagtxt, Taghref} from '../Regex/config'
+import {Taghref} from '../Regex/config'
 
 export  const albumData = (id) => {
     var GetData = {}
@@ -36,7 +36,7 @@ export  const albumData = (id) => {
                 const ImgSrcJ = /src="([^';"]+)"/g
                 const IntroJ = /<p\b.+?([^><]+?)<\/p>/g
                 // 提取所有 标签内的 内容
-                const All  = /<[\d\D]+?>/g
+                // const All  = /<[\d\D]+?>/g
 
 
 

@@ -89,7 +89,6 @@ class album extends Component {
     componentDidMount() {
         let id = this.props.location.pathname
         let data = JSON.parse(localStorage.getItem(id))
-        let that = this
         console.log(id)
         if (!data) {
             albumData(id).then(data => {

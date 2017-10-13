@@ -1,4 +1,4 @@
-import {getHome, Search} from './get.js'
+import {Search} from './get.js'
 
 export  const SearchData = (id,more) => {
     var SearchData = {}

@@ -11,19 +11,19 @@
     "txt": "热门"
     },
     {
-      "href": "#/comic",
+      "href": "#/album-tag/comic",
       "txt": "有声小说"
     },
     {
-      "href": "#/JingPin",
+      "href": "#/album-tag/JingPin",
       "txt": "精品"
     },
     {
-      "href": "#/ZhiBo",
+      "href": "#/album-tag/ZhiBo",
       "txt": "直播"
     },
     {
-      "href": "#/Fm",
+      "href": "#/album-tag/Fm",
       "txt": "广播"
     }
   ]
