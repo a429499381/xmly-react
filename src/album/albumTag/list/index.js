@@ -7,21 +7,13 @@ import LoadIcon from '../../../PageCom/loadIcon'
 export default class comic extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            data: ''
-        }
+
     }
 
     render() {
-        let data = this.state.data
+        let data = this.props.data
         return (
             <div>
-                <div className="list ">
-                    <Link to='/'>
-                        <img src="" alt=""/>
-                        <p className="name">全部</p>
-                    </Link>
-                </div>
                 <div className="lists fix">
                     {
                         data
@@ -29,7 +21,7 @@ export default class comic extends Component {
                             <div >
                                 {
                                     data.map((item, index) => {
-                                        return <div key={index}>
+                                        return <div key={index} className="list">
                                             <Link to={item.href} >
                                                 <img src={item.src} alt=""/>
                                                 <p className="name">{item.name}</p>

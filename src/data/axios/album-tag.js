@@ -29,19 +29,19 @@ export  const albumTagData = (id) => {
                 data = res.data
                 let li = TagAll('li', 'class', 'item item-3')
                 let href = Taghref('a', 'href')
-                let img = Taghref('img', 'src')
-                let txt = Tagtxt('p', 'class', 'name')
+                let src = Taghref('img', 'src')
+                let name = Tagtxt('p', 'class', 'name')
                 let n = 0
                 data.replace(li,function (match) {
                     SearchData.albumTag[n]= {}
                     match.replace(href, function (match1, href) {
                         Object.assign(SearchData.albumTag[n], {href})
                     })
-                    match.replace(img, function (match1, img) {
-                        Object.assign(SearchData.albumTag[n], {img})
+                    match.replace(src, function (match1, src) {
+                        Object.assign(SearchData.albumTag[n], {src})
                     })
-                    match.replace(txt, function (match1, txt) {
-                        Object.assign(SearchData.albumTag[n], {txt})
+                    match.replace(name, function (match1, name) {
+                        Object.assign(SearchData.albumTag[n], {name})
                     })
                     n++
                 })
