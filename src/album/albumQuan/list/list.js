@@ -15,13 +15,13 @@ class AlbumQuan extends Component {
     render() {
         let data = this.state.rank
         return (
-            <div className="albumQuanList">
-                <div className="nav">
-                    <span className="item">最火</span>
+            <div className="albumQuanList fix">
+                <div className="albumQuannav">
+                    <span className="item active">最火</span>
                     <span className="item">最近更新</span>
                     <span className="item">经典</span>
                 </div>
-                <div className="list">
+                <div className="Quanlist">
 
                 </div>
             </div>
