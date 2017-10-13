@@ -35,13 +35,16 @@ class Header extends Component {
 
   componentDidMount() {
       let Data = HeaderData
+      let index = this.props.index
+      console.log(index)
       if(Data) {
         this.setState({
           nav: Data.nav,
           top: Data.top,
-          index: parseInt(localStorage.getItem('navIndex'))
+          index: index === 0 ? index :parseInt(localStorage.getItem('navIndex'))
         })
       }
+
   }
 
   push(id, index) {
