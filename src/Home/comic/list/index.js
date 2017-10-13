@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router'
 import './index.scss'
-
+import {albumTagData} from '../../../data/axios/album-tag'
 import LoadIcon from '../../../PageCom/loadIcon'
 
 // 有声小说
@@ -43,12 +43,27 @@ export default class comic extends Component {
 
                     }
                 </div>
-
-
-
             </div>
 
         )
+    }
+
+    componentDidMount() {
+        let id = this.props.params.location.pathname
+        let data = JSON.parse(localStorage.getItem(id))
+        console.log('album-tag',id)
+        if(!data) {
+            albumTagData(id).then(res => {
+                data = res
+                localStorage.setItem(id, JSON.stringify(res))
+
+            })
+        }
+
+        this.setState({
+            data: data
+        })
+
     }
 
 }
