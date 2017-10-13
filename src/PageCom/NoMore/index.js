@@ -4,7 +4,7 @@ import './index.css'
 class NoMore extends Component {
   render() {
     return (
-      <div >
+      <div  className="fix">
         {/* 没有更多 */}
          <div className="no_more">
           没有更多啦

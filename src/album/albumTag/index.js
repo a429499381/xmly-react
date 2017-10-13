@@ -10,7 +10,7 @@ import {albumTagData} from '../../data/axios/album-tag'
 
 
 // 有声小说
-class comic extends Component {
+class albumTag extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -58,4 +58,4 @@ class comic extends Component {
 
 }
 
-export default comic;
+export default albumTag;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {hashHistory} from 'react-router'
 import './index.css'
 import Nav from '../Nav/index'
 import HeaderTop from '../HeaderTop/index'
@@ -12,7 +12,8 @@ class Header extends Component {
         super(props)
         this.state = {
             nav: [],
-            top: ''
+            top: '',
+            index: 0
         }
     }
   render() {
@@ -25,7 +26,7 @@ class Header extends Component {
                 }
                 {
                     this.state.top
-                        ? <Nav data = {this.state.nav} index={this.props.index}/>
+                        ? <Nav data = {this.state.nav} push={this.push.bind(this)} index={this.state.index}/>
                         : <LoadIcon/>
                 }
             </div>
@@ -37,14 +38,16 @@ class Header extends Component {
       if(Data) {
         this.setState({
           nav: Data.nav,
-          top: Data.top
+          top: Data.top,
+          index: parseInt(localStorage.getItem('navIndex'))
         })
       }
-
-
-
   }
 
+  push(id, index) {
+     hashHistory.push(id)
+     localStorage.setItem('navIndex',index)
+  }
 }
 
 export default Header;
