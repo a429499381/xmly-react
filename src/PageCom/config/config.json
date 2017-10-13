@@ -12,18 +12,18 @@
     },
     {
       "href": "#/album-tag/comic",
+      "txt": "相声小品"
+    },
+    {
+      "href": "#/album-tag/kid",
+      "txt": "儿童"
+    },
+    {
+      "href": "#/album-tag/book",
       "txt": "有声小说"
     },
     {
-      "href": "#/album-tag/JingPin",
-      "txt": "精品"
-    },
-    {
-      "href": "#/album-tag/ZhiBo",
-      "txt": "直播"
-    },
-    {
-      "href": "#/album-tag/Fm",
+      "href": "#/album-tag/radio",
       "txt": "广播"
     }
   ]

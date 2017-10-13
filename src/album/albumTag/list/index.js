@@ -14,11 +14,10 @@ export default class comic extends Component {
         let data = this.props.data
         return (
             <div>
-                <div className="lists fix">
                     {
                         data
                             ?
-                            <div >
+                            <div classID="ablumTagList" >
                                 {
                                     data.map((item, index) => {
                                         return <div key={index} className="albumList">
@@ -33,7 +32,6 @@ export default class comic extends Component {
                             : <LoadIcon/>
 
                     }
-                </div>
             </div>
 
         )

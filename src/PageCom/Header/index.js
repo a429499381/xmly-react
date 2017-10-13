@@ -36,7 +36,6 @@ class Header extends Component {
   componentDidMount() {
       let Data = HeaderData
       let index = this.props.index
-      console.log(index)
       if(Data) {
         this.setState({
           nav: Data.nav,

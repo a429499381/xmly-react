@@ -12,6 +12,7 @@ import Ls from '../PageCom/Ls'
 import Sound from '../Sound/index'
 import album from '../album'
 import albumTag from '../album/albumTag'
+import albumQuan from '../album/albumQuan'
 import Search from '../Search'
 import Play from '../Play'
 
@@ -32,6 +33,7 @@ class RouterMap extends React.Component {
           <Route path='*/Sound/*' component={Sound}/>
           <Route path='*/album/*' component={album}/>
           <Route path='/album-tag/*' component={albumTag}/>
+          <Route path='/album-quan/*' component={albumQuan}/>
           <Route path='/Play' component={Play}/>
         </Route>
       </Router>
