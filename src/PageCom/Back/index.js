@@ -10,7 +10,7 @@ class Back extends Component {
     render() {
         return (
           <div className="BackTop p10">
-            <a href="#" className="back">返回</a>
+            <span onClick={this.hashBack.bind(this)} className="back">返回</span>
             <div className="container">
               <a href="#">加群</a>
               <a href="#">分享</a>
@@ -18,6 +18,9 @@ class Back extends Component {
             </div>
           </div>
         )}
+        hashBack() {
+            window.history.back()
+        }
 }
 
 export default Back;
