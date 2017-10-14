@@ -14,7 +14,7 @@ class AlbumQuan extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            index: '',
+            category: '',
             id: '',
             data: ''
         }
@@ -26,8 +26,7 @@ class AlbumQuan extends Component {
                 {/* top */}
                 <Back/>
                 {/* 底部导航 */}
-                <QuanList index={this.state.index} id={this.state.id} push={this.push.bind(this)}
-                          data={this.state.data}/>
+                <QuanList index={this.state.category} id={this.state.id} data={this.state.data}/>
                 <FooterNavgtion/>
                 {/* 没有更多 */}
                 {/*<NoMore/>*/}
@@ -37,21 +36,19 @@ class AlbumQuan extends Component {
 
     componentDidMount() {
         let url = this.props.location.pathname
-        let index = this.props.params.category
-        let urlId = this.props.params.id
+        let category = this.props.params.category
         let data = JSON.parse(localStorage.getItem(url))
 
         // 第一次进入读取 url category 并缓存
-        localStorage.setItem('albumQuanIndex', index)
-        localStorage.setItem('albumQuanId', urlId)
+        localStorage.setItem('albumQuanIndex  category', category)
+
         // 如果存在 就把 index 传递给 QuanList 组件的 index
         this.setState({
-            index: index ? index : 0,
-            id: urlId
+            index: category,
+            id: this.props.params.id
         })
 
-        console.log('componentDidMOunt', url)
-        console.log('componentDidMOunt this.state.id', this.state.id)
+        console.log('componentDidMOunt url', url)
 
         if (!data) {
             // 获取数据
@@ -72,19 +69,6 @@ class AlbumQuan extends Component {
         }
 
     }
-
-    // 导航状态
-    push(index) {
-        let id = this.props.params.id
-        let url = `/album-quan/${id}/${index}`
-        console.log('push', id)
-        localStorage.setItem('albumQuanIndex', index)
-        localStorage.setItem('albumQuanId', id)
-        // 路由跳转
-        hashHistory.push(url)
-        console.log('hashHistory', url)
-    }
-
 
 }
 
