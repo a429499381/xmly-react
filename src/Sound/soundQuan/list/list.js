@@ -13,13 +13,13 @@ class AlbumQuan extends Component {
         return (
             <div className="soundQuanList fix">
                 <div className="albumQuannav">
-                    <Link to={`/sound-quan/${id}/rank`} onClick={this.push.bind(this)}>
+                    <Link to={`/sound-quan/${id}/rank`} onClick={this.push.bind(this, 'rank')}>
                         <span className="item active">最火</span>
                     </Link>
-                    <Link to={`/sound-quan/${id}/recnet`} onClick={this.push.bind(this)}>
+                    <Link to={`/sound-quan/${id}/recnet`} onClick={this.push.bind(this, 'recent')}>
                         <span className="item ">本周热门</span>
                     </Link>
-                    <Link to={`/sound-quan/${id}/classic`} onClick={this.push.bind(this)}>
+                    <Link to={`/sound-quan/${id}/classic`} onClick={this.push.bind(this, 'classic')}>
                         <span className="item itemBn">最多赞</span>
                     </Link>
 
@@ -55,9 +55,9 @@ class AlbumQuan extends Component {
     loadHandle() {
         window.location.reload()
     }
-    push(){
+    push(id){
         console.log('push list')
-        console.log(this.props)
+        this.props.push(id)
     }
 
 }

@@ -52,7 +52,7 @@ class soundQuan extends Component {
         console.log('componentDidMOunt url', url)
         console.log('componentDidMOunt id', this.props.params.id)
 
-        if (data) {
+        if (data !== 'aa') {
             // 获取数据
             soundQuanData(url).then(res => {
                 let data = res.soundQuan
@@ -73,11 +73,21 @@ class soundQuan extends Component {
 
 
     }
-    pushHandle() {
-        let category = this.props.params.category
-        if(category == 'recent') {
+    pushHandle(id) {
+        console.log('albumQuan',id)
+        if(id === 'rank') {
             this.setState({
-                dataS: this.state.data.hot
+                data: this.state.dataS.soundQuan
+            })
+            console.log('push this', this.state.dataS)
+        } else if(id === 'recent') {
+            this.setState({
+                data: this.state.dataS.hot
+            })
+            console.log('push this', this.state.dataS)
+        } else {
+            this.setState({
+                data: this.state.dataS.favorite
             })
             console.log('push this', this.state.dataS)
         }
