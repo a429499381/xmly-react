@@ -56,7 +56,7 @@ class album extends Component {
                                                         <span className="paly">{item.playNum}</span>
                                                         <span className="num">{item.playTime}</span>
                                                     </p>
-                                                </div>
+                            albumlistsss                    </div>
                                             </Link>
                                         </div>
                                     })

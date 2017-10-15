@@ -105,7 +105,8 @@ export const UserDetailData = (id) => {
               Object.assign(list, {title})
             })
             data.replace(href, function (data, href) {
-              Object.assign(list, {href})
+              let hrefS = href.slice(21)
+              Object.assign(list, {'href':hrefS})
             })
             Num++
           })
