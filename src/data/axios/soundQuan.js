@@ -1,9 +1,9 @@
 import {GetId} from './get.js'
 import {Taghref, Tagtxt, TagAll} from '../Regex/config'
+import {soundQuanJson} from "./soundQuanJson";
 
 export  const soundQuanData = (id) => {
     var SearchData = {}
-    SearchData.soundQuan = []
     let OK = 'No'
     let time = 'No'
 
@@ -25,12 +25,15 @@ export  const soundQuanData = (id) => {
         }
         let albumQuan = function () {
             let data = ''
-            GetId(id).then(res => {
-                data = res.data
+            let rank = id
+            let hot = 'http://m.ximalaya.com/explore/more_track?page=1&per_page=10&category_id=10&condition=hot'
+            let favorite = 'http://m.ximalaya.com/explore/more_track?page=1&per_page=10&category_id=10&condition=favorite'
+            let regex = function (data, name) {
+                SearchData[name] = []
                 let listsound = TagAll('ul', 'class', 'list')
                 let item = TagAll('li', 'class', 'item item-tp1 cl is-ready')
                 let href = Taghref('li',  'data-url')
-                let soundUrl = Taghref('div',  'sound-url')
+                let soundUrl = Taghref('div',  'sound_url')
                 let duration = Taghref('div',  'sound_duration')
                 let src = Taghref('img', 'src')
                 let time = Tagtxt('p', 'class', 'time-cont')
@@ -41,44 +44,62 @@ export  const soundQuanData = (id) => {
                 let n = 0
                 data.replace(listsound, function (data) {
                     data.replace(item,function (match) {
-                        SearchData.soundQuan[n]= {}
+                        SearchData[name][n]= {}
                         match.replace(href, function (match1, href) {
-                            Object.assign(SearchData.soundQuan[n], {href})
+                            Object.assign(SearchData[name][n], {href})
                         })
                         match.replace(soundUrl, function (match1, soundUrl) {
-                            Object.assign(SearchData.soundQuan[n], {soundUrl})
+                            Object.assign(SearchData[name][n], {soundUrl})
                         })
                         match.replace(duration, function (match1, duration) {
-                            Object.assign(SearchData.soundQuan[n], {duration})
+                            Object.assign(SearchData[name][n], {duration})
                         })
                         match.replace(src, function (match1, src) {
-                            Object.assign(SearchData.soundQuan[n], {src})
+                            Object.assign(SearchData[name][n], {src})
                         })
                         match.replace(time, function (match1, time) {
-                            Object.assign(SearchData.soundQuan[n], {time})
+                            Object.assign(SearchData[name][n], {time})
                         })
                         match.replace(title, function (match1, title) {
-                            Object.assign(SearchData.soundQuan[n], {title})
+                            Object.assign(SearchData[name][n], {title})
                         })
                         match.replace(playNum, function (match1, playNum) {
-                            Object.assign(SearchData.soundQuan[n], {playNum})
+                            Object.assign(SearchData[name][n], {playNum})
                         })
                         match.replace(comment, function (match1, comment) {
-                            Object.assign(SearchData.soundQuan[n], {comment})
+                            Object.assign(SearchData[name][n], {comment})
                         })
                         match.replace(time1, function (match1, time1) {
-                            Object.assign(SearchData.soundQuan[n], {time1})
+                            Object.assign(SearchData[name][n], {time1})
                         })
                         n++
                     })
                 })
 
-                setTimeout(function () {
-                    if(SearchData.soundQuan[0] !== undefined) {
-                        OK = 'OK'
-                    }
-                },0)
+                // setTimeout(function () {
+                //     if(SearchData[name][0] !== undefined) {
+                //         OK = 'OK'
+                //     }
+                // },0)
+            }
+            GetId(id).then(res => {
+                regex(res.data, 'soundQuan')
+            }).then(() => {
+                soundQuanJson(hot).then(data => {
+                    SearchData.hot = []
+                    regex(data, 'hot')
+                    console.log('soundQuan Json', data.length)
+                })
+                soundQuanJson(favorite).then(data => {
+                    SearchData.favorite = []
+                    regex(data, 'favorite')
+                    console.log('soundQuan Json', data.length)
+                })
+            }).then(() => {
+                OK = 'OK'
             })
+
+
         }
         albumQuan()
         callback()

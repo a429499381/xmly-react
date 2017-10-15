@@ -13,7 +13,8 @@ class soundQuan extends Component {
         this.state = {
             category: '',
             id: '',
-            data: ''
+            data: '',
+            dataS: '',
         }
     }
 
@@ -38,6 +39,7 @@ class soundQuan extends Component {
         let category = this.props.params.category
         let data = JSON.parse(localStorage.getItem(url))
 
+
         // 第一次进入读取 url category 并缓存
         localStorage.setItem('soundQuanIndex', category)
 
@@ -50,15 +52,16 @@ class soundQuan extends Component {
         console.log('componentDidMOunt url', url)
         console.log('componentDidMOunt id', this.props.params.id)
 
-        if (!data) {
+        if (data) {
             // 获取数据
             soundQuanData(url).then(res => {
                 let data = res.soundQuan
-                localStorage.setItem(url, JSON.stringify(data))
+                localStorage.setItem(url, JSON.stringify(res))
                 this.setState({
-                    data: data
+                    data: data,
+                    dataS: res
                 })
-                console.log('albumQaunData 请求数据', res.albumQuan)
+                console.log('albumQaunData 请求数据', res)
             })
         } else {
             this.setState({
@@ -67,6 +70,7 @@ class soundQuan extends Component {
 
             console.log('albumQuandata 缓存', data)
         }
+
 
     }
 
