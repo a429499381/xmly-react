@@ -17,7 +17,7 @@ class AlbumQuan extends Component {
                         <span className="item ">最近更新</span>
                     </Link>
                     <Link to={`/album-quan/${id}/classic`} >
-                        <span className="item ">经典</span>
+                        <span className="item itemBn">经典</span>
                     </Link>
 
 

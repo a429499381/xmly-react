@@ -69,6 +69,9 @@ class album extends Component {
                                             <Link to={item.href} className="goto">
                                                 <p className="title">{item.Title}</p>
                                             </Link>
+                                            <a className="itemIcon">
+                                                <i className="palyIcon"></i>
+                                            </a>
                                         </div>
                                     })
                                 }
