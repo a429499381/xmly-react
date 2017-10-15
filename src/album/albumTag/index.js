@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-import Header from '../../PageCom/Header/index'
+import Header from '../../Home/Header/index'
 import List from '../../album/albumTag/list'
 import {albumTagData} from '../../data/axios/album-tag'
 

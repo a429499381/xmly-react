@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './index.scss'
 
 import RectSwiper from 'react-swipe'
-import * as Data from '../config/BannerData.json'
+import * as Data from '../../Home/config/BannerData.json'
 
 class Banner extends Component {
   constructor(props) {

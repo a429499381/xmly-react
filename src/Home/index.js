@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Header from '../PageCom/Header'
+import Header from './Header'
 import Banner from '../PageCom/Banner'
 import TjScroll from '../PageCom/TjScroll'
 import Love from '../PageCom/Love_love'

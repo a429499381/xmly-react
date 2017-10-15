@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import  HeaderTop from '../HeaderTop'
+import  HeaderTop from '../../Home/HeaderTop'
 
 class Sms extends Component {
   constructor(props) {
