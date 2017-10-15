@@ -10,13 +10,13 @@ class AlbumQuan extends Component {
         return (
             <div className="albumQuanList fix">
                 <div className="albumQuannav">
-                    <Link to={`/album-quan/${id}/rank`} onClick={this.loadHandle.bind(this)}>
+                    <Link to={`/album-quan/${id}/rank`} >
                         <span className="item active">最火</span>
                     </Link>
-                    <Link to={`/album-quan/${id}/recnet`} onClick={this.loadHandle.bind(this)}>
+                    <Link to={`/album-quan/${id}/recnet`} >
                         <span className="item ">最近更新</span>
                     </Link>
-                    <Link to={`/album-quan/${id}/classic`} onClick={this.loadHandle.bind(this)}>
+                    <Link to={`/album-quan/${id}/classic`} >
                         <span className="item ">经典</span>
                     </Link>
 

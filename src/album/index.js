@@ -29,13 +29,13 @@ class album extends Component {
                 {
                     data
                         ?
-                        <div className="pl10 pr10">
+                        <div className="pl10 pr10 album">
                               <div className="albumheader rel">
                                 <Link to="">
                                     <img src={header.Img} className='img abs' alt=""/>
                                 </Link>
                                 <div className="container pt10">
-                                    <p className="ablumtitle">{header.Title}</p>
+                                    <h2 className="ablumtitle">{header.Title}</h2>
                                     <p className="ablumintro">{header.Intro}</p>
                                     <p className="ablumname">{header.name}</p>
                                 </div>

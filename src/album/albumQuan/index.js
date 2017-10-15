@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import {hashHistory} from 'react-router'
 
-import Header from '../../PageCom/Header/index'
 import Back from '../../PageCom/Back/index'
-import DetailTitle from '../../Sound/index'
 import FooterNavgtion from '../../PageCom/FooterNavgtion/index'
-import NoMore from '../../PageCom/NoMore/index'
+// import NoMore from '../../PageCom/NoMore/index'
 import QuanList from '../albumQuan/list/list'
 
 import {albumQuanData} from '../../data/axios/albumQuan'
