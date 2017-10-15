@@ -20,7 +20,6 @@ class Love extends Component {
                     <div className="love_title">
                         <a className="love_t"  href={title.href}>{title.title}</a>&nbsp;
                         <a href={'#'+title.href} className="more">更多 ></a>&nbsp;
-                        <i className="content">&nbsp;</i>
                     </div>
                     <div className ="love_list">
                         {

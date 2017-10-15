@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
-import './index.css'
+import './index.scss'
 
 class ListSrcoll extends Component {
   constructor(props) {
@@ -20,7 +20,6 @@ class ListSrcoll extends Component {
           <div className="love_title">
             <a className="love_t" href={'#'+title.href} >{title.title}</a>&nbsp;
             <a href={'#'+this.state.title.href} className="more">更多</a>&nbsp;
-            <i className="content">&nbsp;</i>
           </div>
 
           {/* 列表 */}

@@ -1,6 +1,18 @@
 .n_content {
   padding: 0 10px;
-}
+
+  .love_title {
+    position: relative;
+  }
+  .love_t {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .more {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
 
 .list {
   padding: 10px 0; }
@@ -46,3 +58,5 @@
   background: #ff8484;
   color: #ffffff;
   border-radius: 8px; }
+}
+

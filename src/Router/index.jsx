@@ -10,6 +10,7 @@ import Sms from '../PageCom/Sms'
 import Down from '../PageCom/Down'
 import Ls from '../PageCom/Ls'
 import Sound from '../Sound/index'
+import SoundQuan from '../Sound/soundQuan'
 import album from '../album'
 import albumTag from '../album/albumTag'
 import albumQuan from '../album/albumQuan'
@@ -31,6 +32,7 @@ class RouterMap extends React.Component {
           <Route path='/Down' component={Down}/>
           <Route path='/Search/:id(/:more)' component={Search}/>
           <Route path='*/Sound/*' component={Sound}/>
+          <Route path='/sound-quan/:id/:category' component={SoundQuan}/>
           <Route path='*/album/*' component={album}/>
           <Route path='/album-tag/*' component={albumTag}/>
           <Route path='/album-quan/:id/rank' component={albumQuan}/>

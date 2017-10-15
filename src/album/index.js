@@ -49,7 +49,7 @@ class album extends Component {
                                     more.map((item, index) => {
                                         return <div key={index} className="albumQuanList">
                                             <Link to={item.href}>
-                                                <img src={item.img} alt="" className="albumimg"/>
+                                                <img src={item.img} alt="" className="albumimg p10"/>
                                                 <div className="container">
                                                     <p className="title">{item.Title}</p>
                                                     <p className="smallIcon">
