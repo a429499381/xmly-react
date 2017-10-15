@@ -13,6 +13,6 @@ class NoMore extends Component {
       </div>
     )
   }
-}
+}``
 
 export default NoMore;

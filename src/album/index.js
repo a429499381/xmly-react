@@ -34,7 +34,7 @@ class album extends Component {
                                 <Link to="">
                                     <img src={header.Img} className='img abs' alt=""/>
                                 </Link>
-                                <div className="container pt10">
+                                <div className="container ">
                                     <h2 className="ablumtitle">{header.Title}</h2>
                                     <p className="ablumintro">{header.Intro}</p>
                                     <p className="ablumname">{header.name}</p>
@@ -44,12 +44,12 @@ class album extends Component {
                                 <h2 className="title">{data.Txt.title}</h2>
                                 <p className="intro">{data.Txt.intro}</p>
                             </div>
-                            <div className="album">
+                            <div className="albumss">
                                 {
                                     more.map((item, index) => {
-                                        return <div key={index} className="rel">
+                                        return <div key={index} className="albumQuanList">
                                             <Link to={item.href}>
-                                                <img src={item.img} alt="" className="albumimg abs"/>
+                                                <img src={item.img} alt="" className="albumimg"/>
                                                 <div className="container">
                                                     <p className="title">{item.Title}</p>
                                                     <p className="smallIcon">
@@ -62,10 +62,10 @@ class album extends Component {
                                     })
                                 }
                             </div>
-                            <div className="lists">
+                            <div className="albumlistsss">
                                 {
                                     lists.map((item, index) => {
-                                        return <div key={index}>
+                                        return <div key={index} className="albumListbb">
                                             <Link to={item.href} className="goto">
                                                 <p className="title">{item.Title}</p>
                                             </Link>
@@ -81,7 +81,7 @@ class album extends Component {
                 <FooterNavgtion/>
 
                 {/* 没有更多 */}
-                <NoMore/>
+                {/*<NoMore/>*/}
             </div>
         )
     }
