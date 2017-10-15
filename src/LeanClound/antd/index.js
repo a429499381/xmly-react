@@ -6,7 +6,7 @@ import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
 
 
 import Header from '../../PageCom/Header/index'
-import FooterNavgtion from '../../PageCom/FooterNavgtion/index'
+import FooterNavgtion from '../../PageCom/Footer/index'
 import NoMore from '../../PageCom/NoMore/index'
 
 class antd extends Component {

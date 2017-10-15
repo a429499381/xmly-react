@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from '../PageCom/Header'
-import FooterNavgtion from '../PageCom/FooterNavgtion'
+import FooterNavgtion from '../PageCom/Footer'
 import NoMore from '../PageCom/NoMore'
 
 import {SearchData} from '../data/axios/Search'

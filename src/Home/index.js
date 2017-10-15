@@ -6,7 +6,7 @@ import TjScroll from '../PageCom/TjScroll'
 import Love from '../PageCom/Love_love'
 import ListSrcoll from '../PageCom/ListSrcoll'
 import NoMore from '../PageCom/NoMore'
-import FooterNavgtion from '../PageCom/FooterNavgtion'
+import FooterNavgtion from '../PageCom/Footer'
 import LoadIcon from '../PageCom/loadIcon'
 
 

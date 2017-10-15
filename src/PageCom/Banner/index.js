@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './index.css'
+import './index.scss'
 
 import RectSwiper from 'react-swipe'
 import * as Data from '../config/BannerData.json'
@@ -25,7 +25,7 @@ class Banner extends Component {
             }.bind(this)
         }
         return (
-            <div>
+            <div className="banner">
                 <RectSwiper className="swiper_box" swipeOptions={opt}>
                     {
                         dataS.map((item, index) => {

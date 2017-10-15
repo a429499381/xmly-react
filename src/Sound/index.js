@@ -5,7 +5,9 @@ import React, {Component} from 'react'
 import {Link} from 'react-router'
 
 import Back from '../PageCom/Back/index'
-import './index.css'
+import Footer from '../PageCom/Footer'
+import NoMore from '../PageCom/NoMore'
+import './index.scss'
 
 import {UserDetailData} from '../data/axios/UserDetail'
 
@@ -23,7 +25,7 @@ export default class Sound extends Component {
     let play = this.state.data.play
     let blum = this.state.data.blum
     return (
-      <div>
+      <div className='sound'>
         {
           data
             ? <div>
@@ -70,6 +72,8 @@ export default class Sound extends Component {
           </div>
             : <div>加载中</div>
         }
+        <NoMore/>
+        <Footer/>
       </div>
     )
   }

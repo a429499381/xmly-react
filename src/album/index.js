@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router'
 import Back from '../PageCom/Back'
-import FooterNavgtion from '../PageCom/FooterNavgtion'
+import FooterNavgtion from '../PageCom/Footer'
 import NoMore from '../PageCom/NoMore'
 import {albumData} from '../data/axios/album'
 import LoadIcon from '../PageCom/loadIcon'
@@ -76,12 +76,12 @@ class album extends Component {
                         </div>
                         : <LoadIcon/>
                 }
-
+                {/* 没有更多 */}
+                <NoMore/>
                 {/* 底部导航 */}
                 <FooterNavgtion/>
 
-                {/* 没有更多 */}
-                {/*<NoMore/>*/}
+
             </div>
         )
     }

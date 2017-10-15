@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 
 import Header from '../../PageCom/Header/index'
-import FooterNavgtion from '../../PageCom/FooterNavgtion/index'
-import NoMore from '../../PageCom/NoMore/index'
 import List from '../../album/albumTag/list'
 import {albumTagData} from '../../data/axios/album-tag'
 
@@ -24,10 +22,6 @@ class albumTag extends Component {
                 <Header />
                 <div className="mt86"></div>
                 <List data={this.state.data}/>
-                {/* 底部导航 */}
-                <FooterNavgtion/>
-                {/* 没有更多 */}
-                <NoMore/>
             </div>
         )
     }

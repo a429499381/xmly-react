@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './index.css'
+import './index.scss'
 
 class Footer extends Component {
   render() {
     return (
-      <div>
+      <div className="footer">
         {/* 底部导航 */}
          <div className="footer_fixe">
           <div className="footer">

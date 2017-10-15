@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { hashHistory, Link } from 'react-router'
 
-import './index.css'
+import './index.scss'
 
 
 class HeaderTop extends Component {
@@ -15,7 +15,7 @@ class HeaderTop extends Component {
   render() {
       let data = this.state.data
     return (
-      <div>
+      <div className="headerTop">
         {
           this.state.data
             ?   <div className="top">

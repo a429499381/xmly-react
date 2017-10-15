@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
 import Back from '../../PageCom/Back/index'
-import FooterNavgtion from '../../PageCom/FooterNavgtion/index'
-// import NoMore from '../../PageCom/NoMore/index'
+import FooterNavgtion from '../../PageCom/Footer/index'
+import NoMore from '../../PageCom/NoMore/index'
 import QuanList from '../albumQuan/list/list'
 
 import {albumQuanData} from '../../data/axios/albumQuan'
@@ -24,9 +24,10 @@ class AlbumQuan extends Component {
                 <Back/>
                 {/* 底部导航 */}
                 <QuanList index={this.state.category} id={this.state.id} data={this.state.data}/>
+                <NoMore/>
                 <FooterNavgtion/>
                 {/* 没有更多 */}
-                {/*<NoMore/>*/}
+
             </div>
         )
     }
