@@ -4,19 +4,22 @@ import {Link} from 'react-router'
 import '../list/list.scss'
 
 class AlbumQuan extends Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
         let data = this.props.data
         let id = this.props.id
         return (
             <div className="soundQuanList fix">
                 <div className="albumQuannav">
-                    <Link to={`/sound-quan/${id}/rank`} >
+                    <Link to={`/sound-quan/${id}/rank`} onClick={this.push.bind(this)}>
                         <span className="item active">最火</span>
                     </Link>
-                    <Link to={`/sound-quan/${id}/recnet`} >
+                    <Link to={`/sound-quan/${id}/recnet`} onClick={this.push.bind(this)}>
                         <span className="item ">本周热门</span>
                     </Link>
-                    <Link to={`/sound-quan/${id}/classic`} >
+                    <Link to={`/sound-quan/${id}/classic`} onClick={this.push.bind(this)}>
                         <span className="item itemBn">最多赞</span>
                     </Link>
 
@@ -52,6 +55,11 @@ class AlbumQuan extends Component {
     loadHandle() {
         window.location.reload()
     }
+    push(){
+        console.log('push list')
+        console.log(this.props)
+    }
+
 }
 
 export default AlbumQuan;

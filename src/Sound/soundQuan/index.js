@@ -24,7 +24,7 @@ class soundQuan extends Component {
                 {/* top */}
                 <Back/>
                 {/* 底部导航 */}
-                <QuanList index={this.state.category} id={this.state.id} data={this.state.data}/>
+                <QuanList index={this.state.category} push={this.pushHandle.bind(this)} id={this.state.id} data={this.state.data}/>
                 <NoMore/>
                 <FooterNavgtion/>
                 {/* 没有更多 */}
@@ -73,7 +73,15 @@ class soundQuan extends Component {
 
 
     }
-
+    pushHandle() {
+        let category = this.props.params.category
+        if(category == 'recent') {
+            this.setState({
+                dataS: this.state.data.hot
+            })
+            console.log('push this', this.state.dataS)
+        }
+    }
 }
 
 export default soundQuan;

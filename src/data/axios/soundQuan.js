@@ -6,6 +6,7 @@ export  const soundQuanData = (id) => {
     var SearchData = {}
     let OK = 'No'
     let time = 'No'
+    let N = 0
 
     //  分类 数据提取
 
@@ -30,7 +31,7 @@ export  const soundQuanData = (id) => {
             let favorite = 'http://m.ximalaya.com/explore/more_track?page=1&per_page=10&category_id=10&condition=favorite'
             let regex = function (data, name) {
                 SearchData[name] = []
-                let listsound = TagAll('ul', 'class', 'list')
+                // let listsound = TagAll('ul', 'class', 'list')
                 let item = TagAll('li', 'class', 'item item-tp1 cl is-ready')
                 let href = Taghref('li',  'data-url')
                 let soundUrl = Taghref('div',  'sound_url')
@@ -42,7 +43,6 @@ export  const soundQuanData = (id) => {
                 let comment = /<span><i class="icon icon-commetn1 mgr-5"><\/i>(\d+)<\/span>/g
                 let time1 = /<span><i class="icon icon-time1 mgr-5"><\/i>(\d+)<\/span>/g
                 let n = 0
-                data.replace(listsound, function (data) {
                     data.replace(item,function (match) {
                         SearchData[name][n]= {}
                         match.replace(href, function (match1, href) {
@@ -74,31 +74,26 @@ export  const soundQuanData = (id) => {
                         })
                         n++
                     })
-                })
 
-                // setTimeout(function () {
-                //     if(SearchData[name][0] !== undefined) {
-                //         OK = 'OK'
-                //     }
-                // },0)
+                setTimeout(function () {
+                    if(SearchData[name][0] !== undefined) {
+                            OK = 'OK'
+                    }
+                },0)
             }
             GetId(id).then(res => {
                 regex(res.data, 'soundQuan')
-            }).then(() => {
-                soundQuanJson(hot).then(data => {
-                    SearchData.hot = []
-                    regex(data, 'hot')
-                    console.log('soundQuan Json', data.length)
-                })
-                soundQuanJson(favorite).then(data => {
-                    SearchData.favorite = []
-                    regex(data, 'favorite')
-                    console.log('soundQuan Json', data.length)
-                })
-            }).then(() => {
-                OK = 'OK'
             })
-
+            soundQuanJson(hot).then(data => {
+                SearchData.hot = []
+                regex(data, 'hot')
+                console.log('soundQuan Json', data.length)
+            })
+            soundQuanJson(favorite).then(data => {
+                SearchData.favorite = []
+                regex(data, 'favorite')
+                console.log('soundQuan Json', data.length)
+            })
 
         }
         albumQuan()
