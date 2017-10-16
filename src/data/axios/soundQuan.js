@@ -30,7 +30,6 @@ export  const soundQuanData = (id) => {
             let hot = 'http://m.ximalaya.com/explore/more_track?page=1&per_page=10&category_id=10&condition=hot'
             let favorite = 'http://m.ximalaya.com/explore/more_track?page=1&per_page=10&category_id=10&condition=favorite'
             let regex = function (data, name) {
-                SearchData[name] = []
                 // let listsound = TagAll('ul', 'class', 'list')
                 let item = TagAll('li', 'class', 'item item-tp1 cl is-ready')
                 let href = Taghref('li',  'data-url')
@@ -82,7 +81,9 @@ export  const soundQuanData = (id) => {
                 },0)
             }
             GetId(id).then(res => {
-                regex(res.data, 'soundQuan')
+                let name = 'rank'
+                SearchData.rank = []
+                regex(res.data, name)
             })
             soundQuanJson(hot).then(data => {
                 SearchData.hot = []

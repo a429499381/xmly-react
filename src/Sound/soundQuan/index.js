@@ -24,7 +24,7 @@ class soundQuan extends Component {
                 {/* top */}
                 <Back/>
                 {/* 底部导航 */}
-                <QuanList index={this.state.category} push={this.pushHandle.bind(this)} id={this.state.id} data={this.state.data}/>
+                <QuanList index={this.state.category ? this.state.category : 'rank' } push={this.pushHandle.bind(this)} id={this.state.id} data={this.state.data}/>
                 <NoMore/>
                 <FooterNavgtion/>
                 {/* 没有更多 */}
@@ -55,7 +55,8 @@ class soundQuan extends Component {
         if (data !== 'aa') {
             // 获取数据
             soundQuanData(url).then(res => {
-                let data = res.soundQuan
+                let data = res.rank
+                console.log('component 请求数据',data)
                 localStorage.setItem(url, JSON.stringify(res))
                 this.setState({
                     data: data,
@@ -73,23 +74,25 @@ class soundQuan extends Component {
 
 
     }
-    pushHandle(id) {
-        console.log('albumQuan',id)
-        if(id === 'rank') {
+    pushHandle(category) {
+        if(category === 'rank') {
             this.setState({
-                data: this.state.dataS.soundQuan
+                data: this.state.dataS.rank,
+                category: category
             })
-            console.log('push this', this.state.dataS)
-        } else if(id === 'recent') {
+            console.log('push  rank', this.state.dataS.rank)
+        } else if(category === 'recent') {
             this.setState({
-                data: this.state.dataS.hot
+                data: this.state.dataS.hot,
+                category: category
             })
-            console.log('push this', this.state.dataS)
+            console.log('push recent', this.state.dataS.hot)
         } else {
             this.setState({
-                data: this.state.dataS.favorite
+                data: this.state.dataS.favorite,
+                category: category
             })
-            console.log('push this', this.state.dataS)
+            console.log('push favorite', this.state.dataS.favorite)
         }
     }
 }
