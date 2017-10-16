@@ -52,13 +52,12 @@ class AlbumQuan extends Component {
         if (data !== 'a') {
             // 获取数据
             albumQuanData(url).then(res => {
-                let data = res.rank
-                localStorage.setItem(url, JSON.stringify(data))
+                localStorage.setItem(url, JSON.stringify(res))
                 this.setState({
-                    data: data,
+                    data: res.rank,
                     dataS: res
                 })
-                console.log('albumQaunData 请求数据', res.rank)
+                console.log('albumQaunData 请求数据', res)
             })
         } else {
             this.setState({
@@ -78,16 +77,16 @@ class AlbumQuan extends Component {
             console.log('push  rank', this.state.dataS.rank)
         } else if(category === 'recent') {
             this.setState({
-                data: this.state.dataS.hot,
+                data: this.state.dataS.recent,
                 category: category
             })
-            console.log('push recent', this.state.dataS.hot)
+            console.log('push recent', this.state.dataS.recent)
         } else {
             this.setState({
-                data: this.state.dataS.favorite,
+                data: this.state.dataS.classic,
                 category: category
             })
-            console.log('push favorite', this.state.dataS.favorite)
+            console.log('push favorite', this.state.dataS.classic)
         }
     }
 

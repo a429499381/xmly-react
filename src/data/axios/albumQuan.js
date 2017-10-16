@@ -3,9 +3,6 @@ import {Taghref, Tagtxt, TagAll} from '../Regex/config'
 
 export  const albumQuanData = (id) => {
     var SearchData = {}
-    SearchData.rank = []
-    SearchData.hot = []
-    SearchData.favorite = []
     let OK = 'No'
     let time = 'No'
 
@@ -25,6 +22,17 @@ export  const albumQuanData = (id) => {
                 }
             }
         }
+
+        let regExId = /(\/.+\/.+\/)/
+        let recentId = ''
+        let classicId = ''
+        id.replace(regExId, function (match, category) {
+            recentId = category + 'recent'
+        })
+        id.replace(regExId, function (match, category) {
+            classicId = category + 'classic'
+        })
+        console.log('id albumQuandata', id, recentId, classicId)
         let albumQuan = function (id, name) {
             let data = ''
             GetId(id).then(res => {
@@ -36,6 +44,7 @@ export  const albumQuanData = (id) => {
                 let title = Tagtxt('p', 'class', 'name')
                 let playNum = /<span><i class="icon icon-player mgr-5"><\/i>(\d+)<\/span>/g
                 let n = 0
+                SearchData[name] = []
                 data.replace(listAlbum, function (data) {
                     data.replace(item,function (match) {
                         SearchData[name][n]= {}
@@ -55,16 +64,17 @@ export  const albumQuanData = (id) => {
                     })
                 })
 
-                setTimeout(function () {
-                    if(SearchData[name][0] !== undefined) {
-                        OK = 'OK'
-                    }
-                },0)
+
             })
         }
         albumQuan(id, 'rank')
-        albumQuan(id, 'hot')
-        albumQuan(id, 'favorite')
+        albumQuan(recentId, 'recent')
+        albumQuan(classicId, 'classic')
+        setTimeout(function () {
+            if(SearchData !== undefined) {
+                OK = 'OK'
+            }
+        },200)
         callback()
 
 
