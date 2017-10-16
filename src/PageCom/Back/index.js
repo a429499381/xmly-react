@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {hashHistory} from 'react-router'
 import './index.scss'
 
 class Back extends Component {
@@ -18,6 +19,10 @@ class Back extends Component {
             </div>
           </div>
         )}
+        componentDidMount() {
+            let {params, location} = this.props
+            console.log('返回组件', this.childRoutes)
+        }
         hashBack() {
             window.history.back()
         }

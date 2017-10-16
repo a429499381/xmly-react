@@ -2,7 +2,7 @@
  * Created by xutao on 2017/8/14.
  */
 import React from 'react'
-import { Router, Route, IndexRoute } from 'react-router'
+import { Router, Route, IndexRoute, Redirect } from 'react-router'
 
 import App from '../App'
 import Home from '../Home/index'
@@ -33,11 +33,18 @@ class RouterMap extends React.Component {
           <Route path='/Search/:id(/:more)' component={Search}/>
           <Route path='*/Sound/*' component={Sound}/>
           <Route path='/sound-quan/:id/:category' component={SoundQuan}/>
+          <Route path='/sound-quan/all/rank' component={SoundQuan}>
+            <Redirect  from='/sound-quan'  to='/sound-quan/all/rank' />
+          </Route>
           <Route path='*/album/*' component={album}/>
-          <Route path='/album' component={albumQuan}/>
           <Route path='/album-tag/*' component={albumTag}/>
           <Route path='/album-quan/:id/:category' component={albumQuan}/>
+          <Route path='/album-quan/all/rank' component={albumQuan}>
+            <Redirect  from='/album-quan'  to='/album-quan/all/rank' />
+            <Redirect  from='/album'  to='/album-quan/all/rank' />
+          </Route>
           <Route path='/Play' component={Play}/>
+          <Route path='/*' component={Home}/>
         </Route>
       </Router>
     )
