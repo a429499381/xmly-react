@@ -35,8 +35,10 @@ class AlbumQuan extends Component {
 
     componentDidMount() {
         let url = this.props.location.pathname
+        let id = this.props.params.id
         let category = this.props.params.category
         let data = JSON.parse(localStorage.getItem(url))
+        let defaultUrl = '/album-quan/all/ank'
 
         // 第一次进入读取 url category 并缓存
         localStorage.setItem('albumQuanIndex  category', category)
@@ -44,12 +46,27 @@ class AlbumQuan extends Component {
         // 如果存在 就把 index 传递给 QuanList 组件的 index
         this.setState({
             index: category,
-            id: this.props.params.id
+            id: id ? id : 'all'
         })
 
         console.log('componentDidMOunt url', url)
+        if(!category) {
+            albumQuanData(defaultUrl).then(res => {
+                localStorage.setItem(url, JSON.stringify(res))
+                this.setState({
+                    data: res.rank,
+                    dataS: res
+                })
+                console.log('albumQaunData default 请求数据', res)
+            })
+            return true
+        }
 
         if (data !== 'a') {
+            if(!id) {
+                url = defaultUrl
+                console.log('进入默认路径', url)
+            }
             // 获取数据
             albumQuanData(url).then(res => {
                 localStorage.setItem(url, JSON.stringify(res))
