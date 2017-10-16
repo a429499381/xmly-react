@@ -3,7 +3,9 @@ import {Taghref, Tagtxt, TagAll} from '../Regex/config'
 
 export  const albumQuanData = (id) => {
     var SearchData = {}
-    SearchData.albumQuan = []
+    SearchData.rank = []
+    SearchData.hot = []
+    SearchData.favorite = []
     let OK = 'No'
     let time = 'No'
 
@@ -23,7 +25,7 @@ export  const albumQuanData = (id) => {
                 }
             }
         }
-        let albumQuan = function () {
+        let albumQuan = function (id, name) {
             let data = ''
             GetId(id).then(res => {
                 data = res.data
@@ -36,31 +38,33 @@ export  const albumQuanData = (id) => {
                 let n = 0
                 data.replace(listAlbum, function (data) {
                     data.replace(item,function (match) {
-                        SearchData.albumQuan[n]= {}
+                        SearchData[name][n]= {}
                         match.replace(href, function (match1, href) {
-                            Object.assign(SearchData.albumQuan[n], {href})
+                            Object.assign(SearchData[name][n], {href})
                         })
                         match.replace(src, function (match1, src) {
-                            Object.assign(SearchData.albumQuan[n], {src})
+                            Object.assign(SearchData[name][n], {src})
                         })
                         match.replace(title, function (match1, title) {
-                            Object.assign(SearchData.albumQuan[n], {title})
+                            Object.assign(SearchData[name][n], {title})
                         })
                         match.replace(playNum, function (match1, playNum) {
-                            Object.assign(SearchData.albumQuan[n], {playNum})
+                            Object.assign(SearchData[name][n], {playNum})
                         })
                         n++
                     })
                 })
 
                 setTimeout(function () {
-                    if(SearchData.albumQuan[0] !== undefined) {
+                    if(SearchData[name][0] !== undefined) {
                         OK = 'OK'
                     }
                 },0)
             })
         }
-        albumQuan()
+        albumQuan(id, 'rank')
+        albumQuan(id, 'hot')
+        albumQuan(id, 'favorite')
         callback()
 
 

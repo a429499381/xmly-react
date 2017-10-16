@@ -10,14 +10,14 @@ class AlbumQuan extends Component {
         return (
             <div className="albumQuanList fix">
                 <div className="albumQuannav">
-                    <Link to={`/album-quan/${id}/rank`} >
-                        <span className="item active">最火</span>
+                    <Link to={`/album-quan/${id}/rank`} onClick={this.push.bind(this,'rank')}>
+                        <span className={this.props.index === 'rank' ? 'item active' : 'item'}>最火</span>
                     </Link>
-                    <Link to={`/album-quan/${id}/recnet`} >
-                        <span className="item ">最近更新</span>
+                    <Link to={`/album-quan/${id}/recnet`} onClick={this.push.bind(this,'recent')}>
+                        <span className={this.props.index === 'recent' ? 'item active' : 'item'}>最近更新</span>
                     </Link>
-                    <Link to={`/album-quan/${id}/classic`} >
-                        <span className="item itemBn">经典</span>
+                    <Link to={`/album-quan/${id}/classic`} onClick={this.push.bind(this,'classic')}>
+                        <span className={this.props.index === 'classic' ? 'item active itemBn' : 'item itemBn'}>经典</span>
                     </Link>
 
 
@@ -49,8 +49,9 @@ class AlbumQuan extends Component {
             </div>
         )
     }
-    loadHandle() {
-        window.location.reload()
+
+    push(category) {
+        this.props.push(category)
     }
 }
 

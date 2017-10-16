@@ -35,9 +35,7 @@ class RouterMap extends React.Component {
           <Route path='/sound-quan/:id/:category' component={SoundQuan}/>
           <Route path='*/album/*' component={album}/>
           <Route path='/album-tag/*' component={albumTag}/>
-          <Route path='/album-quan/:id/rank' component={albumQuan}/>
-          <Route path='/album-quan/:id/recnet' component={albumQuan}/>
-          <Route path='/album-quan/:id/classic' component={albumTag}/>
+          <Route path='/album-quan/:id/:category' component={albumQuan}/>
           <Route path='/Play' component={Play}/>
         </Route>
       </Router>

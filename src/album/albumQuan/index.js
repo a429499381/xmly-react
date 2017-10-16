@@ -13,7 +13,8 @@ class AlbumQuan extends Component {
         this.state = {
             category: '',
             id: '',
-            data: ''
+            data: '',
+            dataS: ''
         }
     }
 
@@ -23,7 +24,7 @@ class AlbumQuan extends Component {
                 {/* top */}
                 <Back/>
                 {/* 底部导航 */}
-                <QuanList index={this.state.category} id={this.state.id} data={this.state.data}/>
+                <QuanList index={this.state.category ? this.state.category : 'rank'} push={this.push.bind(this)} id={this.state.id} data={this.state.data}/>
                 <NoMore/>
                 <FooterNavgtion/>
                 {/* 没有更多 */}
@@ -48,15 +49,16 @@ class AlbumQuan extends Component {
 
         console.log('componentDidMOunt url', url)
 
-        if (!data) {
+        if (data !== 'a') {
             // 获取数据
             albumQuanData(url).then(res => {
-                let data = res.albumQuan
+                let data = res.rank
                 localStorage.setItem(url, JSON.stringify(data))
                 this.setState({
-                    data: data
+                    data: data,
+                    dataS: res
                 })
-                console.log('albumQaunData 请求数据', res.albumQuan)
+                console.log('albumQaunData 请求数据', res.rank)
             })
         } else {
             this.setState({
@@ -66,6 +68,27 @@ class AlbumQuan extends Component {
             console.log('albumQuandata 缓存', data)
         }
 
+    }
+    push(category) {
+        if(category === 'rank') {
+            this.setState({
+                data: this.state.dataS.rank,
+                category: category
+            })
+            console.log('push  rank', this.state.dataS.rank)
+        } else if(category === 'recent') {
+            this.setState({
+                data: this.state.dataS.hot,
+                category: category
+            })
+            console.log('push recent', this.state.dataS.hot)
+        } else {
+            this.setState({
+                data: this.state.dataS.favorite,
+                category: category
+            })
+            console.log('push favorite', this.state.dataS.favorite)
+        }
     }
 
 }
