@@ -10,6 +10,7 @@ import NoMore from '../PageCom/NoMore'
 import './index.scss'
 
 import {soundData} from '../data/axios/sound'
+import {play} from "../Play/index";
 
 export default class Sound extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class Sound extends Component {
               <div className="play">
                 <img src="" alt="" className="playImg"/>
                 <div className="playImgP">
-                  <a className="itemIcon">
+                  <a className="itemIcon" onClick={this.playHandle.bind(this)}>
                       <i className="palyIcon"></i>
                   </a>
                 </div>
@@ -108,5 +109,12 @@ export default class Sound extends Component {
                 data: data
             })
         })
+    }
+
+    // 播放
+    playHandle(src) {
+       let url = 'http://audio.xmcdn.com/group30/M0B/A9/85/wKgJXlm1JDHDtvP5ADErtZjEGyk778.m4a'
+       play(url)
+       console.log('paly url', url)
     }
 }

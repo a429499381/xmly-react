@@ -15,7 +15,7 @@ import album from '../album'
 import albumTag from '../album/albumTag'
 import albumQuan from '../album/albumQuan'
 import Search from '../Search'
-import Play from '../Play'
+// import Play from '../Play'
 
 // 如果是大型项目，router部分就需要做更加复杂的配置
 // 参见 https://github.com/reactjs/react-router/tree/master/examples/huge-apps
@@ -43,7 +43,7 @@ class RouterMap extends React.Component {
             <Redirect  from='/album-quan'  to='/album-quan/all/rank' />
             <Redirect  from='/album'  to='/album-quan/all/rank' />
           </Route>
-          <Route path='/Play' component={Play}/>
+          {/*<Route path='/Play' component={Play}/>*/}
           <Route path='/*' component={Home}/>
         </Route>
       </Router>
