@@ -41,10 +41,15 @@ class album extends Component {
                                     <p className="ablumname">{header.name}</p>
                                 </div>
                             </div>
-                            <div className="txt mt10 mb10   ">
-                                <h2 className="title">{data.Txt.title}</h2>
-                                <p className="intro">{data.Txt.intro}</p>
-                            </div>
+                            {
+                                data.Txt
+                                    ?
+                                <div className="txt mt10 mb10   ">
+                                    <h2 className="title">{data.Txt.title}</h2>
+                                    <p className="intro">{data.Txt.intro}</p>
+                                </div>
+                                    : ''
+                            }
                             <div className="albumss">
                                 {
                                     more.map((item, index) => {
@@ -105,11 +110,12 @@ class album extends Component {
                 let dataObj = JSON.stringify(Object.assign(obj, data))
                 localStorage.setItem(id, dataObj)
 
-                 this.setState({
-                   data: data
-                 })
-                 window.obj = obj
-                 console.log(obj)
+                if(Object.keys(dataObj).length !== 0) {
+                    this.setState({
+                        data: data
+                    })
+                }
+                console.log('获取到的数据', data)
 
             })
         } else {
