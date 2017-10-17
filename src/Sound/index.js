@@ -9,7 +9,7 @@ import Footer from '../PageCom/Footer'
 import NoMore from '../PageCom/NoMore'
 import './index.scss'
 
-import {UserDetailData} from '../data/axios/UserDetail'
+import {soundData} from '../data/axios/sound'
 
 export default class Sound extends Component {
   constructor(props) {
@@ -54,7 +54,7 @@ export default class Sound extends Component {
             {
               list.map((item, index) => {
                 return <div key={index}>
-                  <Link to={item.href}>
+                  <Link to={item.href} onClick={this.push.bind(this, `${item.href}`)}>
                     <div className="blums">
                       <div className="lists">
                         <p className="item">
@@ -89,7 +89,7 @@ export default class Sound extends Component {
       })
     } else {
       // 获取用户页数据
-      UserDetailData(id).then(data => {
+      soundData(id).then(data => {
         localStorage.setItem(id, JSON.stringify(data))
         this.setState({
           data: data
@@ -100,4 +100,13 @@ export default class Sound extends Component {
 
 
   }
+
+    push(url) {
+        console.log('push url', url)
+        soundData(url).then(data=> {
+            this.setState({
+                data: data
+            })
+        })
+    }
 }

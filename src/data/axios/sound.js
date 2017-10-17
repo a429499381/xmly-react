@@ -1,7 +1,7 @@
 import {GetId} from './get.js'
 import {TagAll, Taghref, Tagtxt} from '../Regex/config'
 
-export const UserDetailData = (id) => {
+export const soundData = (id) => {
   var GetData = {}
 
   //  分类 数据提取

@@ -6,7 +6,7 @@ import NoMore from '../PageCom/NoMore'
 
 import {SearchData} from '../data/axios/Search'
 import {albumData} from '../data/axios/album'
-import {UserDetailData} from '../data/axios/UserDetail'
+import {soundData} from '../data/axios/sound'
 import {JinPinData} from '../data/axios/Jinpin'
 
 
@@ -42,7 +42,7 @@ class Search extends Component {
         console.log('album',data)
     })
     // 用户 详情页
-    UserDetailData(Userurl).then(data => {
+    soundData(Userurl).then(data => {
       console.log('用户详情页',data)
     })
 

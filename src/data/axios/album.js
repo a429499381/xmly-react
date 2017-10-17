@@ -43,7 +43,7 @@ export  const albumData = (id) => {
 
                 // 相关专辑提取
                 const SectionX = /(?!<\/?section>)<section\b\s?class="mod\srelativeAlbum">[\d\D]+?(<\/section\b>)/g
-                const HrefX = /<a\s.+href="([^<>"]+)"/g
+                const HrefX = /<a\s.+href="([^<>"]+)\?.+"/g
                 // 提取 播放量 可播放集数
                 const PlayNumX = /<span.+<\/i>([^<>"]+)<\/span>\s+<span.+<\/i>([^<>"]+)<\/span>/g
                 const TitleX = /<h4\b.+?([^><]+?)</g
@@ -74,7 +74,7 @@ export  const albumData = (id) => {
                             NumH++
                      })
                      match.replace(img, function (match, img) {
-                         GetData.album.Album[NumI] = {img}
+                         // GetData.album.Album[NumI] = {img}
                          NumI++
                      })
 

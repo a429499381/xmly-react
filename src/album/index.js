@@ -11,7 +11,8 @@ class album extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: ''
+            data: '',
+            zhuboId: ''
         }
     }
 
@@ -48,7 +49,7 @@ class album extends Component {
                                 {
                                     more.map((item, index) => {
                                         return <div key={index} className="albumQuanList">
-                                            <Link to={item.href}>
+                                            <Link to={'/'+ this.state.zhuboId + item.Href} onClick={this.push.bind(this, `/${this.state.zhuboId}${item.Href}`) }>
                                                 <img src={item.img} alt="" className="albumimg p10"/>
                                                 <div className="container">
                                                     <p className="title">{item.Title}</p>
@@ -66,7 +67,7 @@ class album extends Component {
                                 {
                                     lists.map((item, index) => {
                                         return <div key={index} className="albumListbb">
-                                            <Link to={item.href} className="goto">
+                                            <Link to={item.href} >
                                                 <p className="title">{item.Title}</p>
                                             </Link>
                                             <a className="itemIcon">
@@ -90,10 +91,14 @@ class album extends Component {
     }
 
     componentDidMount() {
+        let zhuboId = this.props.params.zhuboId
         let id = this.props.location.pathname
         let data = JSON.parse(localStorage.getItem(id))
-        console.log(id)
-        if (!data) {
+        this.setState({
+            zhuboId: zhuboId
+        })
+        console.log('album zhuboId', zhuboId, id)
+        if (data !== 'aa') {
             albumData(id).then(data => {
                 // 把数组 转换为 对象  再格式化为 字符串 才能保存 localStorage  中。
                 let obj = {}
@@ -114,6 +119,15 @@ class album extends Component {
             })
             console.log('缓存数据', data)
         }
+    }
+
+    push(url) {
+        console.log('push url', url)
+        albumData(url).then(data=> {
+            this.setState({
+                data: data
+            })
+        })
     }
 }
 
