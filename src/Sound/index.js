@@ -105,40 +105,59 @@ export default class Sound extends Component {
 
 
   }
+    componentWillUnmount() {
+      let time = localStorage.getItem('setIntervalTime')
+      if(time) {
+          clearInterval(time)
+          console.log('定时器清理完毕', time)
+      }
+    }
+
 
     push(url) {
-        let that = this
         let regEx = /\d+\/.+\/(\d+)/
-        let hours = 0
-        let times = 0
-        url.replace(regEx, function (match, id) {
+        let that = this
+        // 计算时间
+        let palyTime = function() {
+            let times = 0
+            let hours = 0
+            let setIntervalTime = ''
+            // 播放时间 转换。
+            let oldTime = localStorage.getItem('setIntervalTime')
+            clearInterval(oldTime)
+            console.log('oldTime 之前定时器', oldTime)
+            clearInterval(setIntervalTime)
+            setIntervalTime = setInterval(function () {
+                let current = window.audio.currentTime
+                if(current < 60) {
+                    hours = '00'
+                    times = current.toString().split('.')[0]
+                    times < 10 ? times = `0${times}` : ''
+                } else {
+                    hours =Math.floor((current.toFixed(0) / 60))
+                    hours < 10 ? hours = `0${hours}` : ''
+                    times = current.toFixed(0) - hours*60
+                    times < 10 ? times = `0${times}` : ''
+
+                }
+
+                that.setState({
+                    currentTime: `${hours}:${times}`
+                })
+                console.log('window.audio.currentTime',window.audio.currentTime, `${hours}:${times}`)
+            },1000)
+            localStorage.setItem('setIntervalTime', setIntervalTime)
+            console.log('setIntervalTime', setIntervalTime)
+
+        }
+        let src =  url.replace(regEx, function (match, id) {
             getJson(id).then(res => {
                 let src = res.data.play_path
                 console.log('播放数据 ',id, src)
                 console.log('window.audio.paused', window.audio.paused)
                 play(src)
                 console.log('window.audio.paused', window.audio.paused)
-
-                // 播放时间 转换。
-                setInterval(function () {
-                    let current = window.audio.currentTime
-                    if(current < 60) {
-                        hours = '00'
-                        times = current.toString().split('.')[0]
-                        times < 10 ? times = `0${times}` : ''
-                    } else {
-                        hours =Math.floor((current.toFixed(0) / 60))
-                        hours < 10 ? hours = `0${hours}` : ''
-                        times = current.toFixed(0) - hours*60
-                        times < 10 ? times = `0${times}` : ''
-
-                    }
-
-                    that.setState({
-                        currentTime: `${hours}:${times}`
-                    })
-                    console.log('window.audio.currentTime',window.audio.currentTime, `${hours}:${times}`)
-                },1000)
+                palyTime()
             })
         })
     }
