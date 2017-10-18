@@ -10,6 +10,7 @@ import NoMore from '../PageCom/NoMore'
 import './index.scss'
 
 import {soundData} from '../data/axios/sound'
+import {getJson} from "../data/axios/get";
 import {play} from "../Play/index";
 
 export default class Sound extends Component {
@@ -103,18 +104,17 @@ export default class Sound extends Component {
   }
 
     push(url) {
-        console.log('push url', url)
-        soundData(url).then(data=> {
-            this.setState({
-                data: data
+        let regEx = /\d+\/.+\/(\d+)/
+        url.replace(regEx, function (match, id) {
+            getJson(id).then(res => {
+                let src = res.data.play_path
+                console.log('播放数据 ',id, src)
+                play(src)
             })
         })
     }
 
     // 播放
-    playHandle(src) {
-       let url = 'http://audio.xmcdn.com/group30/M0B/A9/85/wKgJXlm1JDHDtvP5ADErtZjEGyk778.m4a'
-       play(url)
-       console.log('paly url', url)
+    playHandle() {
     }
 }

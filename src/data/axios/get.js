@@ -3,8 +3,8 @@ import axios from 'axios'
 import * as code from './config'
 // https://bird.ioliu.cn/ 跨域代理网站
 
-export  const getJson = (url) => {
-   // const url = 'http://m.ximalaya.com/tracks/47259950.json'
+export  const getJson = (id) => {
+   const url = `http://m.ximalaya.com/tracks/${id}.json`
 
      return axios.get(code.CODEURL + url)
 }

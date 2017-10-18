@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './index.scss'
+import {play} from "../../Play/index";
 
 class Footer extends Component {
   render() {
@@ -16,7 +17,7 @@ class Footer extends Component {
             <i className="content">&nbsp;</i>
           </div>
           <div className="bofang">
-            <a href="#/">播放</a>
+            <a href="#/" onClick={play()}>播放</a>
           </div>
         </div>
         {/* 底部导航 */}
