@@ -107,6 +107,7 @@ export default class Sound extends Component {
   }
     componentWillUnmount() {
       let time = localStorage.getItem('setIntervalTime')
+      localStorage.setItem('currentTiem', this.state.currentTime)
       if(time) {
           clearInterval(time)
           console.log('定时器清理完毕', time)
@@ -144,7 +145,7 @@ export default class Sound extends Component {
                 that.setState({
                     currentTime: `${hours}:${times}`
                 })
-                console.log('window.audio.currentTime',window.audio.currentTime, `${hours}:${times}`)
+
             },1000)
             localStorage.setItem('setIntervalTime', setIntervalTime)
             console.log('setIntervalTime', setIntervalTime)
@@ -153,6 +154,11 @@ export default class Sound extends Component {
         let src =  url.replace(regEx, function (match, id) {
             getJson(id).then(res => {
                 let src = res.data.play_path
+                // 保存当前 播放文件地址 与 localStorage
+                localStorage.setItem('playCurr', JSON.stringify(src))
+
+
+
                 console.log('播放数据 ',id, src)
                 console.log('window.audio.paused', window.audio.paused)
                 play(src)
