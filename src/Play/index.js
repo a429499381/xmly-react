@@ -1,9 +1,18 @@
 export const play = function(src) {
     if (!window.audio) {
         window.audio = new Audio(src)
+        setTimeout(function () {
+            window.audio.play()
+
+        },0)
+
     }
     window.audio.src = src
-    window.audio.paused ? window.audio.play() : window.audio.pause()
+    setTimeout(function () {
+        window.audio.play()
+
+    },0)
+
 }
 
 // export const playLoad = function () {

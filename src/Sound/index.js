@@ -116,5 +116,7 @@ export default class Sound extends Component {
 
     // 播放
     playHandle() {
+      let playload = window.audio.paused
+        playload ? window.audio.play() : window.audio.pause()
     }
 }
