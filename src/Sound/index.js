@@ -11,13 +11,14 @@ import './index.scss'
 
 import {soundData} from '../data/axios/sound'
 import {getJson} from "../data/axios/get";
-import {play} from "../Play/index";
+import {play, playLoad} from "../Play/index";
 
 export default class Sound extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: ''
+      data: '',
+      currentTime: '00:00'
     }
   }
 
@@ -43,7 +44,7 @@ export default class Sound extends Component {
                 </div>
                 <p className="zhubo">主播：{play.zhubo}</p>
                 <div className="playScroll">
-                  <span className="start">00:00</span>
+                  <span className="start">{this.state.currentTime}</span>
                   <span className="startIng">
                 <a href="#" className="red"></a>
               </span>
@@ -81,6 +82,8 @@ export default class Sound extends Component {
   }
 
   componentDidMount() {
+      //播放器
+     play()
     // 获取当前页面url
     let id = this.props.location.pathname
     let data = localStorage.getItem(id)
@@ -104,19 +107,45 @@ export default class Sound extends Component {
   }
 
     push(url) {
+        let that = this
         let regEx = /\d+\/.+\/(\d+)/
+        let hours = 0
+        let times = 0
         url.replace(regEx, function (match, id) {
             getJson(id).then(res => {
                 let src = res.data.play_path
                 console.log('播放数据 ',id, src)
+                console.log('window.audio.paused', window.audio.paused)
                 play(src)
+                console.log('window.audio.paused', window.audio.paused)
+
+                // 播放时间 转换。
+                setInterval(function () {
+                    let current = window.audio.currentTime
+                    if(current < 60) {
+                        hours = '00'
+                        times = current.toString().split('.')[0]
+                        times < 10 ? times = `0${times}` : ''
+                    } else {
+                        hours =Math.floor((current.toFixed(0) / 60))
+                        hours < 10 ? hours = `0${hours}` : ''
+                        times = current.toFixed(0) - hours*60
+                        times < 10 ? times = `0${times}` : ''
+
+                    }
+
+                    that.setState({
+                        currentTime: `${hours}:${times}`
+                    })
+                    console.log('window.audio.currentTime',window.audio.currentTime, `${hours}:${times}`)
+                },1000)
             })
         })
     }
 
     // 播放
     playHandle() {
-      let playload = window.audio.paused
-        playload ? window.audio.play() : window.audio.pause()
+        playLoad()
+       // window.audio.paused ? window.audio.play() : window.audio.pause()
     }
 }
