@@ -1,0 +1,68 @@
+.albumQuanList {
+  margin: 10px 0;
+  padding: 0 5px;
+  width: 100%;
+  .albumQuannav {
+    margin: 5px 0;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ff8484;
+    .item {
+      display: inline-block;
+      padding: 5px 0;
+      width: 33%;
+      text-align: center;
+      color: #ff8484  ;
+      border-right: 1px solid #ff8484;
+    }
+    .active {
+      background: #ff8484;
+      color: #ffffff;
+    }
+    .itemBn {
+      border: none;
+    }
+
+  }
+  // 列表
+  .Quanlist {
+    width: 100%;
+
+    .list {
+      height: 70px;
+      background: rgba(142, 0, 40, 0.04);
+      box-shadow: 1px 1px #eeeeee;
+      .img {
+        width: 60px;
+        height: 60px;
+        background: #ff8484;
+        border-radius: 6px;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+      }
+      .container {
+        margin-left: 70px;
+        margin-top: 10px;
+
+        h4 {
+          margin-bottom: 10px;
+        }
+        .palyNum {
+          color: #939393;
+          margin-left: 4px;
+        }
+        .down {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          width: 20px;
+          height: 20px;
+          border-radius: 20px;
+          background: #ff8484;
+        }
+      }
+    }
+  }
+
+}

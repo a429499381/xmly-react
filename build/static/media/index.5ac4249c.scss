@@ -1,0 +1,103 @@
+.sound {
+.DTitle {
+  padding: 20px 10px;
+}
+.title {
+  line-height: 30px;
+  padding: 10px 0;
+  color: rgba(75, 75, 75, 0.89);
+}
+.play {
+  position: relative;
+  margin: 20px 0;
+}
+.playImg {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  background: rgba(229, 119, 119, 0.08);
+  float: left;
+  margin-right: 10px;
+}
+.zhubo {
+  padding-top: 20px;
+}
+.img {
+}
+.playImgP {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.palyScroll {
+  display: inline-block;
+  width: 100%;
+}
+.start{
+  display: inline-block;
+  margin:8px 8px 0 0;
+}
+.startIng {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+  border: 1px solid #cccccc;
+
+}
+.red {
+  position: absolute;
+  top: -8px;
+  left: -5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+  background: #ff8484;
+}
+
+.samllTitle {
+  font-size: 18px;
+  line-height: 30px
+}
+
+.blums {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid rgba(204, 204, 204, 0.31);
+  box-shadow: inset;
+}
+.lists {
+  width: 90%;
+  float: left;
+}
+.item {
+  display: inline-block;
+  line-height: 24px;
+  font-size: 14px;
+}
+.itemIcon {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 324px;
+  border: 1px solid #ff8484;
+}
+
+.palyIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -5px;
+  margin-left: -4px;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-left: 10px solid rgba(212, 0, 0, 0.47);
+  border-bottom: 5px solid transparent;
+}
+
+}
+
+
