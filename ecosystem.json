@@ -1,0 +1,28 @@
+{
+  "apps":[
+    {
+      "name": "Website",
+      "script": "app.js",
+      "env": {
+        "COMMON_VARIABLE": "true"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "csdn",
+      "host": ["120.78.156.2"],
+      "port": "22",
+      "ref":  "origin/master",
+      "repo": "git@gitee.com:taotaoyun/react-fuxi20170719.git",
+      "path": "~/www/website",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
