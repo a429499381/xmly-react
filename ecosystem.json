@@ -1,8 +1,11 @@
 {
   "apps":[
     {
-      "name": "Website",
-      "script": "app.js",
+      "name": "react xmly",
+      "script": "./build",
+      "interpreter": "serve",
+      "interpreter_args": "-s build",
+      "watch": true,
       "env": {
         "COMMON_VARIABLE": "true"
       },
