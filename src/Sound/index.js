@@ -18,7 +18,8 @@ export default class Sound extends Component {
     super(props)
     this.state = {
       data: '',
-      currentTime: '00:00'
+      currentTime: '00:00',
+      playLoad: true
     }
   }
 
@@ -39,7 +40,12 @@ export default class Sound extends Component {
                 <img src="" alt="" className="playImg"/>
                 <div className="playImgP">
                   <a className="itemIcon" onClick={this.playHandle.bind(this)}>
-                      <i className="palyIcon"></i>
+                    {
+                      this.state.playLoad
+                        ? <i className="play_pause"></i>
+                        : <i className="play_play"></i>
+                    }
+
                   </a>
                 </div>
                 <p className="zhubo">主播：{play.zhubo}</p>
@@ -146,7 +152,7 @@ export default class Sound extends Component {
                     currentTime: `${hours}:${times}`
                 })
 
-            },1000)
+            },500)
             localStorage.setItem('setIntervalTime', setIntervalTime)
             console.log('setIntervalTime', setIntervalTime)
 
@@ -171,6 +177,9 @@ export default class Sound extends Component {
     // 播放
     playHandle() {
         playLoad()
+        this.setState({
+          playLoad: !this.state.playLoad
+        })
        // window.audio.paused ? window.audio.play() : window.audio.pause()
     }
 }
