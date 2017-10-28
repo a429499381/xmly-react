@@ -1,4 +1,4 @@
-// import * as actionTypes from './store'
+import * as actionTypes from '../config/store'
 
 export function update(data) {
     return {

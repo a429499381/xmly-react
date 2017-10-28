@@ -4,9 +4,9 @@ const initialState = []
 
 export default function userinfo (state = initialState, action) {
     switch (action.type) {
-        case actionTypes.USERINFO_UPDATE:
+        case actionTypes.STORE_UPDATE:
             return action.data
-        case actionTypes.STORE_ADD:
+            case actionTypes.STORE_ADD:
             state.unshift(action.data)
             return state
         case actionTypes.STORE_RM:
