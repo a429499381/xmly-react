@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+
+import * as actionsTodoList from '../redux/actions/store'
 
 import Header from './Header'
 import Banner from '../PageCom/Banner'
@@ -100,4 +104,18 @@ class Home extends Component {
     }
 }
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+    store: state.store
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actionsTodoList: bindActionCreators(actionsTodoList, dispatch)
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home)
