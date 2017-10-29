@@ -43,19 +43,21 @@
       -o-animation: myfirst 3s linear infinite;
       -webkit-animation: myfirst 3s linear infinite;
       animation: myfirst 3s linear infinite;
+
+      @-webkit-keyframes myfirst /* Safari and Chrome */
+      {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     }
     /*.bofang a:hover {*/
     /*transform: rotate(1360deg); }*/
 
-    @-webkit-keyframes myfirst /* Safari and Chrome */
-    {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
+
   }
 }
 

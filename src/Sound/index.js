@@ -93,27 +93,37 @@ class Sound extends Component {
   }
 
   componentDidMount() {
-    this.props.play.add({play:true, id: "001"})
-    //播放器
-    play()
-    // 获取当前页面url
-    let id = this.props.location.pathname
-    let data = localStorage.getItem(id)
-    console.log(id)
-    if (data) {
-      this.setState({
-        data: JSON.parse(data)
-      })
-    } else {
-      // 获取用户页数据
-      soundData(id).then(data => {
-        localStorage.setItem(id, JSON.stringify(data))
+    let data = function () {
+      // 获取当前页面url
+      let id = this.props.location.pathname
+      let data = localStorage.getItem(id)
+      // 数据 缓存 获取
+      if (data) {
         this.setState({
-          data: data
+          data: JSON.parse(data)
         })
-        console.log('用户页面', data)
-      })
+      } else {
+        // 获取用户页数据
+        soundData(id).then(data => {
+          localStorage.setItem(id, JSON.stringify(data))
+          this.setState({
+            data: data
+          })
+        })
+      }
     }
+    let playS = function () {
+      let audio = window.auido || ''
+      if(audio && !audio.pause) {
+        this.porps.play.add({play:true})
+        return true
+      }
+
+    }
+
+    data()
+    playS()
+
 
 
   }
