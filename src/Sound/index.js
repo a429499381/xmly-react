@@ -131,7 +131,6 @@ class Sound extends Component {
 
   componentWillUnmount() {
     let time = localStorage.getItem('setIntervalTime')
-
     let current = window.audio ? window.audio.currentTime : ''
     let oldPlay = JSON.parse(localStorage.getItem('play'))
     let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})
