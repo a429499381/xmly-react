@@ -30,13 +30,14 @@ class Footer extends Component {
     )
   }
     playHandle() {
-      let that = this
-      let playload = that.props.store.play
-      console.log('playHandle store play', playload)
-      // redux
-      that.props.play.update({"play": !playload})
-
+      let current = window.audio ? window.audio.currentTime : ''
+      let oldPlay = JSON.parse(localStorage.getItem('play'))
       playLoad()
+      let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})
+      localStorage.setItem('play', JSON.stringify(NewPlay))
+      this.props.play.update({play: NewPlay})
+
+      console.log('store', this.props.store)
     }
 }
 
