@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './index.scss'
 import {play, playLoad} from "../../Play/index";
+import {hashHistory} from 'react-router'
 
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
@@ -49,8 +50,17 @@ class Footer extends Component {
       window.audio ? '' : window.audio = new Audio
       let current = window.audio ? window.audio.currentTime : ''
       let oldPlay = JSON.parse(localStorage.getItem('play'))
+      let newUrl = this.props.params
+      console.log('newUrl',newUrl)
+      if(newUrl !== oldPlay.url) {
+        hashHistory.push(oldPlay.url)
+      }
       if (!window.audio.src) {
-        oldPlay ? play(oldPlay.src) : ''
+        if(oldPlay) {
+          play(oldPlay.src)
+          playLoad()
+          return
+        }
       }
       playLoad()
       let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})

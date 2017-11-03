@@ -159,10 +159,12 @@ class Sound extends Component {
                 let src = res.data.play_path
                 // 保存当前 播放文件地址 与 localStorage
                 play(src)
+                playLoad()
                 palyTime(that)
                 let playS = {
                     playload: true,
                     id: id,
+                    url: url,
                     src: src,
                     curr: window.audio.currentTime,
                     img: that.state.data.play.Img
