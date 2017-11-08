@@ -2,7 +2,7 @@
 export const palyTime = function (that) {
     let times = 0
     let hours = 0
-    let currTime = ''
+    // let currTime = ''
     let setIntervalTime = ''
     // 播放时间 转换。
     let oldTime = localStorage.getItem('setIntervalTime')

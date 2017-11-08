@@ -4,9 +4,6 @@ import {Link} from 'react-router'
 import '../list/list.scss'
 
 class AlbumQuan extends Component {
-    constructor(props) {
-        super(props)
-    }
     render() {
         let data = this.props.data
         let id = this.props.id

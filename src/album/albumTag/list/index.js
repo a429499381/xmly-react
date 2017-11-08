@@ -5,11 +5,6 @@ import LoadIcon from '../../../PageCom/loadIcon'
 
 // 有声小说
 export default class comic extends Component {
-    constructor(props) {
-        super(props)
-
-    }
-
     render() {
         let data = this.props.data
         return (

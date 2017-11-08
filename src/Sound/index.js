@@ -44,21 +44,21 @@ class Sound extends Component {
                                 <div className="play">
                                     <img src={play.Img} alt="" className="playImg"/>
                                     <div className="playImgP">
-                                        <a className="itemIcon wh" onClick={this.playHandle.bind(this)}>
+                                        <div className="itemIcon wh" onClick={this.playHandle.bind(this)}>
                                             {
                                                 this.props.store.play
                                                     ? <i className="play_play"></i>
                                                     : <i className="play_pause"></i>
                                             }
 
-                                        </a>
+                                        </div>
                                     </div>
                                     <p className="zhubo">主播：{play.zhubo}</p>
                                     <div className="playScroll">
                                         <span className="start">{this.state.currentTime}</span>
                                         <span className="startIng">
-                <a href="#" className="red"></a>
-              </span>
+                                            <div  className="red"></div>
+                                        </span>
                                         <span className="end">{play.time}</span>
                                     </div>
                                 </div>
@@ -76,9 +76,9 @@ class Sound extends Component {
                                                         {item.title}
                                                     </p>
                                                 </div>
-                                                <a className="itemIcon">
+                                                <div className="itemIcon">
                                                     <i className="palyIcon"></i>
-                                                </a>
+                                                </div>
                                             </div>
                                         </Link>
                                     </div>
@@ -115,7 +115,7 @@ class Sound extends Component {
             }
         }
         let playS = function () {
-            let audio = window.audio ? '' : window.audio = new Audio
+            let audio = window.audio ? '' : window.audio = new Audio()
             if (!audio.src && audio.pause) {
                 let play = JSON.parse(localStorage.getItem('play'))
                 if (play) {
@@ -154,32 +154,37 @@ class Sound extends Component {
         let regEx = /\d+\/.+\/(\d+)/
         let that = this
         // 计算时间
-        let src = url.replace(regEx, function (match, id) {
-            getJson(id).then(res => {
-                let src = res.data.play_path
-                // 保存当前 播放文件地址 与 localStorage
-                play(src)
-                playLoad()
-                palyTime(that)
-                let playS = {
-                    playload: true,
-                    id: id,
-                    url: url,
-                    src: src,
-                    curr: window.audio.currentTime,
-                    img: that.state.data.play.Img
-                }
-                localStorage.setItem('play', JSON.stringify(playS))
+        let src = function () {
+            url.replace(regEx, function (match, id) {
+                getJson(id).then(res => {
+                    let src = res.data.play_path
+                    // 保存当前 播放文件地址 与 localStorage
+                    play(src)
+                    playLoad()
+                    palyTime(that)
+                    let playS = {
+                        playload: true,
+                        id: id,
+                        url: url,
+                        src: src,
+                        curr: window.audio.currentTime,
+                        img: that.state.data.play.Img
+                    }
+                    localStorage.setItem('play', JSON.stringify(playS))
 
+                })
             })
-        })
+        }
 
+        src()
     }
 
     // 播放
     playHandle() {
         let that = this
-        window.audio ? "" : window.audio = new Audio
+        if(!window.audio) {
+            window.audio = new Audio()
+        }
         let current = window.audio ? window.audio.currentTime : ''
         let oldPlay = JSON.parse(localStorage.getItem('play'))
         let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})

@@ -14,6 +14,7 @@ export default function userinfo (state = initialState, action) {
                 if (item.id !== action.data.id) {
                     return item
                 }
+                return null
             })
         default:
             return state

@@ -19,12 +19,12 @@ class HeaderTop extends Component {
         {
           this.state.data
             ?   <div className="top">
-            <a href={data.href} >
+            <Link href={data.href} >
                     <span className="xinxi" onClick={this.back.bind(this)}>
                       {this.props.title}
                       <i></i>
                     </span>&nbsp;
-            </a>
+            </Link>
             <div className="input dib">
               <input type="text" placeholder={data.value || '请输入要搜索的内容'}
                      value ={this.state.value}
@@ -34,8 +34,8 @@ class HeaderTop extends Component {
               />
             </div>&nbsp;
             <span className="top_r dib">
-                  <a href="#/Ls" className="lishi">{data.lishi}</a>
-                  <a href="#/Down" className="down">{data.down}</a>
+                  <Link href="/Ls" className="lishi">{data.lishi}</Link>
+                  <Link href="/Down" className="down">{data.down}</Link>
                   <i className="content">&nbsp;</i>
               </span>&nbsp;
             <i className="content">&nbsp;</i>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router'
 
-import  HeaderTop from '../../Home/HeaderTop'
 
 class Sms extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Sms extends Component {
     return (
         <div className="sms">
           <div>
-            <a href="#" className="back">返回</a>
+            <Link to="#" className="back">返回</Link>
             <h2>{this.state.title}</h2>
           </div>
         </div>

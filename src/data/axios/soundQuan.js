@@ -6,7 +6,7 @@ export  const soundQuanData = (id) => {
     var SearchData = {}
     let OK = 'No'
     let time = 'No'
-    let N = 0
+    // let N = 0
 
     //  分类 数据提取
 
@@ -25,8 +25,8 @@ export  const soundQuanData = (id) => {
             }
         }
         let albumQuan = function () {
-            let data = ''
-            let rank = id
+            // let data = ''
+            // let rank = id
             let hot = 'http://m.ximalaya.com/explore/more_track?page=1&per_page=10&category_id=10&condition=hot'
             let favorite = 'http://m.ximalaya.com/explore/more_track?page=1&per_page=10&category_id=10&condition=favorite'
             let regex = function (data, name) {
