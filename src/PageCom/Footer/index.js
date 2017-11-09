@@ -51,7 +51,7 @@ class Footer extends Component {
 
     playHandle() {
         if (!window.audio) {
-            window.audio = new Audio()
+            window.audio = new Audio();
         }
         let current = window.audio ? window.audio.currentTime : ''
         let oldPlay = JSON.parse(localStorage.getItem('play'))
