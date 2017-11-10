@@ -29,8 +29,8 @@ class Footer extends Component {
                         <Link to="/Home" className="fixe_item">我的</Link>
                         <i className="content">&nbsp;</i>
                     </div>
-                    <div className="bofang ">
-                        <Link className={this.props.store.play ? "play" +
+                    <div className="bofang " >
+                        <Link id="play" className={this.props.store.play ? "play" +
                             " active" : "play"} onClick={this.playHandle.bind(this)}><img src={this.state.img} alt=""/></Link>
 
                     </div>
@@ -50,28 +50,22 @@ class Footer extends Component {
     }
 
     playHandle() {
-        if (!window.audio) {
-            window.audio = new Audio();
-        }
         let current = window.audio ? window.audio.currentTime : ''
         let oldPlay = JSON.parse(localStorage.getItem('play'))
-        let newUrl = this.props.params
-        console.log('newUrl', newUrl)
-        if (newUrl !== oldPlay.url) {
-            hashHistory.push(oldPlay.url)
-        }
-        if (!window.audio.src) {
-            if (oldPlay) {
+        if(oldPlay) {
+            let newUrl = window.location.href.indexOf(oldPlay.url) > -1
+            // 不在播放所在页面
+            if (!newUrl) {
+                hashHistory.push(oldPlay.url)
+                return true
+            } else if (!window.audio.src && oldPlay) {
+                // 在播放所在页面要做的事情  且 有缓存数据， window.audio.src 没有音频的情况下
                 play(oldPlay.src)
-                playLoad()
-                return
             }
+            playLoad()
+            let NewPlay = Object.assign(oldPlay, {curr: current, playload: ''})
+            localStorage.setItem('play', JSON.stringify(NewPlay))
         }
-        playLoad()
-        let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})
-        localStorage.setItem('play', JSON.stringify(NewPlay))
-
-
     }
 }
 
