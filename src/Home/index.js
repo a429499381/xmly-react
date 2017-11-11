@@ -64,9 +64,6 @@ class Home extends Component {
         // 提取数据与  state
         let Home = {}
         Home.data = []
-        // let newTime = new Date().getTime()
-        // let localTime = localStorage.getItem('HomeData') * 1
-        // let OverTime = newTime - localTime
         let that = this
 
         let data = function () {

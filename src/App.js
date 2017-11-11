@@ -14,8 +14,10 @@ class App extends Component {
     }
 
     componentWillMount() {
-        let oldTime = localStorage.getItem('V1')
         window.audio === undefined ? window.audio = new Audio() : ''
+
+        //  定期清理缓存
+        let oldTime = localStorage.getItem('V1')
         if(!oldTime){
             // 初始化版本时间
             let TIME = new Date().getTime()

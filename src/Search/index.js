@@ -5,6 +5,7 @@ import FooterNavgtion from '../PageCom/Footer'
 import NoMore from '../PageCom/NoMore'
 
 import {SearchData} from '../data/axios/Search'
+import QuanList from '../album/albumQuan/list/list'
 import {albumData} from '../data/axios/album'
 import {soundData} from '../data/axios/sound'
 import {JinPinData} from '../data/axios/Jinpin'
@@ -12,13 +13,22 @@ import {JinPinData} from '../data/axios/Jinpin'
 
 
 class Search extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            category: '',
+            id: '',
+            data: '',
+            dataS: ''
+        }
+    }
   render() {
     return (
       <div>
         {/* top */}
           <Header/>
         <div className="mt86"></div>
-        Search
+          <QuanList index={this.state.category ? this.state.category : 'rank'} push={this.push.bind(this)} id={this.state.id} data={this.state.data}/>
         {/* 底部导航 */}
           <FooterNavgtion/>
         {/* 没有更多 */}
@@ -27,30 +37,40 @@ class Search extends Component {
     )
   }
   componentDidMount() {
-    let url = '/80325809/album/10439439'
-    let Userurl = '/zhubo/33733258'
-    let Jinpin = '/49265909/album/7368509'
     let id = this.props.params.id
     let more = this.props.params.more
     //  搜索 数据
     SearchData(id,more).then(data => {
         console.log('SearchData',data)
-    })
-
-    // 专辑 详情页
-    albumData(url).then(data => {
-        console.log('album',data)
-    })
-    // 用户 详情页
-    soundData(Userurl).then(data => {
-      console.log('用户详情页',data)
-    })
-
-    JinPinData(Jinpin).then(data => {
-      console.log('精品页OK', data)
+        this.setState({
+            data: data.album,
+            dataS: data
+        })
     })
 
   }
+
+    push(category) {
+        if(category === 'rank') {
+            this.setState({
+                data: this.state.dataS.rank,
+                category: category
+            })
+            console.log('push  rank', this.state.dataS.rank)
+        } else if(category === 'recent') {
+            this.setState({
+                data: this.state.dataS.recent,
+                category: category
+            })
+            console.log('push recent', this.state.dataS.recent)
+        } else {
+            this.setState({
+                data: this.state.dataS.classic,
+                category: category
+            })
+            console.log('push favorite', this.state.dataS.classic)
+        }
+    }
 
 }
 
