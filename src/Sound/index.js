@@ -2,8 +2,6 @@
  * Created by xutao on 2017/10/4.
  */
 import React, {Component} from 'react'
-import {Link} from 'react-router'
-
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as actions from '../redux/actions/store'
@@ -137,18 +135,17 @@ class Sound extends Component {
 
     componentWillUnmount() {
         let time = localStorage.getItem('setIntervalTime')
-        let current = window.audio ? window.audio.currentTime : ''
+        let current =  window.audio.currentTime
         let oldPlay = JSON.parse(localStorage.getItem('play'))
+        localStorage.setItem('curr', window.audio.currentTime)
         if(oldPlay) {
-            let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})
+            let NewPlay = Object.assign(oldPlay, {curr: current})
             localStorage.setItem('play', JSON.stringify(NewPlay))
         }
         if (time) {
             clearInterval(time)
-            console.log('定时器清理完毕', time)
         } else if(window.setIntervalTime) {
             clearInterval(window.setIntervalTime)
-            console.log('定时器清理完毕 window.setIntervalTime', window.setIntervalTime)
         }
     }
 
@@ -181,7 +178,7 @@ class Sound extends Component {
                 })
             })
         }
-        if(playL) {
+        if(!playL) {
             src()
             playLoad()
         } else {
@@ -190,17 +187,16 @@ class Sound extends Component {
         }
     }
 
-    // 播放
+    // 播放按钮
     playHandle() {
         let that = this
         let current = window.audio ? window.audio.currentTime : ''
         let oldPlay = JSON.parse(localStorage.getItem('play'))
         let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})
+        localStorage.setItem('curr', window.audio.currentTime)
         localStorage.setItem('play', JSON.stringify(NewPlay))
         playLoad()
         palyTime(that)
-
-        console.log('playHandle store', this.props.store)
 
     }
 }
