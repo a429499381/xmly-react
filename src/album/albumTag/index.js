@@ -37,14 +37,11 @@ class albumTag extends Component {
                 this.setState({
                     data: data
                 })
-            console.log('album-tag res', data)
             })
         } else {
             this.setState({
                 data: data
             })
-
-            console.log('album-tag 缓存',data)
         }
 
 

@@ -15,10 +15,9 @@ export  const albumQuanData = (id) => {
                 clearInterval(time)
             },5000)
             function Go() {
-                if (OK === 'OK') {
+                if (SearchData.rank) {
                     clearInterval(time)
                     resolve(SearchData)
-
                 }
             }
         }
@@ -70,11 +69,7 @@ export  const albumQuanData = (id) => {
         albumQuan(id, 'rank')
         albumQuan(recentId, 'recent')
         albumQuan(classicId, 'classic')
-        setTimeout(function () {
-            if(SearchData !== undefined) {
-                OK = 'OK'
-            }
-        },200)
+
         callback()
 
 

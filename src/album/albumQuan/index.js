@@ -37,8 +37,8 @@ class AlbumQuan extends Component {
         let url = this.props.location.pathname
         let id = this.props.params.id
         let category = this.props.params.category
-        let data = JSON.parse(localStorage.getItem(url))
-        let defaultUrl = '/album-quan/all/ank'
+        let urlLocalStorage = JSON.parse(localStorage.getItem(url))
+        // let defaultUrl = '/album-quan/all/ank'
 
         // 第一次进入读取 url category 并缓存
         localStorage.setItem('albumQuanIndex  category', category)
@@ -49,36 +49,32 @@ class AlbumQuan extends Component {
             id: id ? id : 'all'
         })
 
-        console.log('componentDidMOunt url', url)
-        if(!category) {
-            albumQuanData(defaultUrl).then(res => {
-                localStorage.setItem(url, JSON.stringify(res))
-                this.setState({
-                    data: res.rank,
-                    dataS: res
-                })
-                console.log('albumQaunData default 请求数据', res)
-            })
-            return true
-        }
+        if (!urlLocalStorage) {
+            // if(!id) {
+            //     url = defaultUrl
+            //     console.log('进入默认路径', url)
+            // }
 
-        if (data !== 'a') {
-            if(!id) {
-                url = defaultUrl
-                console.log('进入默认路径', url)
-            }
             // 获取数据
             albumQuanData(url).then(res => {
-                localStorage.setItem(url, JSON.stringify(res))
-                this.setState({
-                    data: res.rank,
-                    dataS: res
-                })
-                console.log('albumQaunData 请求数据', res)
+                console.log('获取到数据 res', res)
+                if(res.rank) {
+                    localStorage.setItem(url, JSON.stringify(res))
+                    this.setState({
+                        data: res.rank,
+                        dataS: res
+                    })
+                } else {
+                    // 移除 单项缓存
+                    localStorage.removeItem(url)
+                }
+
             })
         } else {
+            let data = JSON.parse(localStorage.getItem(url))
             this.setState({
-                data: data
+                data: data.rank,
+                dataS: data
             })
 
             console.log('albumQuandata 缓存', data)
