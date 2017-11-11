@@ -68,8 +68,7 @@ class Sound extends Component {
                             {
                                 list.map((item, index) => {
                                     return <div key={index}>
-                                        <Link to={item.href}
-                                              onClick={this.push.bind(this, `${item.href}`)}>
+                                        <div onClick={this.push.bind(this, `${item.href}`)}>
                                             <div className="blums">
                                                 <div className="lists">
                                                     <p className="item">
@@ -80,7 +79,7 @@ class Sound extends Component {
                                                     <i className="palyIcon"></i>
                                                 </div>
                                             </div>
-                                        </Link>
+                                        </div>
                                     </div>
                                 })
                             }
@@ -157,6 +156,7 @@ class Sound extends Component {
     push(url) {
         let regEx = /\d+\/.+\/(\d+)/
         let that = this
+        let playL = localStorage.getItem('play')
         // 计算时间
         let src = function () {
             url.replace(regEx, function (match, id) {
@@ -181,8 +181,13 @@ class Sound extends Component {
                 })
             })
         }
-
-        src()
+        if(playL) {
+            src()
+            playLoad()
+        } else {
+            play(playL.src)
+            playLoad()
+        }
     }
 
     // 播放
