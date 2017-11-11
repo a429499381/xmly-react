@@ -113,7 +113,7 @@ class Sound extends Component {
         }
         let playS = function () {
             let audio = window.audio
-            if (!audio.src && audio.pause) {
+            if (!audio.src) {
                 let play = JSON.parse(localStorage.getItem('play'))
                 if (play) {
                     window.audio.src = play.src
@@ -123,6 +123,8 @@ class Sound extends Component {
                 playLoad()
                 palyTime(that)
                 return true
+            } else {
+                palyTime(that)
             }
 
         }
