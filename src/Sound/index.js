@@ -115,12 +115,13 @@ class Sound extends Component {
             }
         }
         let playS = function () {
-            let audio = window.audio
+            let audio = window.audio ? '' : window.audio = new Audio()
             if (!audio.src && audio.pause) {
                 let play = JSON.parse(localStorage.getItem('play'))
                 if (play) {
                     window.audio.src = play.src
                     window.audio.currentTime = play.curr
+                    console.log('playS', play.src, play.curr)
                 }
 
                 playLoad()
@@ -140,16 +141,11 @@ class Sound extends Component {
         let time = localStorage.getItem('setIntervalTime')
         let current = window.audio ? window.audio.currentTime : ''
         let oldPlay = JSON.parse(localStorage.getItem('play'))
-        if(oldPlay) {
-            let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})
-            localStorage.setItem('play', JSON.stringify(NewPlay))
-        }
+        let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})
+        localStorage.setItem('play', JSON.stringify(NewPlay))
         if (time) {
             clearInterval(time)
             console.log('定时器清理完毕', time)
-        } else if(window.setIntervalTime) {
-            clearInterval(window.setIntervalTime)
-            console.log('定时器清理完毕 window.setIntervalTime', window.setIntervalTime)
         }
     }
 
@@ -163,21 +159,19 @@ class Sound extends Component {
                 getJson(id).then(res => {
                     let src = res.data.play_path
                     // 保存当前 播放文件地址 与 localStorage
-                    if(src) {
-                        play(src)
-                        window.audio.play().then(()=>{
-                            palyTime(that)
-                        })
-                        let playS = {
-                            playload: true,
-                            id: id,
-                            url: url,
-                            src: src,
-                            curr: window.audio.currentTime,
-                            img: that.state.data.play.Img
-                        }
-                        localStorage.setItem('play', JSON.stringify(playS))
+                    play(src)
+                    playLoad()
+                    palyTime(that)
+                    let playS = {
+                        playload: true,
+                        id: id,
+                        url: url,
+                        src: src,
+                        curr: window.audio.currentTime,
+                        img: that.state.data.play.Img
                     }
+                    localStorage.setItem('play', JSON.stringify(playS))
+
                 })
             })
         }
@@ -188,6 +182,9 @@ class Sound extends Component {
     // 播放
     playHandle() {
         let that = this
+        if(!window.audio) {
+            window.audio = new Audio()
+        }
         let current = window.audio ? window.audio.currentTime : ''
         let oldPlay = JSON.parse(localStorage.getItem('play'))
         let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})
