@@ -25,13 +25,13 @@ class album extends Component {
             <div>
                 {/* top */}
                 <div className="fix">
-                  <Back />
+                    <Back/>
                 </div>
                 {
                     data
                         ?
                         <div className="pl10 pr10 album">
-                              <div className="albumheader rel">
+                            <div className="albumheader rel">
                                 <Link to="">
                                     <img src={header.Img} className='img abs' alt=""/>
                                 </Link>
@@ -44,37 +44,40 @@ class album extends Component {
                             {
                                 data.Txt
                                     ?
-                                <div className="txt mt10 mb10   ">
-                                    <h2 className="title">{data.Txt.title}</h2>
-                                    <p className="intro">{data.Txt.intro}</p>
-                                </div>
+                                    <div className="txt mt10 mb10   ">
+                                        <h2 className="title">{data.Txt.title}</h2>
+                                        <p className="intro">{data.Txt.intro}</p>
+                                    </div>
                                     : ''
                             }
                             <div className="albumss">
                                 {
-                                    more.map((item, index) => {
-                                        return <div key={index} className="albumQuanList">
-                                            <Link to={'/'+ this.state.zhuboId + item.Href} onClick={this.push.bind(this, `/${this.state.zhuboId}${item.Href}`) }>
-                                                <img src={item.img} alt="" className="albumimg p10"/>
-                                                <div className="container">
-                                                    <p className="title">{item.Title}</p>
-                                                    <p className="smallIcon">
-                                                        <span className="paly">{item.playNum}</span>
-                                                        <span className="num">{item.playTime}</span>
-                                                    </p>
-                            albumlistsss                    </div>
-                                            </Link>
-                                        </div>
-                                    })
+                                    more
+                                        ? more.map((item, index) => {
+                                            return <div key={index} className="albumQuanList">
+                                                <Link to={'/' + this.state.zhuboId + item.Href}
+                                                      onClick={this.push.bind(this, `/${this.state.zhuboId}${item.Href}`)}>
+                                                    <img src={item.img} alt="" className="albumimg p10"/>
+                                                    <div className="container">
+                                                        <p className="title">{item.Title}</p>
+                                                        <p className="smallIcon">
+                                                            <span className="paly">{item.playNum}</span>
+                                                            <span className="num">{item.playTime}</span>
+                                                        </p>
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                        })
+                                        : <LoadIcon/>
                                 }
                             </div>
                             <div className="albumlistsss">
                                 {
                                     lists.map((item, index) => {
                                         return <div key={index} className="albumListbb">
-                                            <Link to={item.href} >
+                                            <div onClick={this.playHandle.bind(this, index)}>
                                                 <p className="title">{item.Title}</p>
-                                            </Link>
+                                            </div>
                                             <a className="itemIcon">
                                                 <i className="palyIcon"></i>
                                             </a>
@@ -102,38 +105,73 @@ class album extends Component {
         this.setState({
             zhuboId: zhuboId
         })
-        console.log('album zhuboId', zhuboId, id)
-        if (data !== 'aa') {
+        if (!data) {
             albumData(id).then(data => {
                 // 把数组 转换为 对象  再格式化为 字符串 才能保存 localStorage  中。
                 let obj = {}
                 let dataObj = JSON.stringify(Object.assign(obj, data))
                 localStorage.setItem(id, dataObj)
 
-                if(Object.keys(dataObj).length !== 0) {
+                if (Object.keys(dataObj).length !== 0) {
                     this.setState({
                         data: data
                     })
                 }
-                console.log('获取到的数据', data)
 
             })
         } else {
             // 启动缓存数据
             this.setState({
-              data: data
+                data: data
             })
             console.log('缓存数据', data)
         }
+
+        // audio play
+        let playS = function () {
+            let audio = window.audio
+            if (!audio.src) {
+                let play = JSON.parse(localStorage.getItem('play'))
+                if (play) {
+                    window.audio.src = play.src
+                }
+
+                audio.paused ? audio.play() : audio.pause()
+                return true
+            }
+
+        }
+        playS()
     }
 
     push(url) {
-        console.log('push url', url)
-        albumData(url).then(data=> {
+        albumData(url).then(data => {
             this.setState({
                 data: data
             })
         })
+    }
+
+    playHandle(index) {
+        let audio = window.audio
+        let data = this.state.data.Lists[index]
+        let src = data.play
+        if (src && src !== audio.src) {
+            let playS = {}
+            audio.src = src
+            playS = {
+                url: this.props.location.pathname,
+                url1: `${data.href}/`,
+                index: index,
+                src: data.play,
+                img: data.img
+            }
+            localStorage.setItem('play', JSON.stringify(playS))
+        }
+        audio.paused ? audio.play() : audio.pause()
+        if(audio.paused && audio.src) {
+            localStorage.setItem('currTime', audio.currentTime)
+        }
     }
 }
 

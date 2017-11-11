@@ -61,7 +61,6 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        window.audio = new Audio()
         // 提取数据与  state
         let Home = {}
         Home.data = []

@@ -3,13 +3,12 @@ export const palyTime = function (that) {
     let times = 0
     let hours = 0
     // let currTime = ''
-    let setIntervalTime = ''
     // 播放时间 转换。
     let oldTime = localStorage.getItem('setIntervalTime')
     clearInterval(oldTime)
     console.log('oldTime 之前定时器', oldTime)
-    clearInterval(setIntervalTime)
-    setIntervalTime = setInterval(function () {
+    clearInterval(window.setIntervalTime)
+    window.setIntervalTime = setInterval(function () {
         let current = window.audio.currentTime
         if (current < 60) {
             hours = '00'
@@ -28,5 +27,5 @@ export const palyTime = function (that) {
 
     }, 500)
 
-    localStorage.setItem('setIntervalTime', setIntervalTime)
+    localStorage.setItem('setIntervalTime', window.setIntervalTime)
 }
