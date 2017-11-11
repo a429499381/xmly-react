@@ -180,13 +180,8 @@ class Sound extends Component {
                 })
             })
         }
-        if(!playL) {
-            src()
-            playLoad()
-        } else {
-            play(playL.src)
-            playLoad()
-        }
+        src()
+        playLoad()
     }
 
     // 播放按钮
