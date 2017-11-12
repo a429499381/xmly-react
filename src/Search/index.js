@@ -6,6 +6,7 @@ import NoMore from '../PageCom/NoMore'
 
 import {SearchData} from '../data/axios/Search'
 import QuanList from '../album/albumQuan/list/list'
+import SearchInput from  '../PageCom/SearchInput'
 import {albumData} from '../data/axios/album'
 import {soundData} from '../data/axios/sound'
 import {JinPinData} from '../data/axios/Jinpin'
@@ -26,8 +27,7 @@ class Search extends Component {
     return (
       <div>
         {/* top */}
-          <Header/>
-        <div className="mt86"></div>
+        <SearchInput/>
           <QuanList index={this.state.category ? this.state.category : 'rank'} push={this.push.bind(this)} id={this.state.id} data={this.state.data}/>
         {/* 底部导航 */}
           <FooterNavgtion/>

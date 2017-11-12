@@ -1,0 +1,17 @@
+.input {
+  padding: 10px 5px 0 5px;
+  vertical-align: middle;
+  width: 100%; }
+ .input input {
+  font-size: 16px;
+  line-height: 30px;
+  min-width: 160px;
+  width: 100%;
+  padding: 0 10px;
+  border-radius: 40px;
+  background: #efefef;
+  color: #757575;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  outline: 0;
+  border: 0; }

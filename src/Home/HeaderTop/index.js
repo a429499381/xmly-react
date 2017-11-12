@@ -14,7 +14,7 @@ class HeaderTop extends Component {
     }
   render() {
       let data = this.state.data
-    return (
+      return (
       <div className="headerTop">
         {
           this.state.data
@@ -26,15 +26,12 @@ class HeaderTop extends Component {
                     </span>&nbsp;
             </Link>
             <div className="input dib">
-                <form action="">
                     <input type="serch" placeholder={data.value || '请输入要搜索的内容'}
                            value ={this.state.value}
                            onChange={this.ChangeHandle.bind(this)}
                            onKeyUp={this.KeyCode.bind(this)}
                            onFocus={this.Focus.bind(this)}
                     />
-                </form>
-
             </div>&nbsp;
             <span className="top_r dib">
                   <Link href="/Ls" className="lishi">{data.lishi}</Link>
