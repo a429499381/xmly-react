@@ -36,7 +36,7 @@ class HeaderTop extends Component {
                             </div>
                             <span className="top_r dib">
                               <Link href="/Ls" className="lishi">{data.lishi}</Link>
-                              <Link href="/Down" className="down">{data.down}</Link>
+                              <Link  className="down" onClick={this.clearLocalStorage.bind(this)}>清理缓存</Link>
                             </span>
                         </div>
                         : <div>'没有内容'</div>
@@ -78,6 +78,11 @@ class HeaderTop extends Component {
     // 单击返回
     back() {
         hashHistory.push('/')
+    }
+
+    clearLocalStorage() {
+        localStorage.clear()
+        alert('清空缓存完毕')
     }
 
 }
