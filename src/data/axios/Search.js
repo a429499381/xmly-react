@@ -7,6 +7,20 @@ export  const SearchData = (id,more) => {
     let time = 'No'
 
   //  分类 数据提取
+//     href
+//         :
+//         "/43065260/album/3913326"
+//     playNum
+//         :
+//         "19783519"
+//     src
+//         :
+//         "http://fdfs.xmcdn.com/group28/M09/88/45/wKgJXFla7MrzHUD7AAK9-yiTUFo790_web_meduim.png"
+//     title
+//         :
+//         "↵      
+// ↵      火火兔儿歌
+// ↵   "
 
     var Prom = new Promise((resolve, reject) => {
 
@@ -15,8 +29,8 @@ export  const SearchData = (id,more) => {
                 // 列表 标签
                 // const Lireg = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?(<\/li\b>)/g
                 const Lireg = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?href="(.+)">[\d\D]+?(<\/li\b>)/g
-                const ImgSrc = /src\b="(.+)">/g
-                const Playnums = /<span\sclass="mgr-5">(.+)<\/span>/g
+                const src = /src\b="(.+)">/g
+                const playNum = /<span\sclass="mgr-5">(.+)<\/span>/g
                 const Title = /<p\sclass="name\s[\d\D]+?(<span\b\sclass="tag-pay.+">(.+)<\/span>)?\s+(.+)\s+<\/p>/g
 
 
@@ -24,16 +38,16 @@ export  const SearchData = (id,more) => {
                 let PNum = 0
                 let ImgNum = 0
                 let TitleNum = 0
-                res.data.replace(Lireg, function (match, Href) {
+                res.data.replace(Lireg, function (match, href) {
                     // 提取 路由 地址
-                    SearchData.album.push({ Href })
+                    SearchData.album.push({href})
                     // 提取 标题 单条数据节目数量
-                    match.replace(Playnums, function (data,  PlayNum) {
+                    match.replace(playNum, function (data,  PlayNum) {
                         Object.assign(SearchData.album[PNum],{ PlayNum})
                         PNum ++
                     })
-                    match.replace(ImgSrc, function (data, ImgSrc) {
-                        Object.assign(SearchData.album[ImgNum],{ ImgSrc})
+                    match.replace(src, function (data, src) {
+                        Object.assign(SearchData.album[ImgNum],{ src})
                         ImgNum ++
                     })
                     match.replace(Title, function (data, Title0,Title2, Title1) {
@@ -54,8 +68,8 @@ export  const SearchData = (id,more) => {
 
             Search(albums).then((res) => {
                 const Lireg = /(?!<\/?li>)<li\b\s?class="item\s?[\d\D]+?href="(.+)">[\d\D]+?(<\/li\b>)/g
-                const ImgSrc = /src\b="(.+)">/g
-                const Playnums = /(?:<span\sclass="mgr-5">([^><]+)<\/span>)/g
+                const src = /src\b="(.+)">/g
+                const playNum = /(?:<span\sclass="mgr-5">([^><]+)<\/span>)/g
                 const Title = /<p\sclass="name\s[\d\D]+?(<span\b\sclass="tag-pay.+">(.+)<\/span>)?\s+(.+)\s+<\/p>/g
 
 
@@ -67,12 +81,12 @@ export  const SearchData = (id,more) => {
                     // 提取 路由 地址
                     SearchData.album.push({ Href })
                     // 提取 标题 单条数据节目数量
-                    match.replace(Playnums, function (data,  PlayNum ) {
+                    match.replace(playNum, function (data,  PlayNum ) {
                         Object.assign(SearchData.album[PNum],{ PlayNum})
                         PNum ++
                     })
-                    match.replace(ImgSrc, function (data, ImgSrc) {
-                        Object.assign(SearchData.album[ImgNum],{ ImgSrc})
+                    match.replace(src, function (data, src) {
+                        Object.assign(SearchData.album[ImgNum],{ src})
                         ImgNum ++
                     })
                     match.replace(Title, function (data, Title0,Title2, Title1) {

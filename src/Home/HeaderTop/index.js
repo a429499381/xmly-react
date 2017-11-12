@@ -26,12 +26,15 @@ class HeaderTop extends Component {
                     </span>&nbsp;
             </Link>
             <div className="input dib">
-              <input type="text" placeholder={data.value || '请输入要搜索的内容'}
-                     value ={this.state.value}
-                     onChange={this.ChangeHandle.bind(this)}
-                     onKeyUp={this.KeyCode.bind(this)}
-                     onFocus={this.Focus.bind(this)}
-              />
+                <form action="">
+                    <input type="serch" placeholder={data.value || '请输入要搜索的内容'}
+                           value ={this.state.value}
+                           onChange={this.ChangeHandle.bind(this)}
+                           onKeyUp={this.KeyCode.bind(this)}
+                           onFocus={this.Focus.bind(this)}
+                    />
+                </form>
+
             </div>&nbsp;
             <span className="top_r dib">
                   <Link href="/Ls" className="lishi">{data.lishi}</Link>
@@ -60,6 +63,7 @@ class HeaderTop extends Component {
   }
   // 回车 处理  13 代码回车键
   KeyCode(e) {
+    e.preventDefault();
     let search = e.target.value
     if(e.keyCode !== 13) {
         return
