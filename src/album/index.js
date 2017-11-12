@@ -101,6 +101,7 @@ class album extends Component {
     componentWillUnmount() {
         localStorage.setItem('curr',window.audio.currentTime)
     }
+
     componentDidMount() {
         let zhuboId = this.props.params.zhuboId
         let id = this.props.location.pathname

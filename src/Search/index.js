@@ -41,8 +41,6 @@ class Search extends Component {
     let more = this.props.params.more
     //  搜索 数据
     SearchData(id,more).then(data => {
-        console.log('SearchData',data)
-        console.log('id ',id ,'more', more)
         this.setState({
             data: data.album,
             dataS: data
@@ -69,19 +67,16 @@ class Search extends Component {
                 data: this.state.dataS.rank,
                 category: category
             })
-            console.log('push  rank', this.state.dataS.rank)
         } else if(category === 'recent') {
             this.setState({
                 data: this.state.dataS.recent,
                 category: category
             })
-            console.log('push recent', this.state.dataS.recent)
         } else {
             this.setState({
                 data: this.state.dataS.classic,
                 category: category
             })
-            console.log('push favorite', this.state.dataS.classic)
         }
     }
 
