@@ -50,8 +50,9 @@ class Footer extends Component {
     }
 
     playHandle() {
-        let current = window.audio ? window.audio.currentTime : ''
+        let curr = window.audio ? window.audio.currentTime : ''
         let oldPlay = JSON.parse(localStorage.getItem('play'))
+        localStorage.setItem('curr',curr)
         if(oldPlay) {
             let newUrl = window.location.href.indexOf(oldPlay.url) > -1
             // 不在播放所在页面
@@ -63,7 +64,7 @@ class Footer extends Component {
                 play(oldPlay.src)
             }
             playLoad()
-            let NewPlay = Object.assign(oldPlay, {curr: current, playload: ''})
+            let NewPlay = Object.assign(oldPlay, {curr: curr, playload: ''})
             localStorage.setItem('play', JSON.stringify(NewPlay))
         }
     }

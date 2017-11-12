@@ -115,9 +115,10 @@ class Sound extends Component {
             let audio = window.audio
             if (!audio.src) {
                 let play = JSON.parse(localStorage.getItem('play'))
+                let curr = JSON.parse(localStorage.getItem('curr'))
                 if (play) {
                     window.audio.src = play.src
-                    window.audio.currentTime = play.curr
+                    window.audio.currentTime = curr
                 }
 
                 playLoad()
@@ -139,7 +140,7 @@ class Sound extends Component {
         let time = localStorage.getItem('setIntervalTime')
         let current =  window.audio.currentTime
         let oldPlay = JSON.parse(localStorage.getItem('play'))
-        localStorage.setItem('curr', window.audio.currentTime)
+        localStorage.setItem('curr', current)
         if(oldPlay) {
             let NewPlay = Object.assign(oldPlay, {curr: current})
             localStorage.setItem('play', JSON.stringify(NewPlay))
@@ -172,9 +173,9 @@ class Sound extends Component {
                             id: id,
                             url: url,
                             src: src,
-                            curr: window.audio.currentTime,
                             img: that.state.data.play.Img
                         }
+                        localStorage.setItem('curr',window.audio.currentTime,)
                         localStorage.setItem('play', JSON.stringify(playS))
                     }
                 })

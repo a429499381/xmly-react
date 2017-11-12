@@ -98,6 +98,9 @@ class album extends Component {
         )
     }
 
+    componentWillUnmount() {
+        localStorage.setItem('curr',window.audio.currentTime)
+    }
     componentDidMount() {
         let zhuboId = this.props.params.zhuboId
         let id = this.props.location.pathname
@@ -169,9 +172,10 @@ class album extends Component {
             localStorage.setItem('play', JSON.stringify(playS))
         }
         audio.paused ? audio.play() : audio.pause()
-        if(audio.paused && audio.src) {
-            localStorage.setItem('currTime', audio.currentTime)
-        }
+        localStorage.setItem('curr',audio.currentTime)
+        // if(audio.paused && audio.src) {
+        //     localStorage.setItem('currTime', audio.currentTime)
+        // }
     }
 }
 
