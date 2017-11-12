@@ -27,7 +27,7 @@ class Search extends Component {
     return (
       <div>
         {/* top */}
-        <SearchInput/>
+        <SearchInput input={this.input.bind(this)}/>
           <QuanList index={this.state.category ? this.state.category : 'rank'} push={this.push.bind(this)} id={this.state.id} data={this.state.data}/>
         {/* 底部导航 */}
           <FooterNavgtion/>
@@ -42,12 +42,25 @@ class Search extends Component {
     //  搜索 数据
     SearchData(id,more).then(data => {
         console.log('SearchData',data)
+        console.log('id ',id ,'more', more)
         this.setState({
             data: data.album,
             dataS: data
         })
     })
 
+  }
+
+  // 第二次搜索
+  input(id) {
+      console.log('id ',id)
+      SearchData(id).then(data => {
+          console.log('SearchData 2',data)
+          this.setState({
+              data: data.album,
+              dataS: data
+          })
+      })
   }
 
     push(category) {

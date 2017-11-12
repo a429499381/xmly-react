@@ -14,9 +14,6 @@ class SearchInput extends Component {
                 />
             </div>
         )}
-        hashBack() {
-            hashHistory.push('/')
-        }
 
     // 每按一个键就吧 获取的字符 映射到 this.state.value
     ChangeHandle(e) {
@@ -26,13 +23,12 @@ class SearchInput extends Component {
     }
     // 回车 处理  13 代码回车键
     KeyCode(e) {
-        e.preventDefault();
         let search = e.target.value
         if(e.keyCode !== 13) {
             return
         }
         hashHistory.push('/Search' + '/' + search)
-
+        this.props.input(e.target.value)
     }
     Focus() {
 
