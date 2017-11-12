@@ -156,7 +156,6 @@ class Sound extends Component {
     push(url) {
         let regEx = /\d+\/.+\/(\d+)/
         let that = this
-        let playL = localStorage.getItem('play')
         // 计算时间
         let src = function () {
             url.replace(regEx, function (match, id) {
@@ -182,7 +181,9 @@ class Sound extends Component {
             })
         }
         src()
-        playLoad()
+        if(window.audio.src){
+            playLoad()
+        }
     }
 
     // 播放按钮
