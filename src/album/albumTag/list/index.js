@@ -16,7 +16,7 @@ export default class comic extends Component {
                                 {
                                     data.map((item, index) => {
                                         return <div key={index} className="albumList">
-                                            <Link to={item.href} >
+                                            <Link to={encodeURI(item.href)} >
                                                 <img src={item.src} alt=""/>
                                                 <p className="name">{item.name}</p>
                                             </Link>
