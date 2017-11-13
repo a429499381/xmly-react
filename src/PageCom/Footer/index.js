@@ -49,23 +49,26 @@ class Footer extends Component {
         }
     }
 
+
     playHandle() {
-        let curr = window.audio ? window.audio.currentTime : ''
         let oldPlay = JSON.parse(localStorage.getItem('play'))
-        localStorage.setItem('curr',curr)
+        let currLocalStorage = localStorage.getItem('play')
+        let audio = window.audio
+        let currNow = audio.currentTime
         if(oldPlay) {
             let newUrl = window.location.href.indexOf(oldPlay.url) > -1
             // 不在播放所在页面
             if (!newUrl) {
                 hashHistory.push(oldPlay.url)
                 return true
-            } else if (!window.audio.src && oldPlay) {
-                // 在播放所在页面要做的事情  且 有缓存数据， window.audio.src 没有音频的情况下
-                play(oldPlay.src)
+            }
+            if(audio.src === oldPlay.src) {
+                currLocalStorage > currNow ? audio.currentTime = currLocalStorage : ''
+            }
+            if(audio.paused) {
+                currLocalStorage > currNow ?  '' : localStorage.setItem('curr', currNow)
             }
             playLoad()
-            let NewPlay = Object.assign(oldPlay, {curr: curr, playload: ''})
-            localStorage.setItem('play', JSON.stringify(NewPlay))
         }
     }
 }

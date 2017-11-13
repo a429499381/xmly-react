@@ -15,6 +15,7 @@ class App extends Component {
 
     componentWillMount() {
         window.audio === undefined ? window.audio = new Audio() : ''
+        window.audio.currentTime = 0.1
 
         //  定期清理缓存
         let oldTime = localStorage.getItem('V1')

@@ -134,12 +134,12 @@ class album extends Component {
         // audio play
         let playS = function () {
             let audio = window.audio
+            let curr = localStorage.getItem('curr')
             if (!audio.src) {
                 let play = JSON.parse(localStorage.getItem('play'))
                 if (play) {
                     window.audio.src = play.src
                 }
-
                 audio.paused ? audio.play() : audio.pause()
                 return true
             }
@@ -174,9 +174,6 @@ class album extends Component {
         }
         audio.paused ? audio.play() : audio.pause()
         localStorage.setItem('curr',audio.currentTime)
-        // if(audio.paused && audio.src) {
-        //     localStorage.setItem('currTime', audio.currentTime)
-        // }
     }
 }
 
