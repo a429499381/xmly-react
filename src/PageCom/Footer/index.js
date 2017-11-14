@@ -29,8 +29,8 @@ class Footer extends Component {
                         <Link to="/Home" className="fixe_item">我的</Link>
                         <i className="content">&nbsp;</i>
                     </div>
-                    <div className="bofang " >
-                        <Link id="play" className={this.props.store.play ? "play" +
+                    <div className="bofang "  ref='play'>
+                        <Link  className={this.props.store.play ? "play" +
                             " active" : "play"} onClick={this.playHandle.bind(this)}><img src={this.state.img} alt=""/></Link>
 
                     </div>
@@ -41,12 +41,19 @@ class Footer extends Component {
     }
 
     componentDidMount() {
+        let playRef = this.refs.play
         let play = JSON.parse(localStorage.getItem('play'))
         if (play) {
             this.setState({
                 img: play.img
             })
         }
+
+        let forceSafariPlayAudio = () => {
+            playRef.click()
+            window.removeEventListener('touchstart', forceSafariPlayAudio, false)
+        }
+        window.addEventListener('touchstart', forceSafariPlayAudio, false);
     }
 
 
@@ -71,6 +78,8 @@ class Footer extends Component {
             playLoad()
         }
     }
+
+
 }
 
 function mapStateToProps(state) {
