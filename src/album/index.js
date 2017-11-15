@@ -132,11 +132,12 @@ class album extends Component {
         }
 
         // audio play
+        let play = JSON.parse(localStorage.getItem('play'))
         let playS = function () {
             let audio = window.audio
             let curr = localStorage.getItem('curr')
+
             if (!audio.src) {
-                let play = JSON.parse(localStorage.getItem('play'))
                 if (play) {
                     window.audio.src = play.src
                     // 跳转进来设置 移动端默认为 0 ，  只有当前页面刷新 播放才能指定时间。
@@ -147,7 +148,10 @@ class album extends Component {
             }
 
         }
-        playS()
+        if(play.url === id) {
+            playS()
+        }
+
     }
 
     push(url) {
