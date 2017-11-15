@@ -139,6 +139,8 @@ class album extends Component {
                 let play = JSON.parse(localStorage.getItem('play'))
                 if (play) {
                     window.audio.src = play.src
+                    // 跳转进来设置 移动端默认为 0 ，  只有当前页面刷新 播放才能指定时间。
+                    window.audio.currentTime = localStorage.getItem('curr')
                 }
                 audio.paused ? audio.play() : audio.pause()
                 return true
