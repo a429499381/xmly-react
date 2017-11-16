@@ -167,15 +167,17 @@ class Sound extends Component {
                         window.audio.play().then(()=>{
                             palyTime(that)
                         })
-                        let playS = {
-                            playload: true,
-                            id: id,
-                            url: url,
-                            src: src,
-                            img: that.state.data.play.Img
-                        }
-                        localStorage.setItem('curr',window.audio.currentTime,)
-                        localStorage.setItem('play', JSON.stringify(playS))
+                        setTimeout(function () {
+                            let playS = {
+                                playload: true,
+                                id: id,
+                                url: url,
+                                src: src,
+                                img: that.state.data.play.Img
+                            }
+                            localStorage.setItem('curr',window.audio.currentTime,)
+                            localStorage.setItem('play', JSON.stringify(playS))
+                        },0)
                     }
                 })
             })

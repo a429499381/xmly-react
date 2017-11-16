@@ -99,7 +99,7 @@ class album extends Component {
     }
 
     componentWillUnmount() {
-        localStorage.setItem('curr',window.audio.currentTime)
+        localStorage.setItem('curr', window.audio.currentTime)
     }
 
     componentDidMount() {
@@ -133,24 +133,30 @@ class album extends Component {
 
         // audio play
         let play = JSON.parse(localStorage.getItem('play'))
-        let playS = function () {
-            let audio = window.audio
-            let curr = localStorage.getItem('curr')
+        if (play) {
+            let playS = function () {
+                let audio = window.audio
+                let curr = localStorage.getItem('curr')
 
-            if (!audio.src) {
-                if (play) {
-                    window.audio.src = play.src
-                    // 跳转进来设置 移动端默认为 0 ，  只有当前页面刷新 播放才能指定时间。
-                    window.audio.currentTime = localStorage.getItem('curr')
+                if (!audio.src) {
+                    if (play) {
+                        window.audio.src = play.src
+                        // 跳转进来设置 移动端默认为 0 ，  只有当前页面刷新 播放才能指定时间。
+                        window.audio.currentTime = localStorage.getItem('curr')
+                    }
+                    audio.paused ? audio.play() : audio.pause()
+                    return true
                 }
-                audio.paused ? audio.play() : audio.pause()
-                return true
-            }
 
+            };
+            if (play.url === id) {
+                playS()
+            }
+            return true
         }
-        if(play.url === id) {
-            playS()
-        }
+
+
+
 
     }
 
@@ -179,7 +185,7 @@ class album extends Component {
             localStorage.setItem('play', JSON.stringify(playS))
         }
         audio.paused ? audio.play() : audio.pause()
-        localStorage.setItem('curr',audio.currentTime)
+        localStorage.setItem('curr', audio.currentTime)
     }
 }
 

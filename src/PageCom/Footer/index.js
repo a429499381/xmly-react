@@ -48,8 +48,8 @@ class Footer extends Component {
     playHandle() {
         let oldPlay = JSON.parse(localStorage.getItem('play'))
         let srcNow = window.audio.src
-        let srcOld = oldPlay.src
         if(oldPlay) {
+            let srcOld = oldPlay.src
             let newUrl = window.location.href.indexOf(oldPlay.url) > -1
             // 不在播放所在页面
             if(!newUrl) {
