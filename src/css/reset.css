@@ -67,3 +67,16 @@ a {
   height: 86px; }
 
 
+@media screen and (min-width: 700px) {
+  html {
+    width: 700px;
+    margin: 0 auto;
+  }
+  .pos {
+    width: 700px;
+  }
+ .footer_fixe {
+    width: 700px;
+  }
+}
+

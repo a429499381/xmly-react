@@ -1,67 +1,70 @@
-.footer {
+
   .footer_fixe {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
+    right: 0;
+    margin: 0 auto;
     height: 60px;
-    background: rgba(248, 248, 248, 0.83); }
+    background: rgba(248, 248, 248, 0.83);
 
-  .footer {
-    text-align: justify;
-    font-size: 0; }
-  .footer .fixe_item {
-    display: inline-block;
-    font-size: 12px;
-    color: #999999;
-    width: 20%;
-    line-height: 60px;
-    text-align: center; }
-
-  .bofang {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    margin-left: -20px;
-    .play {
+    .footer {
+      text-align: justify;
+      font-size: 0; }
+    .footer .fixe_item {
       display: inline-block;
-      width: 40px;
-      height: 40px;
-      border-radius: 40px;
-      background: rgba(255, 132, 132, 0.09);
-      border: 1px solid #ff8484;
-      box-shadow: 1px 1px #e5e5;
-      img {
-        width: 100%;
-        height: 100%;
+      font-size: 12px;
+      color: #999999;
+      width: 20%;
+      line-height: 60px;
+      text-align: center; }
+
+    .bofang {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      margin-left: -20px;
+      .play {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
         border-radius: 40px;
-      }
-    }
-
-    .active {
-      -webkit-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -moz-animation: myfirst 3s linear infinite;
-      -o-animation: myfirst 3s linear infinite;
-      -webkit-animation: myfirst 3s linear infinite;
-      animation: myfirst 3s linear infinite;
-
-      @-webkit-keyframes myfirst /* Safari and Chrome */
-      {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
+        background: rgba(255, 132, 132, 0.09);
+        border: 1px solid #ff8484;
+        box-shadow: 1px 1px #e5e5;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 40px;
         }
       }
+
+      .active {
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -moz-animation: myfirst 3s linear infinite;
+        -o-animation: myfirst 3s linear infinite;
+        -webkit-animation: myfirst 3s linear infinite;
+        animation: myfirst 3s linear infinite;
+
+        @-webkit-keyframes myfirst /* Safari and Chrome */
+        {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+      /*.bofang a:hover {*/
+      /*transform: rotate(1360deg); }*/
+
+
     }
-    /*.bofang a:hover {*/
-    /*transform: rotate(1360deg); }*/
-
-
   }
-}
+
+
 

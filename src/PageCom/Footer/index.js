@@ -18,8 +18,6 @@ class Footer extends Component {
 
     render() {
         return (
-            <div className="footer">
-                {/* 底部导航 */}
                 <div className="footer_fixe">
                     <div className="footer">
                         <Link to="/Home" className="fixe_item">首页</Link>
@@ -35,8 +33,6 @@ class Footer extends Component {
 
                     </div>
                 </div>
-                {/* 底部导航 */}
-            </div>
         )
     }
 
