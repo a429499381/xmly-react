@@ -55,7 +55,7 @@ class Sound extends Component {
                                     <div className="playScroll">
                                         <span className="start">{this.state.currentTime}</span>
                                         <span className="startIng">
-                                            <div  className="red"></div>
+                                            <div className="red"></div>
                                         </span>
                                         <span className="end">{play.time}</span>
                                     </div>
@@ -138,16 +138,16 @@ class Sound extends Component {
 
     componentWillUnmount() {
         let time = localStorage.getItem('setIntervalTime')
-        let current =  window.audio.currentTime
+        let current = window.audio.currentTime
         let oldPlay = JSON.parse(localStorage.getItem('play'))
         localStorage.setItem('curr', current)
-        if(oldPlay) {
+        if (oldPlay) {
             let NewPlay = Object.assign(oldPlay, {curr: current})
             localStorage.setItem('play', JSON.stringify(NewPlay))
         }
         if (time) {
             clearInterval(time)
-        } else if(window.setIntervalTime) {
+        } else if (window.setIntervalTime) {
             clearInterval(window.setIntervalTime)
         }
     }
@@ -162,40 +162,40 @@ class Sound extends Component {
                 getJson(id).then(res => {
                     let src = res.data.play_path
                     // 保存当前 播放文件地址 与 localStorage
-                    if(src) {
+                    if (src) {
+                        let playS = {
+                            id: id,
+                            url: url,
+                            src: src,
+                            img: that.state.data.play.Img
+                        }
                         play(src)
-                        window.audio.play().then(()=>{
-                            palyTime(that)
-                        })
-                        setTimeout(function () {
-                            let playS = {
-                                playload: true,
-                                id: id,
-                                url: url,
-                                src: src,
-                                img: that.state.data.play.Img
-                            }
-                            localStorage.setItem('curr',window.audio.currentTime,)
-                            localStorage.setItem('play', JSON.stringify(playS))
-                        },0)
+                        localStorage.setItem('curr', window.audio.currentTime,)
+                        localStorage.setItem('play', JSON.stringify(playS))
                     }
+                }).then(()=> {
+                    palyTime(that)
                 })
             })
         }
         src()
-        if(window.audio.src){
-            playLoad()
-        }
+        setTimeout(function () {
+            window.audio.play()
+        },100)
+
+
     }
 
     // 播放按钮
     playHandle() {
         let that = this
-        let current = window.audio ? window.audio.currentTime : ''
-        let oldPlay = JSON.parse(localStorage.getItem('play'))
-        let NewPlay = Object.assign(oldPlay, {curr: current, playload: window.audio.paused})
-        localStorage.setItem('curr', window.audio.currentTime)
-        localStorage.setItem('play', JSON.stringify(NewPlay))
+        let currNow = window.audio.currentTime
+        let currOld = localStorage.getItem('curr')
+        if (currOld > currNow) {
+            window.audio.currentTime = currOld
+        } else {
+            localStorage.setItem('curr', currNow)
+        }
         playLoad()
         palyTime(that)
 

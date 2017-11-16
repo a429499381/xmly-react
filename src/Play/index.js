@@ -1,7 +1,5 @@
 export const play = function(src) {
-        if(src){
-            window.audio.src = src
-        }
+    window.audio.src = src
 }
 
 export const playLoad = function () {
