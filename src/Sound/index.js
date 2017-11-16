@@ -65,7 +65,7 @@ class Sound extends Component {
                             </div>
                             {
                                 list.map((item, index) => {
-                                    return <div key={index}>
+                                    return <div key={index} className="soundList">
                                         <div onClick={this.push.bind(this, `${item.href}`)}>
                                             <div className="blums">
                                                 <div className="lists">

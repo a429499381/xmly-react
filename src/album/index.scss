@@ -49,12 +49,16 @@
 
 
   .albumlistsss {
+    .albumListbb:hover {
+      background-color: rgba(255, 132, 132, 0.61);
+    }
     .albumListbb {
       width: 100%;
       position: relative;
       display: inline-block;
       padding: 10px;
       border-bottom: 1px solid #f1f1f1;
+      cursor: pointer;
 
       .itemIcon {
         position: absolute;
