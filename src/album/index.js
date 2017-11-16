@@ -50,6 +50,20 @@ class album extends Component {
                                     </div>
                                     : ''
                             }
+                            <div className="albumlistsss">
+                                {
+                                    lists.map((item, index) => {
+                                        return <div key={index} className="albumListbb">
+                                            <div onClick={this.playHandle.bind(this, index)}>
+                                                <p className="title">{item.Title}</p>
+                                            </div>
+                                            <a className="itemIcon">
+                                                <i className="palyIcon"></i>
+                                            </a>
+                                        </div>
+                                    })
+                                }
+                            </div>
                             <div className="albumss">
                                 {
                                     more
@@ -71,20 +85,7 @@ class album extends Component {
                                         : <LoadIcon/>
                                 }
                             </div>
-                            <div className="albumlistsss">
-                                {
-                                    lists.map((item, index) => {
-                                        return <div key={index} className="albumListbb">
-                                            <div onClick={this.playHandle.bind(this, index)}>
-                                                <p className="title">{item.Title}</p>
-                                            </div>
-                                            <a className="itemIcon">
-                                                <i className="palyIcon"></i>
-                                            </a>
-                                        </div>
-                                    })
-                                }
-                            </div>
+
                         </div>
                         : <LoadIcon/>
                 }
