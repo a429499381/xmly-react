@@ -1,1 +1,1 @@
-export const CODEURL = 'http://bird.ioliu.cn/v1/?url='
+export const CODEURL = 'https://bird.ioliu.cn/v1/?url='

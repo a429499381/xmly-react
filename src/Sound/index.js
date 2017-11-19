@@ -174,16 +174,16 @@ class Sound extends Component {
                         localStorage.setItem('play', JSON.stringify(playS))
                     }
                 }).then(()=> {
-                    palyTime(that)
+                    // 移动端 兼容性问题
+                    // 要写两遍  window.audio.play() 否则点击有时候无法播放， 切换专辑页播放回来也会无法播放。
+                    setTimeout(function () {
+                        window.audio.play()
+                    },100)
                 })
             })
         }
         src()
-        setTimeout(function () {
-            window.audio.play()
-        },100)
-
-
+        window.audio.play()
     }
 
     // 播放按钮
