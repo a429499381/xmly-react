@@ -33,6 +33,9 @@
     width: 40px;
     height: 40px;
   }
+  :active {
+    border: 4px solid #8dff5c;
+  }
 }
 .palyScroll {
   display: inline-block;

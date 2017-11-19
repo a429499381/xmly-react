@@ -20,11 +20,11 @@ class Footer extends Component {
         return (
                 <div className="footer_fixe">
                     <div className="footer">
-                        <Link to="/Home" className="fixe_item">首页</Link>
-                        <Link to="/Home" className="fixe_item">我听</Link>
-                        <i className="fixe_item">&nbsp;</i>i>
-                        <Link to="/Home" className="fixe_item">发现</Link>
-                        <Link to="/Home" className="fixe_item">我的</Link>
+                        <Link to="/Home" className="footItem"><span>首页</span></Link>
+                        <Link to="/Home" className="footItem"><span>我听</span></Link>
+                        <i className="footItem">&nbsp;</i>i>
+                        <Link to="/Home" className="footItem"><span>发现</span></Link>
+                        <Link to="/Home" className="footItem"><span>我的</span></Link>
                         <i className="content">&nbsp;</i>
                     </div>
                     <div className="bofang " >
