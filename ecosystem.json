@@ -20,7 +20,7 @@
       "host": ["120.78.156.2"],
       "port": "22",
       "ref":  "origin/master",
-      "repo": "git@gitee.com:taotaoyun/react-fuxi20170719.git",
+      "repo": "https://github.com/a429499381/xmly-react.git",
       "path": "/home/csdn/www/website",
       "ssh_options": "StrictHostKeyChecking=no",
       "env": {
