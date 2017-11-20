@@ -119,10 +119,9 @@ class Sound extends Component {
                 if (play) {
                     window.audio.src = play.src
                     window.audio.currentTime = curr
+                    playLoad()
+                    palyTime(that)
                 }
-
-                playLoad()
-                palyTime(that)
                 return true
             } else {
                 palyTime(that)
