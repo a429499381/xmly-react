@@ -25,7 +25,7 @@
 
 数据获取方式：
     爬取喜马拉雅移动端网页，使用了跨域代理服务，避免请求被拒绝。
-    // https://bird.ioliu.cn/ 跨域代理网站（免费）
+    // https://bird.ioliu.cn/ 跨域代理网站（ 免费 ）
 
     数据核心提取方式： /Users/xutao/web/xmly-react/src/data/Regex
         使用正则提取，速度非常快，有兴趣可以看看config.js 文件，所有提取
