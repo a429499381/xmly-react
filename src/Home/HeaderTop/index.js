@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {hashHistory, Link} from 'react-router'
 
 import './index.scss'
-
+import {message} from 'antd'
 
 class HeaderTop extends Component {
     constructor(props) {
@@ -82,7 +82,7 @@ class HeaderTop extends Component {
 
     clearLocalStorage() {
         localStorage.clear()
-        alert('清空缓存完毕')
+        message.info('清空缓存完毕')
     }
 
 }
