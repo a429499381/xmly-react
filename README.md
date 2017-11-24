@@ -41,3 +41,7 @@
 
 数据缓存：
      之前使用indexDB， 之后发现localStorage 也能满足需求，改用loalStorage.
+
+
+后端：
+     使用阿里云ecs + pm2 做为一键部署     http://www.fxdbs.cn:5000
