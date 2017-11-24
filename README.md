@@ -9,21 +9,19 @@
     axios 0.16.2
     sass  4.53
 
-运行
-复制  src目录下的  wepack.config.dev.js  到 node_modules/react-scripts/config 下， 否则样式丢失
+运行方法:
+    复制  src目录下的  wepack.config.dev.js  到 node_modules/react-scripts/config 下， 否则样式丢失
 
-npm install  && npm start
+    npm install  && npm start
 
-
-编译
-npm run build
+编译:
+    npm run build
 
 编译后运行  与 5000 端口
-serve -s build
+    serve -s build
 
-线上体验地址
-http://www.fxdbs.cn:5000
-
+线上体验地址:
+    http://www.fxdbs.cn:5000
 
 数据获取方式：
     爬取喜马拉雅移动端网页，使用了跨域代理服务，避免请求被拒绝。
