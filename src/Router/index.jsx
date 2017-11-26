@@ -15,7 +15,7 @@ import album from '../album'
 import albumTag from '../album/albumTag'
 import albumQuan from '../album/albumQuan'
 import Search from '../Search'
-// import Play from '../Play'
+import Login from '../login'
 
 // 如果是大型项目，router部分就需要做更加复杂的配置
 // 参见 https://github.com/reactjs/react-router/tree/master/examples/huge-apps
@@ -31,6 +31,7 @@ class RouterMap extends React.Component {
           <Route path='/Ls' component={Ls}/>
           <Route path='/Down' component={Down}/>
           <Route path='/Search/:id(/:more)' component={Search}/>
+          <Route path='/login' component={Login}/>
           <Route path='*/Sound/*' component={Sound}/>
           <Route path='/sound-quan/:id/:category' component={SoundQuan}/>
           <Route path='/sound-quan/all/rank' component={SoundQuan}>
