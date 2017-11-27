@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './css/reset.css'
 import './css/zxx.css'
-import 'antd/dist/antd.css'
+import 'antd-mobile/dist/antd-mobile.css'
 
 class App extends Component {
     render() {
