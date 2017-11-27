@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './index.scss'
 import {play, playLoad} from "../../Play/index";
 import {Link, hashHistory} from 'react-router'
+import { Modal} from 'antd-mobile';
 
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
@@ -15,6 +16,16 @@ class Footer extends Component {
             playLoad: false
         }
     }
+    login() {
+        Modal.prompt(
+            '登陆',
+            '手机号或者用户名登陆',
+            (login, password) => console.log(`login: ${login}, password: ${password}`),
+            'login-password',
+            null,
+            ['请输入你的用户名', '请输入你的密码'],
+        )
+    }
 
     render() {
         return (
@@ -24,7 +35,7 @@ class Footer extends Component {
                         <Link to="/Home" className="footItem"><span></span></Link>
                         <Link to="/Home" className="footItem"><span></span></Link>
                         <Link to="/Home" className="footItem"><span></span></Link>
-                        <Link to="/login" className="footItem"><span>我的</span></Link>
+                        <div  className="footItem" onClick={this.login}><span>我的</span></div>
                         <i className="content">&nbsp;</i>
                     </div>
                     <div className="bofang " >
